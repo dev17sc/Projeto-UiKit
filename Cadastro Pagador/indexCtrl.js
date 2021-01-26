@@ -11,12 +11,72 @@ myapp.run([
 myapp.controller("TesteCtrl", [
   "$scope", "scAlert", "scTopMessages",
   function(s, scAlert, scTopMessages) {
-    // s.pessoas = [
-    //   {
-    //     id: '1',
-    //     nome: '1',
-    //   }
-    // ]
+    s.pessoas = [
+      {
+        id: 1,
+        nome: 'Alice Alcântara',
+      },
+      {
+        id: 2,
+        nome: 'Ana Claudia',
+      },
+      {
+        id: 3,
+        nome: 'Camila Andrade',
+      },
+      {
+        id: 4,
+        nome: 'Carla Inácio',
+      },
+      {
+        id: 5,
+        nome: 'Cristiane Silva',
+      },
+      {
+        id: 6,
+        nome: 'Daniela Santos',
+      },
+      {
+        id: 7,
+        nome: 'Eduarda Lourenzzo',
+      },
+      {
+        id: 8,
+        nome: 'Erika Albuquerque',
+      },
+      {
+        id: 9,
+        nome: 'Ingrid Lopez',
+      },
+      {
+        id: 10,
+        nome: 'Ketlyn Alves',
+      },
+      {
+        id: 11,
+        nome: 'Lara Gomes',
+      },
+      {
+        id: 12,
+        nome: 'Lorena Santos',
+      },
+      {
+        id: 13,
+        nome: 'Marco Aurélio F. S. Fonseca',
+      },
+      {
+        id: 15,
+        nome: 'Pétala Vasconselos',
+      },
+      {
+        id: 16,
+        nome: 'Rita Estela',
+      },
+    ];
+
+    s.accs = [
+      {opened: false}
+    ]
   }
 ]);
 

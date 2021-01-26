@@ -19,11 +19,28 @@
     <div class="sc-bg-blue-dark sc-box-shadow-z1 sc-p-l-lg sc-p-t-xs">
       <h2 class="sc-text-shadow-light sc-text-white sc-m-v-sm">Testes com UiKit</h2>
     </div>
+    <!-- BOTÃO CADASTRAR PESSOA
       <div style="padding: 1em">
         <button class="sc-btn sc-btn-blue sc-btn-awesomeness">
         <div class="sc-btn-icon"><i class="sc-icon sc-icon-mais-1"></i></div>
         <div class="sc-btn-text">Cadastrar Pessoa</div>
         </button>
-      </div>
+      </div> -->
+    <div>
+      <ul class="sc-accordion">
+        <li class="sc-acc-gray-lighter" ng-repeat="pessoa in pessoas">
+          <div ng-click="pessoa.acc.opened = !pessoa.acc.opened" class="sc-accordion-head sc-text-blue">
+            <div class="sc-accordion-icon-col sc-divider align-xs-center">
+              <i class="sc-icon sc-icon-homem-1"></i>
+            </div>
+              <div class="sc-text-bold sc-text-blue">{{pessoa.nome}}</div>
+              <i class="sc-badge-hover-gray sc-icon-reticencias-v pull-right"></i>
+          </div>
+          <div ng-show="pessoa.acc.opened">
+            TESTE
+          </div>
+        </li>
+      </ul>
+    </div>
   </body>
 </html>
