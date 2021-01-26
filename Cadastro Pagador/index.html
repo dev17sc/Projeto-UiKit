@@ -2,7 +2,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media="screen" href="css/uikit-48fa524e87eb70816dc4c4a80e3940a013b778733d038b4076332aec7592a46c.css">
+    <link rel="stylesheet" media="screen" href="css/sc-icons.css">
+    <link rel="stylesheet" media="screen" href="css/prototype.css">
+    <!-- <link rel="stylesheet" media="screen" href="css/uikit-48fa524e87eb70816dc4c4a80e3940a013b778733d038b4076332aec7592a46c.css"> -->
     <script src="js/jquery_min.js"></script>
     <script src="js/jquery.livequery.js"></script>
     <script src="js/angular/angular.js"></script>
@@ -16,7 +18,7 @@
     <title>Cadastro Pagador</title>
   </head>
   <body ng-app="myapp" ng-controller="TesteCtrl" style="overflow: auto;">
-    <div class="sc-bg-blue-dark sc-box-shadow-z1 sc-p-l-lg sc-p-t-xs">
+    <div class="sc-bg-blue sc-box-shadow-z1 sc-p-l-lg sc-p-t-xs">
       <h2 class="sc-text-shadow-light sc-text-white sc-m-v-sm">Testes com UiKit</h2>
     </div>
     <!-- BOTÃO CADASTRAR PESSOA
@@ -28,16 +30,42 @@
       </div> -->
     <div>
       <ul class="sc-accordion">
-        <li class="sc-acc-gray-lighter" ng-repeat="pessoa in pessoas">
-          <div ng-click="pessoa.acc.opened = !pessoa.acc.opened" class="sc-accordion-head sc-text-blue">
+        <li ng-repeat="pessoa in pessoas" class="sc-acc-white" ng-class="{'sc-acc-opened': pessoa.acc.opened}" style="">
+          <div ng-click="pessoa.acc.opened = !pessoa.acc.opened" class="sc-accordion-head sc-acc-hover-blue">
             <div class="sc-accordion-icon-col sc-divider align-xs-center">
-              <i class="sc-icon sc-icon-homem-1"></i>
+              <i class="sc-icon sc-text-blue sc-icon-homem-1" style=""></i>
             </div>
-              <div class="sc-text-bold sc-text-blue">{{pessoa.nome}}</div>
-              <i class="sc-badge-hover-gray sc-icon-reticencias-v pull-right"></i>
+            <div class="sc-accordion-elastic-col sc-text-bold sc-text-blue">
+              <span class="sc-p-xs">
+                {{pessoa.nome}}
+                <i class="sc-badge-hover-gray sc-icon-reticiencias-v pull-right"></i>
+              </span>
+            </div>
           </div>
-          <div ng-show="pessoa.acc.opened">
-            TESTE
+          <div ng-show="pessoa.acc.opened" class="sc-accordion-body ng-animation-slider">
+            <div class="col-xs-12 col-md-6">
+              <div class="sc-fieldset">
+                <div class="sc-fieldset-head">
+                  <div class="sc-text-blue sc-text-bold">
+                    {{pessoa.nome}}
+                  </div>
+                </div>
+                <div>
+                  TODO
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <div class="sc-fieldset">
+                <div class="sc-fieldset-head">
+                  <span class="sc-text-blue sc-text-bold">Anexos</span>
+                </div>
+                <div>
+                  TODO
+                </div>
+              </div>
+            </div>
+            <div class="clear"></div>
           </div>
         </li>
       </ul>
