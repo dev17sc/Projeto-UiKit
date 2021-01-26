@@ -5,7 +5,7 @@
     <link rel="stylesheet" media="screen" href="css/uikit-48fa524e87eb70816dc4c4a80e3940a013b778733d038b4076332aec7592a46c.css">
     <script src="js/jquery_min.js"></script>
     <script src="js/jquery.livequery.js"></script>
-    <script src="angular.js"></script>
+    <script src="js/angular/angular.js"></script>
   	<script src="indexCtrl.js"></script>
   	<script src="js/modernizr.js"></script>
     <script src="js/uikit-sample.js"></script>
@@ -58,15 +58,15 @@
     			  </div>
     	      <div ng-show="acc.opened" class="sc-accordion-body ng-animation-slider ng-hide">
     	      	<div class="sc-inspect-box">
-                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray"> 
+                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray">
                   &lt;ul class="sc-accordion"&gt;
-                  <br>  
+                  <br>
                   &lt;li class="sc-acc-gray-lighter "&gt;
-                  <br>    
+                  <br>
                   &lt;div ng-click="acc.opened = !acc.opened" class="sc-accordion-head "&gt;
                   <br>
                   ...
-                </pre> 
+                </pre>
               </div>
     	      </div>
     	    </li>
@@ -82,15 +82,15 @@
             </div>
             <div ng-show="acc.opened" class="sc-accordion-body ng-animation-slider ng-hide">
               <div class="sc-inspect-box">
-                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray"> 
+                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray">
                   &lt;ul class="sc-accordion"&gt;
-                  <br>  
+                  <br>
                   &lt;li class="sc-acc-gray-light "&gt;
-                  <br>    
+                  <br>
                   &lt;div ng-click="acc.opened = !acc.opened" class="sc-accordion-head "&gt;
                   <br>
                   ...
-                </pre> 
+                </pre>
               </div>
             </div>
           </li>
@@ -106,11 +106,11 @@
             </div>
             <div ng-show="acc.opened" class="sc-accordion-body ng-animation-slider ng-hide">
               <div>
-                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray"> 
+                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray">
                   &lt;ul class="sc-accordion"&gt;
-                  <br>  
+                  <br>
                   &lt;li class="sc-acc-gray "&gt;
-                  <br>    
+                  <br>
                   &lt;div ng-click="acc.opened = !acc.opened" class="sc-accordion-head "&gt;
                   <br>
                   ...
@@ -130,11 +130,11 @@
             </div>
             <div ng-show="acc.opened" class="sc-accordion-body ng-animation-slider ng-hide">
               <div>
-                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray"> 
+                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray">
                   &lt;ul class="sc-accordion"&gt;
-                  <br>  
+                  <br>
                   &lt;li class="sc-acc-gray-dark "&gt;
-                  <br>    
+                  <br>
                   &lt;div ng-click="acc.opened = !acc.opened" class="sc-accordion-head "&gt;
                   <br>
                   ...
@@ -154,11 +154,11 @@
             </div>
             <div ng-show="acc.opened" class="sc-accordion-body ng-animation-slider ng-hide">
               <div>
-                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray"> 
+                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray">
                   &lt;ul class="sc-accordion"&gt;
-                  <br>  
+                  <br>
                   &lt;li class="sc-acc-gray-darker "&gt;
-                  <br>    
+                  <br>
                   &lt;div ng-click="acc.opened = !acc.opened" class="sc-accordion-head "&gt;
                   <br>
                   ...
@@ -168,7 +168,7 @@
           </li>
         </ul>
       </div>
-      <div style="padding: 1em"> 
+      <div style="padding: 1em">
 	      <hr>
         <h2 class="sc-label">Align</h2>
           <div class="sc-text-bold sc-p-b-sm">align-left</div>
@@ -236,7 +236,7 @@
 		    <i class="sc-badge sc-bg-white sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
 		  </div>
       <div style="padding: 1em">
-        <hr>   
+        <hr>
         <h2 class="sc-label">Buttons</h2>
 		    <button class="sc-m-r-md sc-btn sc-btn-gray">Cinza</button>
 				<button class="sc-m-r-md sc-btn sc-btn-blue">Azul</button>
@@ -285,7 +285,7 @@
 				  <button class="sc-m-r-md sc-btn sc-cursor-progress">sc-cursor-progress</button>
 		    </div>
 		    <!--
-		    <hr>	
+		    <hr>
 		    <div>
 		    	<span class="sc-dropdown">
             <button type="button" class="sc-btn sc-btn-blue">
@@ -318,30 +318,30 @@
               <button class="sc-btn sc-btn-cian" type="button"><i class="sc-icon sc-icon-mais-1"></i></button>
               <button class="sc-btn sc-btn-yellow" type="button"><i class="sc-icon sc-icon-lapis"></i></button>
               <button class="sc-btn sc-btn-red" type="button"><i class="sc-icon sc-icon-lixeira-1"></i></button>
-              <i class="sc-icon sc-icon-visto-1 sc-btn sc-btn-green"></i>  
+              <i class="sc-icon sc-icon-visto-1 sc-btn sc-btn-green"></i>
           </div>
         </div>
         <div style="padding: 1em">
           <label class="sc-align-middle">
-          	<div class="sc-p-t-md sc-label">Testar ?</div> 
-   					<span class="sc-p-t-md sc-toggle" > 
-    					<input type="checkbox" checked /> 
+          	<div class="sc-p-t-md sc-label">Testar ?</div>
+   					<span class="sc-p-t-md sc-toggle" >
+    					<input type="checkbox" checked />
     					<span label-true="sim" label-false="não"></span>
-   					</span> 
+   					</span>
   				</label>
           <label class="sc-align-middle">
-          	<div class="sc-p-l-xl sc-p-t-md sc-label">Opção 1:</div> 
-   					<span class="sc-p-t-md sc-toggle"> 
-    					<input type="checkbox" checked> 
+          	<div class="sc-p-l-xl sc-p-t-md sc-label">Opção 1:</div>
+   					<span class="sc-p-t-md sc-toggle">
+    					<input type="checkbox" checked>
     					<span label-true="sim" label-false="não"></span>
-   					</span> 
+   					</span>
   				</label>
           <label class="sc-align-middle">
           	<div class="sc-p-l-xl sc-p-t-md sc-label">Opção 2:</div>
-   					<span class="sc-p-t-md sc-toggle"> 
-    					<input type="checkbox" checked> 
+   					<span class="sc-p-t-md sc-toggle">
+    					<input type="checkbox" checked>
     					<span label-true="sim" label-false="não"></span>
-   					</span> 
+   					</span>
   				</label>
         </div>
 				<div style="padding: 1em" class="sc-p-t-md align-xs-left align-sn-left">
@@ -507,7 +507,7 @@
     					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
       			</span>
     			</div>
-        </div>  
+        </div>
 <!--     <script src="indexCtrl.js"></script>
     <script src="js/sc_alert.js"></script>
     <script src="js/sc_toggle.js"></script>
