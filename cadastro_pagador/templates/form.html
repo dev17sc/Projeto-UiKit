@@ -1,6 +1,6 @@
 <div ng-app="myapp" ng-controller="FormCtrl" style="overflow: auto;">
- <form>
-   <div class="col-xs-12">
+  <form>
+    <div class="col-xs-12">
      <div class="sc-fieldset">
        <div class="sc-fieldset-head">
          <div class="sc-text-blue sc-text-bold">
@@ -107,19 +107,23 @@
            </label>
          </div>
      </div>
-   </div>
-   <div class="col-xs-12">
-     <div class="sc-fieldset">
-       <div class="sc-fieldset-head">
-         <div class="sc-text-blue sc-text-bold">
-           Endereços
-           <button class="sc-btn sc-btn-green">
-             <i class="sc-icon sc-icon-mais-1"></i>
-             <span class="sc-btn-text">Adicionar</span>
-           </button>
-         </div>
-       </div>
-     </div>
-   </div>
- </form>
+    </div>
+    <div class="sc-fieldset">
+      <div class="sc-fieldset-head">
+        <div class="sc-text-blue sc-text-bold">
+          Endereços
+          <button class="sc-btn sc-btn-green" ng-click="abrirForm()">
+            <i class="sc-icon sc-icon-mais-1"></i>
+            <span class="sc-btn-text">Adicionar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <ul class="sc-accordion">
+      <li id="form" ng-if="show_form">
+        <div ng-include="'templates/endForm.html'">
+        </div>
+      </li>
+    </ul>
+  </form>
 </div>
