@@ -1,0 +1,91 @@
+<div ng-app="myapp" ng-controller="FormCtrl" style="overflow: auto;">
+ <form>
+   <div class="col-xs-12">
+     <div class="sc-fieldset">
+       <div class="sc-fieldset-head">
+         <div class="sc-text-blue sc-text-bold">
+           Dados Gerais
+         </div>
+        </div>
+        <div class="flex-row sc-bg-gray-lighter">
+          <div class="sc-btn-group fcol-lg-15 sc-p-h-md">
+                <div class="sc-text-bold sc-text-blue sc-m-b-xs">
+                  Tipo:
+                </div>
+                  <button class="sc-btn">Pagador</button>
+                  <button class="sc-btn">Fornecedor</button>
+          </div>
+          <div class="sc-btn-group fcol-lg-11em sc-p-h-md">
+                <div class="sc-text-bold sc-text-blue sc-m-b-xs">
+                  Pessoa:
+                </div>
+                  <button class="sc-btn sc-active-blue">Física</button>
+                  <button class="sc-btn">Jurídica</button>
+          </div>
+          <div class="sc-btn-group fcol-lg-11em sc-p-h-md">
+                <div class="sc-text-bold sc-text-blue sc-m-b-xs">
+                  Sexo:
+                </div>
+                  <button class="sc-btn">Masc.</button>
+                  <button class="sc-btn">Femin.</button>
+          </div>
+          <div>
+            <label>
+              <div class="sc-text-bold sc-text-blue fcol-lg-15 sc-p-h-md">
+                Deficiente:
+              </div>
+              <span class="sc-toggle sc-toggle-true-green sc-toggle-false-blue fcol-lg-15 sc-p-h-md sc-p-v-md">
+                <input type="checkbox"/>
+                <span label-true="sim" label-false="não"></span>
+             </span>
+            </label>
+          </div>
+          <div class="sc-p-h-md">
+            <label>
+              <div class="sc-label">Nome:</div>
+              <input type="text" class="sc-input-default" style="min-width: 15em">
+            </label>
+          </div>
+          <div class="sc-p-h-md">
+            <label>
+              <div class="sc-label">CPF:</div>
+              <input sc-mask="cpf" type="text" class="sc-input-default" style="min-width: 16em">
+            </label>
+          </div>
+          <div class="sc-p-h-md">
+            <label>
+              <div class="sc-label">RG:</div>
+              <input type="text" class="sc-input-default" style="min-width: 16em">
+            </label>
+          </div>
+        </div>
+        <div class="flex-row sc-bg-gray-lighter">
+          <div class="sc-p-h-md fcol-lg-17em">
+            <label>
+              <div class="sc-label">Nascimento:</div>
+              <input type="date" class="sc-input-default" style="min-width: 16em">
+            </label>
+          </div>
+          <div class="sc-p-h-md fcol-lg-17em">
+            <label>
+              <div class="sc-label">Profissão:</div>
+              <input type="text" class="sc-input-default" style="min-width: 16em">
+            </label>
+          </div>
+          <div class="sc-p-h-md">
+            <label>
+              <div class="sc-label">E-mail (principal):</div>
+              <input type="text" class="sc-input-default" style="min-width: 24em">
+            </label>
+          </div>
+          <div class="sc-p-h-md fcol-lg-18em">
+            <label>
+              <div class="sc-label">E-mails alternativos:</div>
+              <input type="text" class="sc-input-default" style="min-width: 32em" placeholder="Digite um novo E-mail">
+            </label>
+          </div>
+        </div>
+     </div>
+   </div>
+ </form>
+</div>
