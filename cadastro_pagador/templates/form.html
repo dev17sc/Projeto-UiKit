@@ -112,18 +112,24 @@
       <div class="sc-fieldset-head">
         <div class="sc-text-blue sc-text-bold">
           Endereços
-          <button class="sc-btn sc-btn-green" ng-click="abrirForm()">
+          <button class="sc-btn sc-btn-green" ng-click="endFormOpen()">
             <i class="sc-icon sc-icon-mais-1"></i>
             <span class="sc-btn-text">Adicionar</span>
           </button>
         </div>
       </div>
+      <div ng-if="indexCtrl.show_endForm">
+        <form>
+          <div>
+          </div>
+        </form>
+      </div>
+    <div>
+      <ul class="sc-accordion">
+        <li id="form" ng-if="show_endForm">
+          <div ng-include="'templates/endForm.html'">
+          </div>
+        </li>
     </div>
-    <ul class="sc-accordion">
-      <li id="form" ng-if="show_form">
-        <div ng-include="'templates/endForm.html'">
-        </div>
-      </li>
-    </ul>
   </form>
 </div>

@@ -11,6 +11,7 @@ myapp.run([
 myapp.controller("TesteCtrl", [
   "$scope", "scAlert", "scTopMessages",
   function(s, scAlert, scTopMessages) {
+
     s.pessoas = [
       {
         id: 1,
@@ -82,6 +83,12 @@ myapp.controller("TesteCtrl", [
 
     s.abrirForm = function() {
       s.show_form = !s.show_form
+    }
+
+    s.show_endForm = false
+
+    s.endFormOpen = function() {
+      s.show_endForm = !s.show_endForm
     }
   }
 ]);
