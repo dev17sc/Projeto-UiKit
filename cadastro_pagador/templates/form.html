@@ -117,19 +117,17 @@
             <span class="sc-btn-text">Adicionar</span>
           </button>
         </div>
-      </div>
-      <div ng-if="indexCtrl.show_endForm">
-        <form>
-          <div>
-          </div>
-        </form>
-      </div>
-    <div>
-      <ul class="sc-accordion">
+        </div>
         <li id="form" ng-if="show_endForm">
-          <div ng-include="'templates/endForm.html'">
-          </div>
+        <div ng-include="'templates/endForm.html'"></div>
         </li>
+      </div>
+    </div>
+    <div ng-if="indexCtrl.show_endForm">
+      <form>
+        <div>
+        </div>
+      </form>
     </div>
   </form>
 </div>
