@@ -12,16 +12,75 @@
     <form>
       <div class="col-xs-12" ng-repeat="contaBancaria in formCtrl.params.contBan">
         <div class="flex-row sc-bg-gray-lighter">
-          <div class="fcol-md-10">
+          <div class="fcol-md-20">
+           <label>
+             <div class="sc-label">Banco:</div>
+             <div class="sc-input-group">
+               <input type="text" class="sc-input-default" style="min-width: 15em">
+               <div class="sc-btn sc-btn-blue col-lg-pull-1"><i class="sc-icon sc-icon-lupa-2 sc-m-t-lg"></i></div>
+             </div>
+           </label>
+          </div>
+          <div class="fcol-md-18em sc-p-h-md sc-m-r-xxxl">
             <label>
-              <div class="sc-text-bold sc-text-blue sc-p-h-md">
-                Principal?
+              <div class="sc-label">Tipo da Conta</div>
+              <div class="sc-input-group">
+                <select class="sc-input-default sc-input-block" ng-model="formCtrl.params.operacao">
+                  <option value="" class="ng-binding" selected="selected">Selecione</option>
+                  <option label="Conta Corrente">Conta Corrente</option>
+                  <option label="Poupança">Poupança</option>
+                  <option label="Conta Investimento">Conta Investimento</option>
+                  <option label="Conta Investimento 2">Conta Investimento 2</option>
+                  <option label="Conta Investimento 3">Conta Investimento 3</option>
+                  <option label="Conta Investimento 4">Conta Investimento 4</option>
+                  <option label="Conta Investimento 5">Conta Investimento 5</option>
+                  <option label="Conta Investimento 6">Conta Investimento 6</option>
+                  <option label="Fundo de Reserva">Fundo de Reserva</option>
+                  <option label="Quotas de Capital">Quotas de Capital</option>
+                  <option label="13º/Férias">13º/Férias</option>
+                  <option label="Fundo de Eventos">Fundo de Eventos</option>
+                  <option label="Fundo de Obras">Fundo de Obras</option>
+                  <option label="Pagamento Eletrônico">Fundo de Reserva Pagto COMPESA</option>
+                </select>
               </div>
-              <span class="sc-toggle sc-toggle-true-red sc-toggle-false-green fcol-lg-15 sc-p-h-md sc-p-v-md">
-                <span label-true="não" label-false="sim"></span>
-                <input type="checkbox" ng-model="contaBancaria.principal"/>
-             </span>
             </label>
+          </div>
+          <div class="fcol-md-15em">
+            <label>
+              <div class="sc-label">Agência</div>
+              <input class="sc-input-default" ng-model="form.params.agencia" style="max-width: 9em;">
+              <b class="sc-text-gray sc-m-h-xs">-</b>
+              <input class="sc-input-default" ng-model="form.params.agencia_dv" placeholder="DV" style="max-width: 3em;" type="text">
+            </label>
+          </div>
+          <div class="fcol-md-15em">
+            <label>
+              <div class="sc-label">Número da Conta</div>
+              <input class="sc-input-default" ng-model="form.params.numero_conta" style="max-width: 9em;">
+              <b class="sc-text-gray sc-m-h-xs">-</b>
+              <input class="sc-input-default" ng-model="form.params.numeor_conta_dv" placeholder="DV" style="max-width: 3em;" type="text">
+            </label>
+          </div>
+          <div class="fcol-md-15em sc-m-t-xxl-md">
+            <label>
+              <div class="sc-label"></div>
+              <input class="sc-input-default" ng-model="form.params.conta.nome" style="max-width: 15em;">
+              </label>
+          </div>
+        </div>
+        <div class="flex-row sc-bg-gray-lighter">
+          <div class="fcol-md-16em">
+            <label>
+              <div class="sc-label">CPF/CNPJ</div>
+              <div class="sc-input-group">
+                <input class="sc-input-default" ng-model="form.params.documento" sc-mask="cpf" type="text" style="">
+                <button class="sc-btn sc-btn-blue" type="button">PF</button>
+                <button class="sc-btn" type="button">PJ</button>
+              </div>
+            </label>
+          </div>
+          <div class="sc-m-t-xxxl sc-m-l-xxxl">
+            <button class="sc-btn sc-btn-blue" type="button">Principal</button>
           </div>
         </div>
       </div>
