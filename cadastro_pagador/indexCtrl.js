@@ -75,21 +75,17 @@ myapp.controller("TesteCtrl", [
       },
     ];
 
-    s.accs = [
-      {opened: false}
-    ];
+    s.formCtrl = {
+      show: false,
 
-    s.show_form = false
+      init: function () {
+        this.show = true;
+      },
 
-    s.abrirForm = function() {
-      s.show_form = !s.show_form
-    }
-
-    s.show_endForm = false
-
-    s.endFormOpen = function() {
-      s.show_endForm = !s.show_endForm
-    }
+      close: function() {
+        this.show = false;
+      },
+    };
   }
 ]);
 
@@ -97,11 +93,36 @@ myapp.controller("FormCtrl", [
   "$scope", "scAlert", "scTopMessages",
   function(s, scAlert, scTopMessages) {
 
-    s.show_form = false
+    s.formCtrl = {
+      show: false,
+      params: {},
 
-    s.abrirForm = function() {
-      s.show_form = !s.show_form
-    }
+      init: function (params) {
+        this.params = angular.copy(params);
+
+        this.show = true;
+      },
+
+      close: function() {
+        this.show = false;
+
+        this.params = {};
+      },
+    };
+
+    s.endFormCtrl = {
+      add: function () {
+        s.formCtrl.params.enderecoes ||= [];
+        s.formCtrl.params.enderecoes.push({});
+      },
+    };
+
+    s.contBanCtrl = {
+      add: function () {
+        s.formCtrl.params.contBan ||= [];
+        s.formCtrl.params.contBan.push({});
+      }
+    };
   }
 ]);
 

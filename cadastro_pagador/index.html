@@ -22,29 +22,20 @@
         Testes com UiKit
       </h2>
     </div>
-      <div class="sc-m-b-md sc-m-l-md">
-        <button class="sc-btn sc-btn-blue sc-btn-awesomeness" ng-click="abrirForm()">
-          <div class="sc-btn-icon">
-            <i class="sc-icon sc-icon-mais-1"></i>
-          </div>
-            <div class="sc-btn-text">
-              Cadastrar Pessoa
-            </div>
-        </button>
-      </div>
-    <div ng-if="indexCtrl.show_form">
-      <form>
-        <div>
+    <div class="sc-m-b-md sc-m-l-md">
+      <button class="sc-btn sc-btn-blue sc-btn-awesomeness" ng-click="formCtrl.init()">
+        <div class="sc-btn-icon">
+          <i class="sc-icon sc-icon-mais-1"></i>
         </div>
-      </form>
-    </div>
-    <div ng-include="indexCtrl.templates.cadastro_pagador.form">
+        <div class="sc-btn-text">
+          Cadastrar Pessoa
+        </div>
+      </button>
     </div>
     <div>
       <ul class="sc-accordion">
-        <li id="form" ng-if="show_form">
-          <div ng-include="'templates/form.html'">
-          </div>
+        <li id="form" ng-if="formCtrl.show">
+          <div ng-include="'templates/form.html'"></div>
         </li>
         <li ng-repeat="pessoa in pessoas" class="sc-acc-white" ng-class="{'sc-acc-opened': pessoa.acc.opened}" style="">
           <div ng-click="pessoa.acc.opened = !pessoa.acc.opened" class="sc-accordion-head sc-acc-hover-blue">
@@ -54,34 +45,39 @@
             <div class="sc-accordion-elastic-col sc-text-bold sc-text-blue">
               <span class="sc-p-v-sm">
                 {{pessoa.nome}}
-                <i class="sc-badge-hover-gray sc-icon-reticiencias-v pull-right"></i>
+                <i class="sc-badge-hover-gray sc-icon-lapis pull-right" ng-click="pessoa.form.opened = true"></i>
               </span>
             </div>
           </div>
           <div ng-show="pessoa.acc.opened" class="sc-accordion-body ng-animation-slider">
-            <div class="col-xs-12 col-md-6">
-              <div class="sc-fieldset">
-                <div class="sc-fieldset-head">
-                  <div class="sc-text-blue sc-text-bold">
-                    {{pessoa.nome}}
+            <div ng-show="!pessoa.form.opened">
+              <div class="col-xs-12 col-md-6">
+                <div class="sc-fieldset">
+                  <div class="sc-fieldset-head">
+                    <div class="sc-text-blue sc-text-bold">
+                      {{pessoa.nome}}
+                    </div>
+                  </div>
+                  <div>
+                    TESTE
                   </div>
                 </div>
-                <div>
-                  TESTE
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="sc-fieldset">
+                  <div class="sc-fieldset-head">
+                    <span class="sc-text-blue sc-text-bold">Anexos</span>
+                  </div>
+                  <div>
+                    TESTE
+                  </div>
                 </div>
               </div>
+              <div class="clear"></div>
             </div>
-            <div class="col-xs-12 col-md-6">
-              <div class="sc-fieldset">
-                <div class="sc-fieldset-head">
-                  <span class="sc-text-blue sc-text-bold">Anexos</span>
-                </div>
-                <div>
-                  TESTE
-                </div>
-              </div>
+            <div ng-show="pessoa.form.opened">
+              <div ng-include="'templates/form.html'"></div>
             </div>
-            <div class="clear"></div>
           </div>
         </li>
       </ul>
