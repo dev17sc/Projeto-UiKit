@@ -122,12 +122,6 @@
       <div ng-include="'templates/endForm.html'"></div>
       </li>
     </div>
-    <div ng-if="indexCtrl.show_endForm">
-      <form>
-        <div>
-        </div>
-      </form>
-    </div>
     <div class="sc-fieldset">
       <div class="sc-fieldset-head">
         <div class="sc-text-blue sc-text-bold">
@@ -182,6 +176,20 @@
           </label>
         </div>
       </div>
+    </div>
+    <div class="sc-fieldset">
+      <div class="sc-fieldset-head">
+        <div class="sc-text-blue sc-text-bold">
+          Contas Bancárias
+          <button class="sc-btn sc-btn-green"  style="font-size: 0.9em" ng-click="contBanFormOpen()">
+            <i class="sc-icon sc-icon-mais-1"></i>
+            <span class="sc-btn-text">Adicionar</span>
+          </button>
+        </div>
+      </div>
+      <li id="form" ng-if="show_contBanForm">
+      <div ng-include="'templates/contBanForm.html'"></div>
+      </li>
     </div>
   </form>
 </div>
