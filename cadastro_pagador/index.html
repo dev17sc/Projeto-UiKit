@@ -71,7 +71,7 @@
             <div class="sc-accordion-elastic-col sc-text-bold sc-text-blue">
               <span class="sc-p-v-sm">
                 {{pessoa.nome}}
-                <i class="sc-badge-hover-gray sc-icon-lapis pull-right" ng-click="pessoa.form.opened = true"></i>
+                <i class="sc-badge-hover-gray sc-icon-reticiencias-v pull-right" ng-click="pessoa.form.opened = true"></i>
               </span>
             </div>
           </div>
@@ -85,8 +85,22 @@
                     </div>
                   </div>
                   <div class="sc-text-gray">
+                    <i class="sc-icon-cartao-1 sc-p-r-md left"></i>
+                    <div style="overflow:hidden;word-break:break-word" class="ng-binding">CPF: {{pessoa.cpf}}</div>
+                    <i class="sc-icon-cartao-1 sc-p-r-md left"></i>
+                    <div style="overflow:hidden;word-break:break-word" class="ng-binding">RG: {{pessoa.rg}}</div>
                     <i class="sc-icon-calendario-2 sc-p-r-md left"></i>
                     <div style="overflow:hidden;word-break:break-word" class="ng-binding">Nascimento: {{pessoa.nascimento}}</div>
+                    <i class="sc-icon-maleta sc-p-r-md left"></i>
+                    <div style="overflow:hidden;word-break:break-word" class="ng-binding">Profissão: {{pessoa.profissao}}</div>
+                    <i class="sc-icon-carta-2 sc-p-r-md left"></i>
+                    <div style="overflow:hidden;word-break:break-word" class="ng-binding">E-mail: {{pessoa.email}}</div>
+                    <i class="sc-icon-carta-2 sc-p-r-md left"></i>
+                    <div style="overflow:hidden;word-break:break-word" class="ng-binding">E-mails Alternativos: {{pessoa.email_alt}}</div>
+                    <i class="sc-icon-telefone-1 sc-p-r-md left"></i>
+                    <div style="overflow:hidden;word-break:break-word" class="ng-binding">Telefones: {{pessoa.telefone}}</div>
+                    <i class="sc-icon-local sc-p-r-md left"></i>
+                    <div style="overflow:hidden;word-break:break-word" class="ng-binding">{{pessoa.endereco}}</div>
                   </div>
                 </div>
               </div>
@@ -96,7 +110,9 @@
                     <span class="sc-text-blue sc-text-bold">Anexos</span>
                   </div>
                   <div>
-                    TESTE
+                    <div class="sc-text-thin sc-p-md sc-p-b-xxxl sc-p-t-xs sc-text-lg align-center sc-text-blue ng-binding">
+                      Nenhum anexo disponível!
+                    </div>
                   </div>
                 </div>
               </div>
