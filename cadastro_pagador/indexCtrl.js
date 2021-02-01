@@ -115,12 +115,22 @@ myapp.controller("FormCtrl", [
         s.formCtrl.params.enderecoes ||= [];
         s.formCtrl.params.enderecoes.push({});
       },
+
+      rmv: function (endereco) {
+        s.formCtrl.params.enderecoes ||= [];
+        s.formCtrl.params.enderecoes.remove(endereco);
+      }
     };
 
     s.contBanCtrl = {
       add: function () {
         s.formCtrl.params.contBan ||= [];
         s.formCtrl.params.contBan.push({});
+      },
+
+      rmv: function (contaBancaria) {
+        s.formCtrl.params.contBan ||= [];
+        s.formCtrl.params.contBan.remove(contaBancaria);
       }
     };
   }
