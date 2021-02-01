@@ -26,14 +26,14 @@
           <div class="fcol-md-23em sc-p-h-md">
            <label>
              <div class="sc-label">Título Endereço</div>
-             <input type="text" class="sc-input-default" style="min-width: 20em" placeholder="Casa, trabalho, etc...">
+             <input type="text" class="sc-input-default" ng-model="endereco.titulo_endereco" style="min-width: 20em" placeholder="Casa, trabalho, etc...">
            </label>
           </div>
           <div class="fcol-md-20 sc-p-h-md">
            <label>
              <div class="sc-label">CEP:</div>
              <div class="sc-input-group">
-               <input type="text" class="sc-input-default" style="min-width: 15em">
+               <input type="text" class="sc-input-default" ng-model="endereco.cep" style="min-width: 15em">
                <div class="sc-btn sc-btn-blue col-lg-pull-1"><i class="sc-icon sc-icon-lupa-2 sc-m-t-lg"></i></div>
              </div>
            </label>
@@ -42,7 +42,7 @@
            <label>
              <div class="sc-label">Cidade:</div>
              <div class="sc-input-group">
-               <input type="text" class="sc-input-default" style="min-width: 20em">
+               <input type="text" class="sc-input-default" ng-model="endereco.cidade" style="min-width: 20em">
                <div class="sc-btn sc-btn-blue"><i class="sc-icon sc-icon-lupa-2 sc-m-t-lg"></i></div>
              </div>
            </label>
@@ -52,19 +52,19 @@
           <div class="fcol-md-35 sc-p-h-md">
             <label>
               <div class="sc-label">Logradouro:</div>
-              <input sc-mask="cpf" type="text" class="sc-input-default" style="min-width: 29em">
+              <input sc-mask="cpf" type="text" class="sc-input-default" ng-model="endereco.logradouro" style="min-width: 29em">
             </label>
           </div>
           <div class="fcol-md-25 sc-p-h-md">
             <label>
               <div class="sc-label">Número/Complemento:</div>
-              <input sc-mask="cpf" type="text" class="sc-input-default" style="min-width: 20em">
+              <input sc-mask="cpf" type="text" class="sc-input-default" ng-model="endereco.numero_complemento" style="min-width: 20em">
             </label>
           </div>
           <div class="sc-p-h-md">
             <label>
               <div class="sc-label">Bairro:</div>
-              <input sc-mask="cpf" type="text" class="sc-input-default" style="min-width: 20em">
+              <input sc-mask="cpf" type="text" class="sc-input-default" ng-model="endereco.bairro" style="min-width: 20em">
             </label>
           </div>
           <i class="sc-icon sc-icon-lixeira-1 sc-badge-hover-red sc-m-l-lg sc-m-t-xxxl" ng-click="endFormCtrl.rmv(endereco)"></i>
