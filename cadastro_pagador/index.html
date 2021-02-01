@@ -14,7 +14,7 @@
     <script src="js/array.js"></script>
     <script src="js/functions.js"></script>
     <script src="indexCtrl.js"></script>
-    <title>Cadastro Pagador</title>
+    <title>Cadastro de Pagadores</title>
   </head>
   <body ng-app="myapp" ng-controller="TesteCtrl" style="overflow: auto;">
     <div class="sc-bg-blue sc-box-shadow-z1 sc-p-l-lg sc-p-t-xs">
@@ -22,8 +22,8 @@
         Testes com UiKit
       </h2>
     </div>
-    <div class="sc-m-b-md sc-m-l-md">
-      <button class="sc-btn sc-btn-blue sc-btn-awesomeness" ng-click="formCtrl.init()">
+    <div class="flex-row">
+      <button class="sc-btn sc-btn-blue sc-btn-awesomeness sc-m-l-lg sc-m-b-lg" ng-click="formCtrl.init()">
         <div class="sc-btn-icon">
           <i class="sc-icon sc-icon-mais-1"></i>
         </div>
@@ -31,11 +31,37 @@
           Cadastrar Pessoa
         </div>
       </button>
+      <div class="sc-m-l-lg">
+        <form class="sc-input-group">
+          <input class="sc-input-default" ng-model="formCtrl.params.busca" placeholder="Nome, E-mail, Razão Social, CPF/CNPJ, Telefone" type="text" style="width: 24em">
+          <button class="sc-btn sc-btn-red ng-hide" ng-click="" ng-show="" type="button">
+            <i class="sc-icon-fechar-1"></i>
+          </button>
+          <button class="sc-btn sc-btn-blue" ng-click="" type="button">
+            <i class="sc-icon-lupa-2" style=""></i>
+          </button>
+          <button class="sc-btn" ng-class="" ng-click="" type="button">
+            <i class="sc-icon-filtro-2"></i>
+          </button>
+        </form>
+      </div>
+      <div class="sc-m-l-lg sc-btn-group">
+        <button class="sc-btn sc-p-r-sm" style="min-width: 5em">Pessoa Física</button>
+        <button class="sc-btn sc-p-l-sm sp-p-r-sm" style="min-width: 5em">Pessoa Jurídica</button>
+      </div>
+      <div class="sc-m-l-lg sc-btn-group">
+        <button class="sc-btn sc-p-r-sm" style="min-width: 5em">Pagadores</button>
+        <button class="sc-btn sc-p-l-sm sp-p-r-sm" style="min-width: 5em">Fornecedores</button>
+      </div>
     </div>
     <div>
       <ul class="sc-accordion">
         <li id="form" ng-if="formCtrl.show">
           <div ng-include="'templates/form.html'"></div>
+          <div class="pull-right sc-m-b-lg sc-m-r-lg">
+            <button class="sc-btn sc-btn-red" ng-click="formCtrl.close()">Cancelar</button>
+            <button class="sc-btn sc-btn-blue" ng-click="">Salvar</button>
+          </div>
         </li>
         <li ng-repeat="pessoa in pessoas" class="sc-acc-white" ng-class="{'sc-acc-opened': pessoa.acc.opened}" style="">
           <div ng-click="pessoa.acc.opened = !pessoa.acc.opened" class="sc-accordion-head sc-acc-hover-blue">
@@ -58,8 +84,9 @@
                       {{pessoa.nome}}
                     </div>
                   </div>
-                  <div>
-                    TESTE
+                  <div class="sc-text-gray">
+                    <i class="sc-icon-calendario-2 sc-p-r-md left"></i>
+                    <div style="overflow:hidden;word-break:break-word" class="ng-binding">Nascimento: {{pessoa.nascimento}}</div>
                   </div>
                 </div>
               </div>
