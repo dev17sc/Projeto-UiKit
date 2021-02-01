@@ -231,11 +231,6 @@ myapp.controller("FormCtrl", [
       },
     };
 
-    s.adicionarPagador = function() {
-      s.pessoas.push();
-    };
-
-
 
     s.endFormCtrl = {
       add: function () {
