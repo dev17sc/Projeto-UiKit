@@ -175,6 +175,7 @@
             <span label-true="Reajustar" label-false="Não Reajustar"></span>
           </label>
         </div>
+        <div class="sc-text-blue sc-text-lg align-center" ng-hide="formCtrl.params.reajuste_contratual">Não será reajustado nenhum débito desta pessoa!</div>
         <div ng-show="formCtrl.params.reajuste_contratual">
           <div class="flex-row sc-bg-gray-lighter">
             <div class="fcol-md-15">
@@ -270,6 +271,7 @@
             <span label-true="Sim" label-false="Não"></span>
           </label>
         </div>
+        <div class="sc-text-blue sc-text-lg align-center" ng-hide="formCtrl.params.inadimplentes">Cliente não será bloqueado!</div>
         <div ng-show="formCtrl.params.inadimplentes">
           <div class="flex-row sc-bg-gray-lighter">
             <div class="fcol-md-6em sc-m-t-lg">
