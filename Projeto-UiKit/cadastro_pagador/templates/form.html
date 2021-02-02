@@ -248,9 +248,12 @@
               <i class="sc-icon-camera-1 sc-m-r-sm"></i>
               <span class="sc-text-lg ng-binding">Tirar Foto</span>
             </button>
-            <label class="sc-btn sc-btn-blue sc-btn-thin sc-text-sm sc-text-normal">
-              <i class="sc-icon-clipe sc-m-r-sm"></i>
-              <span class="sc-text-lg ng-binding">Anexar</span>
+            <label>
+              <input type="file" accept="image/*,application/pdf" nv-file-select="" uploader="uploader" style="display: none;" multiple="">
+              <div class="sc-btn sc-btn-blue sc-btn-thin sc-text-sm sc-text-normal">
+                <i class="sc-icon-clipe sc-m-r-sm"></i>
+                <span class="sc-text-lg ng-binding">Anexar</span>
+              </div>
             </label>
           </div>
           <select class="sc-input-default sc-p-v-o sc-m-v-sm" ng-model="formCtrl.tipo" style="font-size: 0.833333em; min-height: 1.7em;">
