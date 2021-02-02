@@ -1,0 +1,128 @@
+h1. Instalar Sublime Text 3 no host
+# Instalar
+** http://www.sublimetext.com/3
+# Configurar package control
+## Abra o Editor
+## Acesse o menu View > Show Console
+## Cole o comando deste site: https://packagecontrol.io/installation
+# Instalar plugins *ctrl+shift+p install*
+## MaterialTheme
+## OmniMarkupPreviewer
+### preview de grooming de redmine, markdown e outros conversores do tipo 'text-to-HTML')
+## Smart New Window
+### abre novo sublime com os projetos carregados: ctr+shift+n
+## ColorSchemeEditor
+### Apert Shift + F12 e edite em tempo real -> clicar nas variáveis de um arquivo ruby(por exemplo)
+### Selecione a cor e + control + shift + p -> color picker (instale esse plugin e modifique a cor)
+## Better Coffeescript
+## SCSS
+## AutoFileName
+## SideBarEnhancements
+## Bracket Highlighter
+## GitGutter (git diff em 'real time')
+## Sublime Git
+## Move Tab -> mover as abas com -> ctr + shift + page up/down
+### commits, push e pulls além de "crud" de branchs
+## All Autocomplete
+### sugerir palavras ao digitar
+## Rails Latest Migration
+## Rubocop
+### code analyzer for ruby - análisa e sugere melhorias para o código ruby escrito em 'real time'
+### Instalar gem caso ruby já esteja instalado: $ gem install rubocop
+## SublimeLinter
+### informa erros enquanto Dev digita erros
+### SublimeLinter-coffeelint
+### https://github.com/jawshooah/SublimeLinter-contrib-ruby-lint
+### Precisa instalar na máquina:
+#### node.js e npm
+#### coffeescript: $ npm install -g coffee-script
+#### $ npm install -g coffeelint
+#### ruby
+### Ctrl + shift + p -> digite: linter settings
+#### Cole isso:  "show_panel_on_save": "view",
+## AngularJs (CoffeeScript)
+### snippets
+## Terminal
+### abre terminal pelo sublime
+## Calculate
+### calculos matématicos fácil dentro do sublime
+### seleciona a linha com a fórmula matemática -> ctr + shift + p -> calculate
+h1. Configurar preferencias default (Preferences > Settings-User)
+<pre><code class="JSON">
+{
+  "detect_indentation": false,
+  "font_size": 11,
+  "ignored_packages":
+  [
+    "Vintage"
+  ],
+  "shift_tab_unindent": true,
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": true,
+  "word_wrap": "false",
+  "ensure_newline_at_eof_on_save": true,
+  "rulers": [80],
+  "draw_minimap_border": true,
+  "always_show_minimap_viewport": true
+}
+</code></pre>
+h1. Atalhos personalizados (Preferences > Key Bindings - User)
+<pre><code class="JSON">
+[
+  { "keys": ["f10"], "command": "reindent" },
+  { "keys": ["ctrl+f8"], "command": "expand_tabs", "args": { "set_translate_tabs": true } },
+  { "keys": ["f6"], "command": "toggle_side_bar"},
+  { "keys": ["f5"], "command": "reveal_in_side_bar"},
+  { "keys": ["ctrl+f5"], "command": "refresh_folder_list"},
+  { "keys": ["shift+insert"], "command": "paste", "args": {"clipboard": "selection"} }
+]
+</code></pre>
+h1. Instalar Snippets do ERP
+https://github.com/denoww/sc-sublime-snippets
+p(danger). Necessário somente para desenvolvedores HTML, Ruby ou Javascript
+h1. Instalar SQLTools
+http://mtxr.github.io/SQLTools/
+h4. Instalar SQLTools
+<pre>
+CTRL+SHIFT+P > Install > SQLTools
+</pre>
+h4. Instalar psql
+<pre>
+sudo apt install postgresql
+</pre>
+Para testar a conexão do psql
+<pre>
+psql -w -h localhost -p 5433 -U postgres sc_development
+</pre>
+h4. Configurar o SQLTools
+<pre>
+CTRL+SHIFT+P > ST: Setup Connections
+</pre>
+Criar a conexão com o PostgreSQL
+<pre>
+{
+  "connections": {
+    "Connection PostgreSQL": {
+      "type"    : "pgsql",
+      "host"    : "localhost",
+      "port"    :  5433,
+      "database": "sc_development",
+      "username": "postgres",
+      "password": "",
+      "encoding": "utf-8"
+    }
+}
+</pre>
+Agora é só digitar uma consulta SQL no sublime, selecionar e executar o ST: Execute
+<pre>
+SELECT * FROM condominios;
+</pre>
+<pre>
+CTRL+SHIFT+P > ST: Execute
+ou
+Aperte Ctrl + E (duas vezes)
+</pre>
+h1. Expressão Regular no Sublime
+*Exemplo busca:* sc-border-(\w*-light|\w+)+-(\w+)+-(\w+)(\s|\")
+*Exemplo replace:* sc-border-$1 sc-border-$2 sc-border-$3
