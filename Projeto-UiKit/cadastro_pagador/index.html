@@ -71,22 +71,22 @@
             <div class="sc-accordion-elastic-col sc-text-bold sc-text-blue">
               <span class="sc-p-v-sm">
                 {{pessoa.nome}}
-                <span class="sc-dropdown pull-right" sc-dropdown-menu="" sc-stop-click="">
-                  <i class="sc-icon-reticiencias-v sc-badge sc-badge-hover-gray" ng-click="menu.toggle()" style=""></i>
-                  <ul class="sc-dropdown-menu ng-animation-slider ng-hide" ng-show="menu.isOn">
-                    <li>
-                      <a ng-click="pessoa.form.opened = true">
-                        <i class="sc-icon-lapis"></i> Editar
-                      </a>
-                    </li>
-                    <li>
-                      <a ng-click="">
-                        <i class="sc-icon-lixeira-1"></i> Excluir
-                      </a>
-                    </li>
-                  </ul>
-                </span>
               </span>
+              <div class="sc-dropdown pull-right" sc-dropdown-menu="" sc-stop-click="">
+                <i class="sc-icon-reticiencias-v sc-badge sc-badge-hover-gray" ng-click="menu.toggle()"></i>
+                <ul class="sc-dropdown-menu ng-animation-slider" ng-show="menu.isOn" style="display: block;">
+                  <li>
+                    <a ng-click="pessoa.form.opened = true">
+                      <i class="sc-icon-lapis"></i> Editar
+                    </a>
+                  </li>
+                  <li>
+                    <a ng-click="">
+                      <i class="sc-icon-lixeira-1"></i> Excluir
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <div ng-show="pessoa.acc.opened" class="sc-accordion-body ng-animation-slider">
