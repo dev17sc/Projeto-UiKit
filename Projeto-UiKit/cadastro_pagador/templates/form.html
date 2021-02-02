@@ -1,0 +1,328 @@
+<div ng-app="myapp" ng-controller="FormCtrl" ng-init="formCtrl.init(pessoa)" style="overflow: auto;">
+  <form>
+    <div class="col-xs-12">
+      <div class="sc-fieldset">
+        <div class="sc-fieldset-head">
+          <div class="sc-text-blue sc-text-bold">
+            Dados Gerais
+          </div>
+        </div>
+        <div class="flex-row sc-bg-gray-lighter">
+          <div class="fcol-md-15 sc-btn-group sc-p-h-sm">
+            <div class="sc-text-bold sc-text-blue">
+              Tipo:
+            </div>
+            <button class="sc-btn sc-p-r-sm" style="min-width: 5em">Pagador</button>
+            <button class="sc-btn sc-p-l-sm sp-p-r-sm" style="min-width: 5em">Fornecedor</button>
+          </div>
+          <div class="fcol-md-11em sc-btn-group">
+            <div class="sc-text-bold sc-text-blue">
+              Pessoa:
+            </div>
+            <button class="sc-btn sc-active-blue">Física</button>
+            <button class="sc-btn">Jurídica</button>
+          </div>
+          <div class="sc-btn-group sc-p-h-md">
+            <div class="sc-text-bold sc-text-blue">
+              Sexo:
+            </div>
+              <button class="sc-btn">Masc.</button>
+              <button class="sc-btn">Femin.</button>
+          </div>
+          <div>
+            <label>
+              <div class="sc-text-bold sc-text-blue fcol-lg-15 sc-p-h-md">
+                Deficiente:
+              </div>
+              <span class="sc-toggle sc-toggle-true-green sc-toggle-false-blue fcol-lg-15 sc-p-h-md sc-p-v-md">
+                <input type="checkbox" ng-model="formCtrl.params.deficiente"/>
+                <span label-true="sim" label-false="não"></span>
+              </span>
+            </label>
+          </div>
+          <div class="fcol-md-25 sc-p-h-md">
+            <label>
+              <div class="sc-label">Nome:</div>
+              <input type="text" class="sc-input-default" ng-model="formCtrl.params.nome" style="min-width: 20em">
+            </label>
+          </div>
+          <div class="sc-p-h-md">
+            <label>
+              <div class="sc-label">CPF:</div>
+              <input sc-mask="cpf" type="text" class="sc-input-default" ng-model="formCtrl.params.cpf" style="min-width: 20em">
+            </label>
+          </div>
+        </div>
+        <div class="flex-row sc-bg-gray-lighter">
+          <div class="fcol-md-25 sc-p-h-md">
+            <label>
+              <div class="sc-label">RG:</div>
+              <input type="text" class="sc-input-default" ng-model="formCtrl.params.rg" style="min-width: 20em">
+            </label>
+          </div>
+          <div class="fcol-md-18em sc-p-h-md">
+            <label>
+              <div class="sc-label">Nascimento:</div>
+              <input type="date" class="sc-input-default" ng-model="formCtrl.params.nascimento" style="min-width: 15em">
+            </label>
+          </div>
+          <div class="sc-p-h-md fcol-lg-23em">
+            <label>
+              <div class="sc-label">Profissão:</div>
+              <input type="text" class="sc-input-default" ng-model="formCtrl.params.profissao" style="min-width: 20em">
+            </label>
+          </div>
+          <div class="sc-p-h-md">
+            <label>
+              <div class="sc-label">E-mail (principal):</div>
+              <input type="text" class="sc-input-default" ng-model="formCtrl.params.email" style="min-width: 20em">
+            </label>
+          </div>
+        </div>
+        <div class="flex-row sc-bg-gray-lighter">
+          <div class="sc-p-h-md fcol-lg-23em">
+            <label>
+              <div class="sc-label">E-mails alternativos:</div>
+              <input type="text" class="sc-input-default" ng-model="formCtrl.params.emailalternativo" style="min-width: 20em" placeholder="Digite um novo E-mail">
+            </label>
+          </div>
+          <div class="sc-p-h-md fcol-lg-18em">
+            <label>
+              <div class="sc-label">Identificador <i class="sc-icon sc-icon-info-2"></i>:</div>
+              <input type="text" class="sc-input-default" ng-model="formCtrl.params.identificador" style="min-width: 15em">
+            </label>
+          </div>
+          <div class="sc-p-h-md fcol-lg-23em">
+            <label>
+              <div class="sc-label">Telefones:</div>
+              <input type="text" class="sc-input-default" ng-model="formCtrl.params.telefone" style="min-width: 20em">
+            </label>
+          </div>
+        </div>
+        <div class="flex-row sc-bg-gray-lighter">
+          <div class="sc-p-h-md fcol-lg-23em">
+            <label>
+              <div class="sc-label">Observações:</div>
+              <input type="text" class="sc-input-default" ng-model="formCtrl.params.observacoes" style="min-width: 90em; min-height: 6em">
+            </label>
+          </div>
+        </div>
+      </div>
+      <div ng-include="'templates/endForm.html'"></div>
+      <div class="sc-fieldset">
+        <div class="sc-fieldset-head">
+          <div class="sc-text-blue sc-text-bold">
+            Perfil Para Pagamento
+          </div>
+        </div>
+        <div class="flex-row sc-bg-gray-lighter">
+          <div class="fcol-md-23em sc-p-h-md">
+            <label>
+              <div class="sc-label">Operação</div>
+              <div class="sc-input-group">
+                <select class="sc-input-default sc-input-block" ng-model="formCtrl.params.operacao">
+                  <option value="" class="ng-binding" selected="selected">Selecione</option>
+                  <option label="Pix">Pix</option>
+                  <option label="Boleto - Título">Boleto - Título</option>
+                  <option label="Boleto - Convênio">Boleto - Convênio</option>
+                  <option label="Cheque">Cheque</option>
+                  <option label="Depósito">Depósito</option>
+                  <option label="Saque">Saque</option>
+                  <option label="Cartão Crédito">Cartão Crédito</option>
+                  <option label="Cartão Débito">Cartão Débito</option>
+                  <option label="Débito Automático">Débito Automático</option>
+                  <option label="Tarifa">Tarifa</option>
+                  <option label="Dinheiro">Dinheiro</option>
+                  <option label="Rendimento">Rendimento</option>
+                  <option label="Aplicação">Aplicação</option>
+                  <option label="Pagamento Eletrônico">Pagamento Eletrônico</option>
+                  <option label="Resgate">Resgate</option>
+                  <option label="Transferência - TED">Transferência - TED</option>
+                  <option label="Transferência - DOC">Transferência - DOC</option>
+                  <option label="Transferência - MESMO BANCO">Transferência - MESMO BANCO</option>
+                </select>
+              </div>
+            </label>
+          </div>
+          <div class="fcol-md-20 sc-p-h-md">
+            <label>
+              <div class="sc-label">Plano de Contas:</div>
+              <div class="sc-input-group">
+                <input type="text" class="sc-input-default" ng-model="formCtrl.params.planodecontas" style="min-width: 15em">
+                <div class="sc-btn sc-btn-blue col-lg-pull-1"><i class="sc-icon sc-icon-seta-5-baixo sc-m-t-lg"></i></div>
+              </div>
+            </label>
+          </div>
+          <div class="fcol-md-20 sc-p-h-md">
+            <label>
+              <div class="sc-label">Fundo:</div>
+              <div class="sc-input-group">
+                <input type="text" class="sc-input-default" ng-model="formCtrl.params.fundo" style="min-width: 20em">
+                <div class="sc-btn sc-btn-blue">
+                  <i class="sc-icon sc-icon-seta-5-baixo sc-m-t-lg"></i>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div ng-include="'templates/contBanForm.html'"></div>
+      <div class="sc-fieldset">
+        <div class="sc-fieldset-head">
+          <span class="sc-text-blue sc-text-bold sc-m-t-sm">Reajuste Contratual</span>
+          <label class="sc-toggle sc-toggle-true-blue sc-toggle-false-red sc-m-l-lg">
+            <input type="checkbox" ng-model="formCtrl.params.reajuste_contratual"/>
+            <span label-true="Reajustar" label-false="Não Reajustar"></span>
+          </label>
+        </div>
+        <div class="sc-text-blue sc-text-lg align-center" ng-hide="formCtrl.params.reajuste_contratual">Não será reajustado nenhum débito desta pessoa!</div>
+        <div ng-show="formCtrl.params.reajuste_contratual">
+          <div class="flex-row sc-bg-gray-lighter">
+            <div class="fcol-md-15">
+              <div class="sc-label">Tipo de Reajuste</div>
+              <div class="sc-btn-group">
+                <button class="sc-btn" type="button">
+                  <i class="sc-icon sc-icon-dinheiro-2"></i> Valor
+                </button>
+                <button class="sc-btn sc-btn-blue" type="button" style=""><i class="sc-icon sc-icon-grafico-3"></i> Índice
+                </button>
+              </div>
+            </div>
+            <div class="fcol-md-13em" style="">
+              <label>
+                <div class="sc-label ng-binding">Índice Reajuste</div>
+                <select class="sc-input-default" style="">
+                  <option class="ng-binding">Selecione</option>
+                  <option label="INPC (IBGE) - BR">INPC (IBGE) - BR</option>
+                  <option label="IGP-DI (FGV) - BR">IGP-DI (FGV) - BR</option>
+                  <option label="IPA-M (FGV) - BR">IPA-M (FGV) - BR</option>
+                  <option label="IPA-DI (FGV) - BR">IPA-DI (FGV) - BR</option>
+                  <option label="INCC-M (FGV) - BR">INCC-M (FGV) - BR</option>
+                  <option label="INCC-DI (FGV) - BR">INCC-DI (FGV) - BR</option>
+                  <option label="TJ-MG (TJMG) - BR">TJ-MG (TJMG) - BR</option>
+                  <option label="Poupança - BR">Poupança - BR</option>
+                  <option label="IPC-DI (FGV) - BR">IPC-DI (FGV) - BR</option>
+                  <option label="Salário Mínimo - BR">Salário Mínimo - BR</option>
+                  <option label="ENCOGE (JEBR0718N) - BR">ENCOGE (JEBR0718N) - BR</option>
+                  <option label="ENCOG (JEBR0719N) - BR">ENCOG (JEBR0719N) - BR</option>
+                  <option label="ENCOGE (JEBR0620N) - BR">ENCOGE (JEBR0620N) - BR</option>
+                  <option label="TJ-SP (TJSP) - BR">TJ-SP (TJSP) - BR</option>
+                  <option label="ENCONGE (JEBR0820N) - BR">ENCONGE (JEBR0820N) - BR</option>
+                  <option label="IGP-M (FGV) - BR" selected="selected">IGP-M (FGV) - BR</option>
+                </select>
+              </label>
+            </div>
+            <div class="fcol-md-18em">
+              <div class="sc-label ng-binding">Reajustar A cada</div>
+              <div class="sc-input-group">
+                <input class="sc-input-default" style="width: 5em; min-width: 5em;" type="number">
+                <select class="sc-input-default" style="">
+                  <option value="" class="ng-binding">Selecione</option>
+                  <option label="Dias" value="string:day">Dias</option>
+                  <option label="Meses" value="string:month" selected="selected">Meses</option>
+                  <option label="Anos" value="string:year">Anos</option>
+                </select>
+              </div>
+            </div>
+            <div class="fcol-md-15em sc-p-l-xxxl">
+              <label>
+                <div class="sc-label ng-binding">Ultimo Reajuste Em</div>
+                <input class="sc-input-default" type="date" style="">
+              </label>
+            </div>
+            <div class="fcol-md-10">
+              <div class="sc-label ng-binding">Notificar Reajuste</div>
+              <label class="sc-toggle sc-m-t-sm">
+                <input type="checkbox" style="">
+                <span label-false="Não" label-true="Sim"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sc-fieldset">
+        <div class="sc-fieldset-head">
+          <span class="sc-text-blue sc-text-bold sc-m-t-sm">Anexos</span>
+          <div class="sc-btn-group sc-m-r-xl sc-m-v-sm" style="font-size: .9em;">
+            <button class="sc-btn sc-btn-blue sc-btn-thin sc-text-sm ng-scope" type="button">
+              <i class="sc-icon-camera-1 sc-m-r-sm"></i>
+              <span class="sc-text-lg ng-binding">Tirar Foto</span>
+            </button>
+            <label class="sc-btn sc-btn-blue sc-btn-thin sc-text-sm sc-text-normal">
+              <i class="sc-icon-clipe sc-m-r-sm"></i>
+              <span class="sc-text-lg ng-binding">Anexar</span>
+            </label>
+          </div>
+          <select class="sc-input-default sc-p-v-o sc-m-v-sm" ng-model="formCtrl.tipo" style="font-size: 0.833333em; min-height: 1.7em;">
+            <option value="" class="ng-binding" selected="selected">Selecione o Tipo</option>
+            <option label="Fotos">Fotos</option>
+            <option label="Documentos">Documentos</option>
+          </select>
+        </div>
+        <div class="sc-text-thin sc-p-md sc-p-b-xxxl sc-p-t-xs sc-text-lg align-center sc-text-blue ng-binding">
+          Nenhum anexo disponível!
+        </div>
+      </div>
+      <div class="sc-fieldset">
+        <div class="sc-fieldset-head">
+          <span class="sc-text-blue sc-text-bold sc-m-t-sm">Bloquear Cliente Inadimplente</span>
+          <label class="sc-toggle sc-toggle-true-green sc-toggle-false-red sc-m-l-lg">
+            <input type="checkbox" ng-model="formCtrl.params.inadimplentes"/>
+            <span label-true="Sim" label-false="Não"></span>
+          </label>
+        </div>
+        <div class="sc-text-blue sc-text-lg align-center" ng-hide="formCtrl.params.inadimplentes">Cliente não será bloqueado!</div>
+        <div ng-show="formCtrl.params.inadimplentes">
+          <div class="flex-row sc-bg-gray-lighter">
+            <div class="fcol-md-6em sc-m-t-lg">
+              <span class="sc-text-blue">A partir de:</span>
+            </div>
+            <div class="fcol-md-10">
+              <input class="sc-input-default" placeholder="Ex: 1" style="width: 5em;" type="number">
+            </div>
+            <div class="fcol-md-10">
+              <select class="sc-input-default">
+                <option class="ng-binding">Selecione</option>
+                <option>Dias</option>
+                <option>Meses</option>
+                <option>Anos</option>
+              </select>
+            </div>
+            <div class="fcol-md-6em sc-m-t-sm">
+              <label class="sc-toggle">
+                <input type="checkbox" style="">
+                <span label-false="Antes" label-true="Depois"></span>
+              </label>
+            </div>
+            <div class="fcol-md-10em sc-m-t-lg">
+              <span class="sc-text-blue"> do vencimento</span>
+            </div>
+            <div class="fcol-md-25em">
+              <div style="max-width: 25em; position: relative;">
+                <div>
+                  <div class="sc-label">Clientes</div>
+                  <div class="sc-input-group" style="overflow:visible">
+                    <input class="sc-input-default" placeholder="Digite um cliente" type="text">
+                    <div class="sc-btn sc-btn-blue">
+                      <i class="sc-icon-lupa-2 sc-m-t-lg"></i>
+                    </div>
+                    <div class="sc-btn sc-relative" ><i class="sc-icon sc-icon-visto-1 sc-m-t-lg"></i>
+                      <span class="sc-badge sc-badge-fixed sc-bg-yellow ng-binding ng-hide">0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 sc-p-l-none sc-p-r-xxl ng-animation-slider ng-hide" style="position: absolute;z-index: 50;">
+                  <div class="sc-border-radius sc-box-shadow-z1 sc-bg-blue-lighter sc-text-blue-dark" style="overflow-y: auto;max-height: 18em;">
+                    <div class="clear">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
