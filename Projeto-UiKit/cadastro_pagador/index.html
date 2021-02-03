@@ -16,7 +16,7 @@
     <script src="indexCtrl.js"></script>
     <title>Cadastro de Pagadores</title>
   </head>
-  <body ng-app="myapp" ng-controller="TesteCtrl" style="overflow: auto;">
+  <body ng-app="myapp" ng-controller="TesteCtrl" ng-submit="submit()" style="overflow: auto;">
     <div class="sc-bg-blue sc-box-shadow-z1 sc-p-l-lg sc-p-t-xs">
       <h2 class="sc-text-shadow-light sc-text-white sc-m-v-sm">
         Testes com UiKit
@@ -57,11 +57,9 @@
     <div>
       <ul class="sc-accordion">
         <li id="form" ng-if="formCtrl.show">
-          <div ng-include="'templates/form.html'"></div>
-          <div class="pull-right sc-m-b-lg sc-m-r-lg">
-            <button class="sc-btn sc-btn-red" ng-click="formCtrl.close()">Cancelar</button>
-            <button class="sc-btn sc-btn-blue" type="submit">Salvar</button>
-          </div>
+          <div ng-include="'templates/form.html'" ng-init="pessoas_list = pessoas"></div>
+          <!-- o seu html do form ta sendo incluido aqui, entao o controller do form so começa a ler as informações a partir daqui -->
+   <!--        recaptulando: usando ng-controller com o controller do form, para fazer o controle do formulario e usando init para passar a lista de pessoas do indexCtrl para o formCtrl. Por que? são controllers diferentes que nao se comunicam dirETAMENTE. as funcoes do formCtrl so podem ser chamadas e usadas pelo form, as funcoes do index so podem ser usadas e chamadas pelo form -->
         </li>
         <li ng-repeat="pessoa in pessoas|filter:formCtrl.params.busca" class="sc-acc-white" ng-class="{'sc-acc-opened': pessoa.acc.opened}">
           <div class="flex-row sc-accordion-head sc-acc-hover-blue sc-text-bold sc-text-blue" ng-click="pessoa.acc.opened = !pessoa.acc.opened">
