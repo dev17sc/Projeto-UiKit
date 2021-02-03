@@ -18,7 +18,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Alice Alcântara',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -30,7 +30,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Ana Claudia',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -42,7 +42,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Camila Andrade',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -54,7 +54,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Carla Inácio',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -66,7 +66,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Cristiane Silva',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -78,7 +78,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Daniela Santos',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -90,7 +90,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Eduarda Lourenzzo',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -102,7 +102,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Erika Albuquerque',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -114,7 +114,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Ingrid Lopez',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -126,7 +126,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Ketlyn Alves',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -138,7 +138,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Lara Gomes',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -150,7 +150,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Lorena Santos',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -163,7 +163,7 @@ myapp.controller("TesteCtrl", [
         cpf: 'xxx.xxx.xxx-xx',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -175,7 +175,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Pétala Vasconselos',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -187,7 +187,7 @@ myapp.controller("TesteCtrl", [
         nome: 'Rita Estela',
         cpf: 'xxx.xxx.xxx-xx',
         rg: 'xxxxxx',
-        nascimento:'28/03/2001',
+        nascimento: new Date('28/03/2001'),
         profissao: 'Teste',
         email: 'teste@teste.com',
         email_alt: 'teste@teste.com',
@@ -195,6 +195,7 @@ myapp.controller("TesteCtrl", [
         endereco: 'Rua x, Nº xxx, Setor x',
       },
     ];
+
 
     s.formCtrl = {
       show: false,
@@ -207,13 +208,26 @@ myapp.controller("TesteCtrl", [
         this.show = false;
       },
     };
-  }
 ]);
 
 myapp.controller("FormCtrl", [
   "$scope", "scAlert", "scTopMessages",
   function(s, scAlert, scTopMessages) {
 
+    s.pessoas_list = []
+
+    s.params = { teste: 'teste' }
+    s.teste = 'teste'
+
+    s.initForm = function(pessoas) {
+      console.log('estou iniciando')
+      s.pessoas_list = pessoas
+    };
+
+    s.salvar = function() {
+      console.log('bruh')
+      s.pessoas_list.unshift(s.params)
+    };
 
 
     s.formCtrl = {
