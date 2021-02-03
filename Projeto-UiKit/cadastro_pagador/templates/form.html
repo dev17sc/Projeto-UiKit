@@ -1,5 +1,5 @@
-<div ng-app="myapp" ng-controller="FormCtrl" ng-init="formCtrl.init(pessoa)" style="overflow: auto;">
-  <form>
+<div style="overflow: auto;" ng-controller="FormCtrl as formularioCtrl" ng-init="formularioCtrl.initForm(pessoas_list)">
+  <form ng-submit="formularioCtrl.salvar()">
     <div class="col-xs-12">
       <div class="sc-fieldset">
         <div class="sc-fieldset-head">
@@ -35,7 +35,7 @@
                 Deficiente:
               </div>
               <span class="sc-toggle sc-toggle-true-green sc-toggle-false-blue fcol-lg-15 sc-p-h-md sc-p-v-md">
-                <input type="checkbox" ng-model="formCtrl.params.deficiente"/>
+                <input type="checkbox" ng-model="formularioCtrl.params.deficiente"/>
                 <span label-true="sim" label-false="não"></span>
               </span>
             </label>
@@ -43,13 +43,13 @@
           <div class="fcol-md-25 sc-p-h-md">
             <label>
               <div class="sc-label">Nome:</div>
-              <input type="text" class="sc-input-default" ng-model="formCtrl.params.nome" style="min-width: 20em">
+              <input type="text" class="sc-input-default" ng-model="formularioCtrl.params.nome" style="min-width: 20em">
             </label>
           </div>
           <div class="sc-p-h-md">
             <label>
               <div class="sc-label">CPF:</div>
-              <input sc-mask="cpf" type="text" class="sc-input-default" ng-model="formCtrl.params.cpf" style="min-width: 20em">
+              <input sc-mask="cpf" type="text" class="sc-input-default" ng-model="formularioCtrl.params.cpf" style="min-width: 20em">
             </label>
           </div>
         </div>
@@ -57,25 +57,25 @@
           <div class="fcol-md-25 sc-p-h-md">
             <label>
               <div class="sc-label">RG:</div>
-              <input type="text" class="sc-input-default" ng-model="formCtrl.params.rg" style="min-width: 20em">
+              <input type="text" class="sc-input-default" ng-model="formularioCtrl.params.rg" style="min-width: 20em">
             </label>
           </div>
           <div class="fcol-md-18em sc-p-h-md">
             <label>
               <div class="sc-label">Nascimento:</div>
-              <input type="date" class="sc-input-default" ng-model="formCtrl.params.nascimento" style="min-width: 15em">
+              <input type="date" class="sc-input-default" ng-model="formularioCtrl.params.nascimento" style="min-width: 15em">
             </label>
           </div>
           <div class="sc-p-h-md fcol-lg-23em">
             <label>
               <div class="sc-label">Profissão:</div>
-              <input type="text" class="sc-input-default" ng-model="formCtrl.params.profissao" style="min-width: 20em">
+              <input type="text" class="sc-input-default" ng-model="formularioCtrl.params.profissao" style="min-width: 20em">
             </label>
           </div>
           <div class="sc-p-h-md">
             <label>
               <div class="sc-label">E-mail (principal):</div>
-              <input type="text" class="sc-input-default" ng-model="formCtrl.params.email" style="min-width: 20em">
+              <input type="text" class="sc-input-default" ng-model="formularioCtrl.params.email" style="min-width: 20em">
             </label>
           </div>
         </div>
@@ -83,19 +83,19 @@
           <div class="sc-p-h-md fcol-lg-23em">
             <label>
               <div class="sc-label">E-mails alternativos:</div>
-              <input type="text" class="sc-input-default" ng-model="formCtrl.params.emailalternativo" style="min-width: 20em" placeholder="Digite um novo E-mail">
+              <input type="text" class="sc-input-default" ng-model="formularioCtrl.params.emailalternativo" style="min-width: 20em" placeholder="Digite um novo E-mail">
             </label>
           </div>
           <div class="sc-p-h-md fcol-lg-18em">
             <label>
               <div class="sc-label">Identificador <i class="sc-icon sc-icon-info-2"></i>:</div>
-              <input type="text" class="sc-input-default" ng-model="formCtrl.params.identificador" style="min-width: 15em">
+              <input type="text" class="sc-input-default" ng-model="formularioCtrl.params.identificador" style="min-width: 15em">
             </label>
           </div>
           <div class="sc-p-h-md fcol-lg-23em">
             <label>
               <div class="sc-label">Telefones:</div>
-              <input type="text" class="sc-input-default" ng-model="formCtrl.params.telefone" style="min-width: 20em">
+              <input type="text" class="sc-input-default" ng-model="formularioCtrl.params.telefone" style="min-width: 20em">
             </label>
           </div>
         </div>
@@ -103,7 +103,7 @@
           <div class="sc-p-h-md fcol-lg-23em">
             <label>
               <div class="sc-label">Observações:</div>
-              <input type="text" class="sc-input-default" ng-model="formCtrl.params.observacoes" style="min-width: 90em; min-height: 6em">
+              <input type="text" class="sc-input-default" ng-model="formularioCtrl.params.observacoes" style="min-width: 90em; min-height: 6em">
             </label>
           </div>
         </div>
@@ -120,7 +120,7 @@
             <label>
               <div class="sc-label">Operação</div>
               <div class="sc-input-group">
-                <select class="sc-input-default sc-input-block" ng-model="formCtrl.params.operacao">
+                <select class="sc-input-default sc-input-block" ng-model="formularioCtrl.params.operacao">
                   <option value="" class="ng-binding" selected="selected">Selecione</option>
                   <option label="Pix">Pix</option>
                   <option label="Boleto - Título">Boleto - Título</option>
@@ -148,7 +148,7 @@
             <label>
               <div class="sc-label">Plano de Contas:</div>
               <div class="sc-input-group">
-                <input type="text" class="sc-input-default" ng-model="formCtrl.params.planodecontas" style="min-width: 15em">
+                <input type="text" class="sc-input-default" ng-model="formularioCtrl.params.planodecontas" style="min-width: 15em">
                 <div class="sc-btn sc-btn-blue col-lg-pull-1"><i class="sc-icon sc-icon-seta-5-baixo sc-m-t-lg"></i></div>
               </div>
             </label>
@@ -157,7 +157,7 @@
             <label>
               <div class="sc-label">Fundo:</div>
               <div class="sc-input-group">
-                <input type="text" class="sc-input-default" ng-model="formCtrl.params.fundo" style="min-width: 20em">
+                <input type="text" class="sc-input-default" ng-model="formularioCtrl.params.fundo" style="min-width: 20em">
                 <div class="sc-btn sc-btn-blue">
                   <i class="sc-icon sc-icon-seta-5-baixo sc-m-t-lg"></i>
                 </div>
@@ -171,12 +171,12 @@
         <div class="sc-fieldset-head">
           <span class="sc-text-blue sc-text-bold sc-m-t-sm">Reajuste Contratual</span>
           <label class="sc-toggle sc-toggle-true-blue sc-toggle-false-red sc-m-l-lg">
-            <input type="checkbox" ng-model="formCtrl.params.reajuste_contratual"/>
+            <input type="checkbox" ng-model="formularioCtrl.params.reajuste_contratual"/>
             <span label-true="Reajustar" label-false="Não Reajustar"></span>
           </label>
         </div>
-        <div class="sc-text-blue sc-text-lg align-center" ng-hide="formCtrl.params.reajuste_contratual">Não será reajustado nenhum débito desta pessoa!</div>
-        <div ng-show="formCtrl.params.reajuste_contratual">
+        <div class="sc-text-blue sc-text-lg align-center" ng-hide="formularioCtrl.params.reajuste_contratual">Não será reajustado nenhum débito desta pessoa!</div>
+        <div ng-show="formularioCtrl.params.reajuste_contratual">
           <div class="flex-row sc-bg-gray-lighter">
             <div class="fcol-md-15">
               <div class="sc-label">Tipo de Reajuste</div>
@@ -249,14 +249,14 @@
               <span class="sc-text-lg ng-binding">Tirar Foto</span>
             </button>
             <label>
-              <input type="file" accept="image/*,application/pdf" ng-model="formCtrl.anexo" uploader="uploader" style="display: none;" multiple="">
+              <input type="file" accept="image/*,application/pdf" ng-model="formularioCtrl.anexo" uploader="uploader" style="display: none;" multiple="">
               <div class="sc-btn sc-btn-blue sc-btn-thin sc-text-sm sc-text-normal">
                 <i class="sc-icon-clipe sc-m-r-sm"></i>
                 <span class="sc-text-lg ng-binding">Anexar</span>
               </div>
             </label>
           </div>
-          <select class="sc-input-default sc-p-v-o sc-m-v-sm" ng-model="formCtrl.tipo" style="font-size: 0.833333em; min-height: 1.7em;">
+          <select class="sc-input-default sc-p-v-o sc-m-v-sm" ng-model="formularioCtrl.tipo" style="font-size: 0.833333em; min-height: 1.7em;">
             <option value="" class="ng-binding" selected="selected">Selecione o Tipo</option>
             <option label="Fotos">Fotos</option>
             <option label="Documentos">Documentos</option>
@@ -270,12 +270,12 @@
         <div class="sc-fieldset-head">
           <span class="sc-text-blue sc-text-bold sc-m-t-sm">Bloquear Cliente Inadimplente</span>
           <label class="sc-toggle sc-toggle-true-green sc-toggle-false-red sc-m-l-lg">
-            <input type="checkbox" ng-model="formCtrl.params.inadimplentes"/>
+            <input type="checkbox" ng-model="formularioCtrl.params.inadimplentes"/>
             <span label-true="Sim" label-false="Não"></span>
           </label>
         </div>
-        <div class="sc-text-blue sc-text-lg align-center" ng-hide="formCtrl.params.inadimplentes">Cliente não será bloqueado!</div>
-        <div ng-show="formCtrl.params.inadimplentes">
+        <div class="sc-text-blue sc-text-lg align-center" ng-hide="formularioCtrl.params.inadimplentes">Cliente não será bloqueado!</div>
+        <div ng-show="formularioCtrl.params.inadimplentes">
           <div class="flex-row sc-bg-gray-lighter">
             <div class="fcol-md-6em sc-m-t-lg">
               <span class="sc-text-blue">A partir de:</span>
@@ -325,6 +325,10 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="pull-right sc-m-b-lg sc-m-r-lg">
+      <button class="sc-btn sc-btn-red" ng-click="formCtrl.close()">Cancelar</button>
+      <button class="sc-btn sc-btn-blue" type="submit">Salvar</button>
     </div>
   </form>
 </div>
