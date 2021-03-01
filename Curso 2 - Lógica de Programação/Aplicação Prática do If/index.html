@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>TECTREINAMENTOS INFORMÁTICA</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+  </head>
+  <body class="landing">
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+
+      // Curso 2 - Aplicação Prática do If
+
+      var estoque = window.prompt('Digite o estoque atual:')
+      console.log('Estoque: ' + estoque)
+
+      var vendas = window.prompt('Digite a quantidade de vendas:')
+      console.log('Vendas: ' + vendas)
+
+      var resultado = estoque - vendas
+      console.log('De acordo com as vendas até agora, o estoque atual é: ' + resultado)
+
+      if (resultado < 0) {
+        console.log('Erro! Quantidade de vendas é maior que quantidade em estoque!')
+      } else {
+        console.log('Estoque OK!')
+      }
+
+    </script>
+
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="assets/js/main.js"></script>
+
+  </body>
+</html>
