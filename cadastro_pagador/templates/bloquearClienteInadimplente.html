@@ -1,0 +1,59 @@
+<div class="sc-fieldset">
+  <div class="sc-fieldset-head flex">
+    <span class="sc-text-blue sc-text-bold sc-m-t-sm">Bloquear Cliente Inadimplente</span>
+    <label class="sc-toggle sc-toggle-true-green sc-toggle-false-red sc-m-l-lg">
+      <input type="checkbox" ng-model="formFact.params.inadimplentes"/>
+      <span label-true="Sim" label-false="Não" style="font-size: 0.9em"></span>
+    </label>
+  </div>
+  <div class="sc-text-blue sc-text-lg align-center" ng-hide="formFact.params.inadimplentes">Cliente não será bloqueado!</div>
+  <div ng-if="formFact.params.inadimplentes">
+    <div class="flex-row sc-bg-gray-lighter">
+      <div class="fcol-md-6em sc-m-t-lg">
+        <span class="sc-text-blue">A partir de:</span>
+      </div>
+      <div class="fcol-md-10">
+        <input class="sc-input-default" placeholder="Ex: 1" style="width: 5em;" type="number" ng-model="formFact.params.inadimplencia">
+      </div>
+      <div class="fcol-md-10">
+        <select class="sc-input-default">
+          <option class="ng-binding">Selecione</option>
+          <option>Dias</option>
+          <option>Meses</option>
+          <option>Anos</option>
+        </select>
+      </div>
+      <div class="fcol-md-6em sc-m-t-sm">
+        <label class="sc-toggle">
+          <input type="checkbox" style="" ng-model="formFact.params.inadimplenciaVencimento">
+          <span label-false="Antes" label-true="Depois"></span>
+        </label>
+      </div>
+      <div class="fcol-md-10em sc-m-t-lg">
+        <span class="sc-text-blue"> do vencimento</span>
+      </div>
+      <div class="fcol-md-25em">
+        <div style="max-width: 25em; position: relative;">
+          <div>
+            <div class="sc-label">Clientes:</div>
+            <div class="sc-input-group" style="overflow:visible">
+              <input class="sc-input-default" placeholder="Digite um cliente" type="text" ng-model="formFact.params.clientesInadimplentes">
+              <div class="sc-btn sc-btn-blue">
+                <i class="sc-icon-lupa-2 sc-m-t-lg"></i>
+              </div>
+              <div class="sc-btn sc-relative" ><i class="sc-icon sc-icon-visto-1 sc-m-t-lg"></i>
+                <span class="sc-badge sc-badge-fixed sc-bg-yellow ng-binding ng-hide">0</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 sc-p-l-none sc-p-r-xxl ng-animation-slider ng-hide" style="position: absolute;z-index: 50;">
+            <div class="sc-border-radius sc-box-shadow-z1 sc-bg-blue-lighter sc-text-blue-dark" style="overflow-y: auto;max-height: 18em;">
+              <div class="clear">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

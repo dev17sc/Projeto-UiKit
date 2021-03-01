@@ -1,0 +1,13 @@
+CHECKLIST - CADASTRO DE PAGADORES
+
+  Formulário para edição do cadastro de pagador existente:
+    CONCLUÍDO - Abrir edição quando show estiver aberto
+
+  Problema no Filtro Avançado:
+    Toggle não está funcionando
+
+  Passar todas as funções para um Objeto:
+    CONCLUÍDO - indexCtrl
+    CONCLUÍDO - formFactory
+    CONCLUÍDO - formCtrl
+    CONCLUÍDO - showCtrl

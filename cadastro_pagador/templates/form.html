@@ -1,0 +1,24 @@
+<div ng-controller="FormCtrl as formCtrl" ng-init="formCtrl.initCtrl.init(pessoa, formFact)" ng-submit="formCtrl.save(pessoa, formFact)">
+  <form name="form">
+    <div class="col-xs-12" style="width: 100%; background: #e8e8e8;">
+      <!-- Dados Gerais -->
+      <div ng-include="'templates/formDadosGerais.html'"></div>
+      <!-- Endereço -->
+      <div ng-include="'templates/endForm.html'"></div>
+      <!-- Perfil Para Pagamentos -->
+      <div ng-include="'templates/perfilParaPagamentos.html'"></div>
+      <!-- Conta Bancária -->
+      <div ng-include="'templates/contBanForm.html'"></div>
+      <!-- Reajuste Contratual -->
+      <div ng-include="'templates/reajusteContratual.html'"></div>
+      <!-- Anexos -->
+      <div ng-include="'templates/anexos.html'"></div>
+      <!-- Bloquear cliente inadimplente -->
+      <div ng-include="'templates/bloquearClienteInadimplente.html'"></div>
+        <div class="pull-right sc-m-b-lg sc-m-r-lg">
+          <button class="sc-btn sc-btn-red" type="button" ng-click="formFact.close()">Cancelar</button>
+          <button class="sc-btn sc-btn-blue" type ="submit">Salvar</button>
+        </div>
+    </div>
+  </form>
+</div>

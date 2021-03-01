@@ -1,0 +1,147 @@
+<div class="flex-row-with-padding sc-p-b-o sc-p-md">
+  <div class="left">
+    <button class="sc-btn sc-btn-blue sc-btn-awesomeness" type="button" ng-click="pagadoresCtrl.formularioCtrl.abrir(pessoa)">
+      <div class="sc-btn-icon">
+        <i class="sc-icon sc-icon-mais-1"></i>
+      </div>
+      <div class="sc-btn-text">
+        Cadastrar Pessoa
+      </div>
+    </button>
+  </div>
+  <form ng-submit="pagadoresCtrl.filtroAvancadoCtrl.filtrar()" class="fcol-xs-30">
+    <div class="sc-input-group">
+      <input class="sc-input-default" ng-model="pagadoresCtrl.filtroAvancadoCtrl.localizar[buscarPor]" placeholder="Nome, E-mail, Razão Social, CPF/CNPJ, Telefone" type="text" style="width: 24em">
+      <button class="sc-btn sc-btn-blue" type="submit">
+        <i class="sc-icon-lupa-2" style=""></i>
+      </button>
+      <button class="sc-btn" ng-click="pagadoresCtrl.filtroAvancadoCtrl.toogleFiltro()" type="button">
+        <i class="sc-icon-filtro-2"></i>
+      </button>
+    </div>
+  </form>
+  <div class="sc-m-l-lg fcol-xs-20 sc-btn-group">
+    <button ng-click="scActivePessoaFisica = !scActivePessoaFisica" ng-class="{'sc-active':scActivePessoaFisica}" type="button" class="sc-btn sc-active-blue" class="sc-btn sc-p-r-sm" style="min-width: 5em">Pessoa Física</button>
+    <button ng-click="scActivePessoaJuridica = !scActivePessoaJuridica" ng-class="{'sc-active':scActivePessoaJuridica}" type="button" class="sc-btn sc-active-blue" class="sc-btn sc-p-l-sm sp-p-r-sm" style="min-width: 5em">Pessoa Jurídica</button>
+  </div>
+  <div class="sc-m-l-lg fcol-xs-20 sc-btn-group">
+    <button ng-click="scActivePagadores = !scActivePagadores" ng-class="{'sc-active':scActivePagadores}" type="button" class="sc-btn sc-active-blue" class="sc-btn sc-p-r-sm" style="min-width: 5em">Pagadores</button>
+    <button ng-click="scActiveFornecedores = !scActiveFornecedores" ng-class="{'sc-active':scActiveFornecedores}" type="button" class="sc-btn sc-active-blue" class="sc-btn sc-p-l-sm sp-p-r-sm" style="min-width: 5em">Fornecedores</button>
+  </div>
+</div>
+<div id="top-bar-filter" class="flex-row ng-animation-slider sc-p-sm" ng-if="pagadoresCtrl.filtroAvancadoCtrl.showFiltro">
+  <form ng-submit="pagadoresCtrl.filtroAvancadoCtrl.filtrar()" class="col-xs-12 sc-p-lg">
+    <div class="flex-row">
+      <label class="sc-m-r-lg">
+        <div class="sc-label">Nome:</div>
+        <input type="text" class="sc-input-default" ng-model="pagadoresCtrl.filtroAvancadoCtrl.filtrar.aplicarFiltroAvancado.nome" style="min-width: 20em">
+      </label>
+      <label class="sc-m-r-lg">
+        <div class="sc-label">CPF:</div>
+        <input type="text" class="sc-input-default" ng-model="pagadoresCtrl.filtroAvancadoCtrl.filtrar.aplicarFiltroAvancado.cpf" style="min-width: 20em">
+      </label>
+      <label class="sc-m-r-lg">
+        <div class="sc-label">Telefone:</div>
+        <input type="text" class="sc-input-default" ng-model="pagadoresCtrl.filtroAvancadoCtrl.filtrar.aplicarFiltroAvancado.telefone" style="min-width: 20em">
+      </label>
+      <label class="sc-m-r-lg">
+        <div class="sc-label">E-mail:</div>
+        <input type="text" class="sc-input-default" ng-model="pagadoresCtrl.filtroAvancadoCtrl.filtrar.aplicarFiltroAvancado.email" style="min-width: 20em">
+      </label>
+      <div class="sc-m-r-lg">
+        <div class="sc-label">Tipo de data:</div>
+        <select class="sc-input-default" ng-model="tipo">
+          <option value="" class="ng-binding" selected="selected">Criado em</option>
+          <option label="Fotos">Último Reajuste Contratual em</option>
+          <option label="Documentos">Reajuste Contratual em</option>
+        </select>
+      </div>
+      <div>
+        <div class="sc-label">Opções:</div>
+        <div class="sc-dropdown ng-scope" sc-dropdown-menu="">
+          <button class="sc-btn sc-btn-blue ng-binding" ng-click="menu.toggle()" style="" type="button">Selecione
+            <i class="sc-icon-fw sc-icon-seta-5-baixo"></i>
+            <span class="sc-badge sc-badge-fixed sc-bg-yellow ng-binding ng-hide" ng-show="">0</span>
+          </button>
+          <ul class="sc-dropdown-menu sc-m-t-o sc-p-b-xs ng-animation-slider ng-hide" ng-show="menu.isOn" style="">
+            <li class="sc-dropdown-input">
+              <input ng-model="pagadoresCtrl.opcoes" placeholder="Busque uma opção" type="text" class="ng-pristine ng-untouched ng-valid ng-empty">
+            </li>
+            <div class="sc-scrollbar" style="overflow: auto;">
+              <li ng-click="" class="ng-scope">
+                <div class="vertical-align">
+                  <i ng-class="opcao.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'" class="sc-icon-quadrado-1"></i>
+                  <span class="ng-binding">Com endereço</span>
+                </div>
+              </li>
+              <li ng-click="" class="ng-scope">
+                <div class="vertical-align">
+                  <i ng-class="opcao.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'" class="sc-icon-quadrado-1"></i>
+                  <span class="ng-binding">Sem endereço</span>
+                </div>
+              </li>
+              <li ng-click="" class="ng-scope">
+                <div class="vertical-align">
+                  <i ng-class="opcao.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'" class="sc-icon-quadrado-1"></i>
+                  <span class="ng-binding">Endereço Completo</span>
+                </div>
+              </li>
+              <li ng-click="" class="ng-scope">
+                <div class="vertical-align">
+                  <i ng-class="opcao.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'" class="sc-icon-quadrado-1"></i>
+                  <span class="ng-binding">Endereço Incompleto</span>
+                </div>
+              </li>
+              <li ng-click="" class="ng-scope">
+                <div class="vertical-align">
+                  <i ng-class="opcao.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'" class="sc-icon-quadrado-1"></i>
+                  <span class="ng-binding">Sem CPF/CNPJ</span>
+                </div>
+              </li>
+              <li ng-click="" class="ng-scope">
+                <div class="vertical-align">
+                  <i ng-class="opcao.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'" class="sc-icon-quadrado-1"></i>
+                  <span class="ng-binding">Com CPF/CNPJ</span>
+                </div>
+              </li>
+              <li ng-click="" class="ng-scope">
+                <div class="vertical-align">
+                  <i ng-class="opcao.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'" class="sc-icon-quadrado-1"></i>
+                  <span class="ng-binding">Sem Bloqueio Inadimplente</span>
+                </div>
+              </li>
+              <li ng-click="" class="ng-scope">
+                <div class="vertical-align">
+                  <i ng-class="opcao.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'" class="sc-icon-quadrado-1"></i>
+                  <span class="ng-binding">Com Bloqueio Inadimplente</span>
+                </div>
+              </li>
+              <li ng-click="" class="ng-scope">
+                <div class="vertical-align">
+                  <i ng-class="opcao.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'" class="sc-icon-quadrado-1"></i>
+                  <span class="ng-binding">Sem Emails</span>
+                </div>
+              </li>
+              <li ng-click="" class="ng-scope">
+                <div class="vertical-align">
+                  <i ng-class="opcao.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'" class="sc-icon-quadrado-1"></i>
+                  <span class="ng-binding">Com Emails</span>
+                </div>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <hr>
+      <button class="sc-btn sc-btn-blue sc-btn-awesomeness" type="submit">
+        <div class="sc-btn-icon">
+          <i class="sc-icon sc-icon-lupa-2"></i>
+        </div>
+        <div class="sc-btn-text">
+          Aplicar
+        </div>
+      </button>
+    </div>
+  </form>
+</div>

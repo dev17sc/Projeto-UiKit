@@ -1,0 +1,519 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen" href="css/uikit-48fa524e87eb70816dc4c4a80e3940a013b778733d038b4076332aec7592a46c.css">
+    <script src="js/jquery_min.js"></script>
+    <script src="js/jquery.livequery.js"></script>
+    <script src="js/angular/angular.js"></script>
+  	<script src="indexCtrl.js"></script>
+  	<script src="js/modernizr.js"></script>
+    <script src="js/uikit-sample.js"></script>
+    <script src="js/sc_alert.js"></script>
+    <script src="js/sc_toggle.js"></script>
+  	<script src="js/array.js"></script>
+  	<script src="js/functions.js"></script>
+    <!--script src="uikit-9966aefccbce290de8072ca43a60d9ddf04bc175c9bc83123b321ba310.js"></script-->
+    <title>Projeto UiKit</title>
+  </head>
+  <body ng-app="myapp" ng-controller="TesteCtrl" style="overflow: auto;">
+    <div class="sc-bg-blue sc-box-shadow-z1 sc-p-l-lg sc-p-t-xs">
+      <h2 class="sc-text-shadow-light sc-text-white sc-m-v-sm">Testes com UiKit</h2>
+    </div>
+    <div style="padding: 1em">
+      <h2 class="sc-label">Accordions</h2>
+      <div class="sc-text-bold sc-p-b-lg sc-text-black">Opções de cores do accordion</div>
+      <div>
+        <button type="button" class="sc-m-r-md sc-btn sc-btn-gray">
+          <span> Cinza </span>
+        </button>
+        <button type="button" class="sc-m-r-md sc-btn sc-btn-blue">
+          <span> Azul </span>
+        </button>
+        <button type="button" class="sc-m-r-md sc-btn sc-btn-cian">
+          <span> Ciano </span>
+        </button>
+        <button type="button" class="sc-m-r-md sc-btn sc-btn-green">
+          <span> Verde </span>
+        </button>
+        <button type="button" class="sc-m-r-md sc-btn sc-btn-red">
+          <span> Vermelho </span>
+        </button>
+        <button type="button" class="sc-m-r-md sc-btn sc-btn-yellow">
+          <span> Amarelo </span>
+        </button>
+      </div>
+    </div>
+      <div style="padding: 1em">
+        <ul class="sc-accordion">
+    	    <li ng-repeat="acc in accs" class="sc-acc-gray-lighter" style>
+    	      <div ng-click="acc.opened = !acc.opened" class="sc-accordion-head">
+    			    <div class="sc-accordion-icon-col sc-divider align-xs-center">
+    			      <i class="sc-icon sc-icon-seta-11-direita sc-transition" style></i>
+    			    </div>
+    		      <div class="sc-accordion-elastic-col title">
+    		        .sc-acc-gray-lighter
+    		        <span class="description">teste accordion</span>
+    		      </div>
+    			  </div>
+    	      <div ng-show="acc.opened" class="sc-accordion-body ng-animation-slider ng-hide">
+    	      	<div class="sc-inspect-box">
+                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray">
+                  &lt;ul class="sc-accordion"&gt;
+                  <br>
+                  &lt;li class="sc-acc-gray-lighter "&gt;
+                  <br>
+                  &lt;div ng-click="acc.opened = !acc.opened" class="sc-accordion-head "&gt;
+                  <br>
+                  ...
+                </pre>
+              </div>
+    	      </div>
+    	    </li>
+          <li ng-repeat="acc in accs" class="sc-acc-gray-light" style>
+            <div ng-click="acc.opened = !acc.opened" class="sc-accordion-head">
+              <div class="sc-accordion-icon-col sc-divider align-xs-center">
+                <i class="sc-icon sc-icon-seta-11-direita sc-transition" style></i>
+              </div>
+              <div class="sc-accordion-elastic-col title">
+                .sc-acc-gray-ligh
+                <span class="description">teste accordion</span>
+              </div>
+            </div>
+            <div ng-show="acc.opened" class="sc-accordion-body ng-animation-slider ng-hide">
+              <div class="sc-inspect-box">
+                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray">
+                  &lt;ul class="sc-accordion"&gt;
+                  <br>
+                  &lt;li class="sc-acc-gray-light "&gt;
+                  <br>
+                  &lt;div ng-click="acc.opened = !acc.opened" class="sc-accordion-head "&gt;
+                  <br>
+                  ...
+                </pre>
+              </div>
+            </div>
+          </li>
+          <li ng-repeat="acc in accs" class="sc-acc-gray" style>
+            <div ng-click="acc.opened = !acc.opened" class="sc-accordion-head">
+              <div class="sc-accordion-icon-col sc-divider align-xs-center">
+                <i class="sc-icon sc-icon-seta-11-direita sc-transition" style></i>
+              </div>
+              <div class="sc-accordion-elastic-col title">
+                .sc-acc-gray
+                <span class="description">teste accordion</span>
+              </div>
+            </div>
+            <div ng-show="acc.opened" class="sc-accordion-body ng-animation-slider ng-hide">
+              <div>
+                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray">
+                  &lt;ul class="sc-accordion"&gt;
+                  <br>
+                  &lt;li class="sc-acc-gray "&gt;
+                  <br>
+                  &lt;div ng-click="acc.opened = !acc.opened" class="sc-accordion-head "&gt;
+                  <br>
+                  ...
+                </pre>
+              </div>
+            </div>
+          </li>
+          <li ng-repeat="acc in accs" class="sc-acc-gray-dark" style>
+            <div ng-click="acc.opened = !acc.opened" class="sc-accordion-head">
+              <div class="sc-accordion-icon-col sc-divider align-xs-center">
+                <i class="sc-icon sc-icon-seta-11-direita sc-transition" style></i>
+              </div>
+              <div class="sc-accordion-elastic-col title">
+                .sc-acc-gray-dark
+                <span class="description">teste accordion</span>
+              </div>
+            </div>
+            <div ng-show="acc.opened" class="sc-accordion-body ng-animation-slider ng-hide">
+              <div>
+                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray">
+                  &lt;ul class="sc-accordion"&gt;
+                  <br>
+                  &lt;li class="sc-acc-gray-dark "&gt;
+                  <br>
+                  &lt;div ng-click="acc.opened = !acc.opened" class="sc-accordion-head "&gt;
+                  <br>
+                  ...
+                </pre>
+              </div>
+            </div>
+          </li>
+          <li ng-repeat="acc in accs" class="sc-acc-gray-darker" style>
+            <div ng-click="acc.opened = !acc.opened" class="sc-accordion-head">
+              <div class="sc-accordion-icon-col sc-divider align-xs-center">
+                <i class="sc-icon sc-icon-seta-11-direita sc-transition" style></i>
+              </div>
+              <div class="sc-accordion-elastic-col title">
+                .sc-acc-gray-darker
+                <span class="description">teste accordion</span>
+              </div>
+            </div>
+            <div ng-show="acc.opened" class="sc-accordion-body ng-animation-slider ng-hide">
+              <div>
+                <pre class="ng-binding sc-border-solid sc-border-radius sc-text-gray">
+                  &lt;ul class="sc-accordion"&gt;
+                  <br>
+                  &lt;li class="sc-acc-gray-darker "&gt;
+                  <br>
+                  &lt;div ng-click="acc.opened = !acc.opened" class="sc-accordion-head "&gt;
+                  <br>
+                  ...
+                </pre>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div style="padding: 1em">
+	      <hr>
+        <h2 class="sc-label">Align</h2>
+          <div class="sc-text-bold sc-p-b-sm">align-left</div>
+  		      <div class="col-xs-12 col-md-6 col-lg-3 sc-border-blue-light sc-border-solid sc-border-md sc-border-radius sc-bg-blue-lighter sc-border-radius">
+  		  	    <p class="align-left">Teste de alinhamento do texto. laskjdl aksjdal ksjdaasdjalskdja lsdkjhqiwyegqowihba lskfjabslkjhdl kajshdlkajshdalksjdh alksjdhals kjdhalskjd halksdnas kdjanlkdj nasdalksjdn askjdnaksjdnalk sjdnalksj ndas
+  		  	    </p>
+  			    </div>
+          <br>
+          <br>
+          <br>
+          <br>
+      </div>
+  		  <div style="padding: 1em">
+          <hr>
+          <h2 class="sc-label">Badge</h2>
+  		    <button type="button" class="sc-btn sc-m-r-xl">
+  		      Notificações
+  		      <span class="sc-badge sc-bg-red">1</span>
+  		    </button>
+  		    <button class="sc-btn sc-m-r-xl">
+  		      Notificações
+  		      <span class="sc-badge sc-badge-fixed sc-bg-red">2</span>
+  		    </button>
+  		      <span>
+  		       	Notificações
+  		        <span class="sc-badge sc-bg-red sc-m-r-xl" class="sc-icon sc-icon-alto-falante-2">1</span>
+  		      </span>
+  		  </div>
+		  <div style="padding: 1em">
+        <h2 class="sc-label">Badge Icon</h2>
+		    <i class="sc-badge sc-bg-blue-lighter sc-text-white sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-blue-light sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-blue sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-blue-dark sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-m-r-xxxl sc-badge sc-bg-blue-darker sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-red-lighter sc-text-white sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-red-light sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-red sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-red-dark sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-m-r-xxxl sc-badge sc-bg-red-darker sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-yellow-lighter sc-text-white sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-yellow-light sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-yellow sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-yellow-dark sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-m-r-xxxl sc-badge sc-bg-yellow-darker sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-green-lighter sc-text-white sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-green-light sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-green sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-green-dark sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-m-r-xxxl sc-badge sc-bg-green-darker sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-cian-lighter sc-text-white sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-cian-light sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-cian sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-cian-dark sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-m-r-xxxl sc-badge sc-bg-cian-darker sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-gray-lighter sc-text-white sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-gray-light sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-gray sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-gray-dark sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-m-r-xxxl sc-badge sc-bg-gray-darker sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-white sc-text-white sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-white sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-white sc-text-white sc-border-radius sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-white sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		    <i class="sc-badge sc-bg-white sc-text-white sc-border-radius-full sc-icon sc-icon-cadeado-aberto"></i>
+		  </div>
+      <div style="padding: 1em">
+        <hr>
+        <h2 class="sc-label">Buttons</h2>
+		    <button class="sc-m-r-md sc-btn sc-btn-gray">Cinza</button>
+				<button class="sc-m-r-md sc-btn sc-btn-blue">Azul</button>
+				<button class="sc-m-r-md sc-btn sc-btn-red">Vermelho</button>
+				<button class="sc-m-r-md sc-btn sc-btn-green">Verde</button>
+				<button class="sc-m-r-md sc-btn sc-btn-yellow">Amarelo</button>
+		  </div>
+		  <div style="padding: 1em">
+		  	<button class="sc-m-r-md sc-btn sc-btn-gray sc-btn-awesomeness">
+			  	<div class="sc-btn-icon"><i class="sc-icon sc-icon-lapis"></i></div>
+			  	<div class="sc-btn-text">Cinza</div>
+			  </button>
+		    <button class="sc-m-r-md sc-btn sc-btn-blue sc-btn-awesomeness">
+			  	<div class="sc-btn-icon"><i class="sc-icon sc-icon-lapis"></i></div>
+			  	<div class="sc-btn-text">Azul</div>
+			  </button>
+			  <button class="sc-m-r-md sc-btn sc-btn-red sc-btn-awesomeness">
+				  <div class="sc-btn-icon"><i class="sc-icon sc-icon-lapis"></i></div>
+				  <div class="sc-btn-text">Vermelho</div>
+				</button>
+				<button class="sc-m-r-md sc-btn sc-btn-green sc-btn-awesomeness">
+				  <div class="sc-btn-icon"><i class="sc-icon sc-icon-lapis"></i></div>
+				  <div class="sc-btn-text">Verde</div>
+				</button>
+				<button class="sc-m-r-md sc-btn sc-btn-yellow sc-btn-awesomeness">
+				  <div class="sc-btn-icon"><i class="sc-icon sc-icon-lapis"></i></div>
+				  <div class="sc-btn-text">Amarelo</div>
+				</button>
+		  </div>
+		    <div style="padding: 1em">
+          <hr>
+          <h2 class="sc-label">Cursor</h2>
+		     	<button class="sc-m-r-md sc-btn sc-cursor-pointer">sc-cursor-pointer</button>
+				  <button class="sc-m-r-md sc-btn sc-cursor-not-allowed">sc-cursor-not-allowed</button>
+				  <button class="sc-m-r-md sc-btn sc-cursor-move">sc-cursor-move</button>
+				  <button class="sc-m-r-md sc-btn sc-cursor-wait">sc-cursor-wait</button>
+				  <button class="sc-m-r-md sc-btn sc-cursor-zoom-in">sc-cursor-zoom-in</button>
+				  <button class="sc-m-r-md sc-btn sc-cursor-zoom-out">sc-cursor-zoom-out</button>
+				  <button class="sc-m-r-md sc-btn sc-cursor-grab">sc-cursor-grab</button>
+				  <button class="sc-m-r-md sc-btn sc-cursor-grabbing">sc-cursor-grabbing</button>
+				  <button class="sc-m-r-md sc-btn sc-cursor-copy">sc-cursor-copy</button>
+          </div>
+        <div style="padding: 1em" class="sc-p-t-md">
+				  <button class="sc-m-r-md sc-btn sc-cursor-help">sc-cursor-help</button>
+				  <button class="sc-m-r-md sc-btn sc-cursor-no-drop">sc-cursor-no-drop</button>
+				  <button class="sc-m-r-md sc-btn sc-cursor-progress">sc-cursor-progress</button>
+		    </div>
+		    <!--
+		    <hr>
+		    <div>
+		    	<span class="sc-dropdown">
+            <button type="button" class="sc-btn sc-btn-blue">
+    					Dropdown <i class="sc-icon sc-icon-seta-5-baixo"></i>
+  					</button>
+  					<ul class="sc-dropdown-menu">
+    					<li><a href="">Ações</a></li>
+    					<li class="disabled"><a href="">Inativo</a></li>
+    					<li class="divider"></li>
+    					<li ng-class="{'opened': subOpened}" class="sc-dropdown-submenu">
+      					<div ng-click="subOpened = !subOpened">Sub-Menu</div>
+      					<ul ng-show="subOpened" class="ng-animation-slider">
+        					<li><a href="">Opção 1</a></li>
+        					<li><a href="">Opção 2</a></li>
+        					<li><a href="">Opção 3</a></li>
+        					<li><a href="">Opção 4</a></li>
+      					</ul>
+    					</li>
+    					<li><a href="">Mais...</a></li>
+    					<li><a href="">Informações</a></li>
+  					</ul>
+					</span>
+		    </div> -->
+        <div style="padding: 1em">
+          <hr>
+          <h2 class="sc-label">Forms</h2>
+  		    <div class="sc-input-group">
+            <input type="text" class="sc-input-default">
+              <button class="sc-btn sc-btn-blue" type="button"><i class="sc-icon sc-icon-seta-5-baixo"></i></button>
+              <button class="sc-btn sc-btn-cian" type="button"><i class="sc-icon sc-icon-mais-1"></i></button>
+              <button class="sc-btn sc-btn-yellow" type="button"><i class="sc-icon sc-icon-lapis"></i></button>
+              <button class="sc-btn sc-btn-red" type="button"><i class="sc-icon sc-icon-lixeira-1"></i></button>
+              <i class="sc-icon sc-icon-visto-1 sc-btn sc-btn-green"></i>
+          </div>
+        </div>
+        <div style="padding: 1em">
+          <label class="sc-align-middle">
+          	<div class="sc-p-t-md sc-label">Testar ?</div>
+   					<span class="sc-p-t-md sc-toggle" >
+    					<input type="checkbox" checked />
+    					<span label-true="sim" label-false="não"></span>
+   					</span>
+  				</label>
+          <label class="sc-align-middle">
+          	<div class="sc-p-l-xl sc-p-t-md sc-label">Opção 1:</div>
+   					<span class="sc-p-t-md sc-toggle">
+    					<input type="checkbox" checked>
+    					<span label-true="sim" label-false="não"></span>
+   					</span>
+  				</label>
+          <label class="sc-align-middle">
+          	<div class="sc-p-l-xl sc-p-t-md sc-label">Opção 2:</div>
+   					<span class="sc-p-t-md sc-toggle">
+    					<input type="checkbox" checked>
+    					<span label-true="sim" label-false="não"></span>
+   					</span>
+  				</label>
+        </div>
+				<div style="padding: 1em" class="sc-p-t-md align-xs-left align-sn-left">
+					<button type="button" class="sc-m-r-md sc-btn sc-btn-awesomeness sc-btn-green sc-btn-md">
+						<div class="sc-btn-icon">
+							<i class="sc-icon sc-icon-visto-1"></i>
+						</div>
+						<div class="sc-btn-text">Salvar</div>
+					</button>
+					<button type="button" class="sc-m-r-md sc-btn sc-btn-awesomeness sc-btn-blue sc-btn-md">
+						<div class="sc-btn-icon">
+							<i class="sc-icon sc-icon-seta-4-esquerda"></i>
+						</div>
+						<div class="sc-btn-text">Cancelar</div>
+					</button>
+          <hr>
+				</div>
+        <div style="padding: 1em" class="sc-panel sc-success">
+          <h2 class="sc-label">Panel</h2>
+    			<div class="sc-panel-head">.sc-panel.sc-success</div>
+    			<div class="sc-panel-body">Teste com sc-panel!</div>
+    			<div class="align-center sc-panel-body">Teste com sc-panel!</div>
+    			<div class="align-right sc-panel-body">Teste com sc-panel!</div>
+  			</div>
+        <div style="padding: 1em">
+    			<hr>
+          <h2 class="sc-label">Progress Bar</h2>
+    			<div class="sc-progress">
+      			<div aria-valuenow="25" class="sc-progress-bar sc-active-stripes" style="width:25%">25%</div>
+    			</div>
+    			<div class="sc-progress">
+      			<div aria-valuenow="21" class="sc-progress-bar sc-danger sc-active-stripes" style="width:21%">21%</div>
+    			</div>
+    			<div class="sc-progress">
+      			<div aria-valuenow="50" class="sc-progress-bar sc-warning sc-active-stripes" style="width:50%">50%</div>
+    			</div>
+    			<div class="sc-progress">
+      			<div aria-valuenow="96" class="sc-progress-bar sc-success sc-active-stripes" style="width:96%">96%</div>
+    			</div>
+        </div>
+  			<div style="padding: 1em">
+          <hr>
+          <h2 class="sc-label">Table</h2>
+  				<table class="sc-border-radius sc-table sc-bg-blue sc-table-light" style="width: 100%">
+  					<thead>
+  						<tr class="sc-text-lg sc-text-bold">
+  							<td>Teste 1</td>
+  							<td>Teste 2</td>
+  							<td>Teste 3</td>
+  							<td>Teste 4</td>
+  						</tr>
+  					</thead>
+  					<tbody>
+  						<tr>
+  							<td>Opção 1</td>
+  							<td>Opção 1</td>
+  							<td>Opção 1</td>
+  							<td>Opção 1</td>
+  						</tr>
+  						<tr>
+  							<td>Opção 2</td>
+  							<td>Opção 2</td>
+  							<td>Opção 2</td>
+  							<td>Opção 2</td>
+  						</tr>
+  						<tr>
+  							<td>Opção 3</td>
+  							<td>Opção 3</td>
+  							<td>Opção 3</td>
+  							<td>Opção 3</td>
+  						</tr>
+  						<tr>
+  							<td>Opção 4</td>
+  							<td>Opção 4</td>
+  							<td>Opção 4</td>
+  							<td>Opção 4</td>
+  						</tr>
+  					</tbody>
+  				</table>
+  			</div>
+        <div style="padding: 1em">
+          <hr>
+          <h2 class="sc-label">Tags</h2>
+    			<div class="sc-tag-box">
+      			<span class="sc-m-r-md sc-tag sc-tag-blue-darker">
+    				<span>Tag 1</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-blue-dark">
+      				<span>Tag 2</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-blue">
+      				<span>Tag 3</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-blue-light">
+      				<span>Tag 4</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-blue-lighter">
+      				<span>Tag 5</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-red-darker">
+    				<span>Tag 1</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-red-dark">
+      				<span>Tag 2</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-red">
+      				<span>Tag 3</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-red-light">
+      				<span>Tag 4</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-red-lighter">
+      				<span>Tag 5</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-yellow-darker">
+    				<span>Tag 1</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-yellow-dark">
+      				<span>Tag 2</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-yellow">
+      				<span>Tag 3</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-yellow-light">
+      				<span>Tag 4</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-yellow-lighter">
+      				<span>Tag 5</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-green-darker">
+    				<span>Tag 1</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-green-dark">
+      				<span>Tag 2</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-green">
+      				<span>Tag 3</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-green-light">
+      				<span>Tag 4</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+      			<span class="sc-m-r-md sc-tag sc-tag-green-lighter">
+      				<span>Tag 5</span>
+    					<i class="sc-icon sc-icon-fechar-1 sc-tag-remove"></i>
+      			</span>
+    			</div>
+        </div>
+<!--     <script src="indexCtrl.js"></script>
+    <script src="js/sc_alert.js"></script>
+    <script src="js/sc_toggle.js"></script>
+    <script src="js/jquery_min.js"></script>
+    <script src="js/jquery.livequery.js"></script>
+    <script src="js/uikit-sample.js"></script> -->
+    <!-- <script src="js/angular"></script> -->
+  </body>
+</html>

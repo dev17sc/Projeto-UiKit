@@ -1,0 +1,107 @@
+<div class="sc-fieldset">
+  <div class="sc-fieldset-head">
+    <div class="sc-text-blue sc-text-bold">
+      Dados Gerais
+    </div>
+  </div>
+  <div class="flex-row sc-bg-gray-lighter">
+    <div class="fcol-md-15 sc-btn-group sc-p-h-sm">
+      <div class="sc-text-bold sc-text-blue">
+        Tipo:
+      </div>
+      <button type="button" ng-click="scActivePagador = !scActivePagador" ng-class="{'sc-active':scActivePagador}" class="sc-btn sc-active-blue sc-p-r-sm" style="min-width: 5em">Pagador</button>
+      <button type="button" ng-click="scActiveFornecedor = !scActiveFornecedor" ng-class="{'sc-active':scActiveFornecedor}" class="sc-btn sc-active-blue sc-p-l-sm sp-p-r-sm" style="min-width: 5em">Fornecedor</button>
+    </div>
+    <div class="fcol-md-11em sc-btn-group">
+      <div class="sc-text-bold sc-text-blue">
+        Pessoa:
+      </div>
+      <button type="button" ng-click="scActiveFisica = !scActiveFisica" ng-class="{'sc-active':scActiveFisica}" class="sc-btn sc-active-blue">Física</button>
+      <button type="button" ng-click="scActiveJuridica = !scActiveJuridica" ng-class="{'sc-active':scActiveJuridica}" class="sc-btn sc-active-blue">Jurídica</button>
+    </div>
+    <div class="sc-btn-group sc-p-h-md">
+      <div class="sc-text-bold sc-text-blue">
+        Sexo:
+      </div>
+        <button type="button" ng-click="scActiveMasculino = !scActiveMasculino" ng-class="{'sc-active':scActiveMasculino}" class="sc-btn sc-active-blue">Masc.</button>
+        <button type="button" ng-click="scActiveFeminino = !scActiveFeminino" ng-class="{'sc-active':scActiveFeminino}" class="sc-btn sc-active-red">Femin.</button>
+    </div>
+    <div>
+      <label>
+        <div class="sc-text-bold sc-text-blue fcol-lg-15 sc-p-h-md">
+          Deficiente:
+        </div>
+        <span class="sc-toggle sc-toggle-true-green sc-toggle-false-blue fcol-lg-15 sc-p-h-md sc-p-v-md">
+          <input type="checkbox" ng-model="formFact.params.deficiente"/>
+          <span label-true="sim" label-false="não"></span>
+        </span>
+      </label>
+    </div>
+    <div class="fcol-md-25 sc-p-h-md">
+      <label>
+        <div class="sc-label">Nome:</div>
+        <input type="text" class="sc-input-default" ng-model="formFact.params.nome" style="min-width: 20em" ng-class="{'error' : formCtrl.nomeErro}">
+      </label>
+    </div>
+    <div class="sc-p-h-md">
+      <label>
+        <div class="sc-label">CPF:</div>
+        <input type="text" class="sc-input-default" ng-model="formFact.params.cpf" style="min-width: 20em">
+      </label>
+    </div>
+  </div>
+  <div class="flex-row sc-bg-gray-lighter">
+    <div class="fcol-md-25 sc-p-h-md">
+      <label>
+        <div class="sc-label">RG:</div>
+        <input type="text" class="sc-input-default" ng-model="formFact.params.rg" style="min-width: 20em">
+      </label>
+    </div>
+    <div class="fcol-md-18em sc-p-h-md">
+      <label>
+        <div class="sc-label">Nascimento:</div>
+        <input type="date" class="sc-input-default" ng-model="formFact.params.nascimento" style="min-width: 15em">
+      </label>
+    </div>
+    <div class="sc-p-h-md fcol-lg-23em">
+      <label>
+        <div class="sc-label">Profissão:</div>
+        <input type="text" class="sc-input-default" ng-model="formFact.params.profissao" style="min-width: 20em">
+      </label>
+    </div>
+    <div class="sc-p-h-md">
+      <label>
+        <div class="sc-label">E-mail (principal):</div>
+        <input type="email" class="sc-input-default" ng-model="formFact.params.email" style="min-width: 20em">
+      </label>
+    </div>
+  </div>
+  <div class="flex-row sc-bg-gray-lighter">
+    <div class="sc-p-h-md fcol-lg-23em">
+      <label>
+        <div class="sc-label">E-mails alternativos:</div>
+        <input type="text" class="sc-input-default" ng-model="formFact.params.emailAlternativo" style="min-width: 20em" placeholder="Digite um novo E-mail">
+      </label>
+    </div>
+    <div class="sc-p-h-md fcol-lg-18em">
+      <label>
+        <div class="sc-label">Identificador <i class="sc-icon sc-icon-info-2"></i>:</div>
+        <input type="text" class="sc-input-default" ng-model="formFact.params.identificador" style="min-width: 15em">
+      </label>
+    </div>
+    <div class="sc-p-h-md fcol-lg-23em">
+      <label>
+        <div class="sc-label">Telefones:</div>
+        <input type="text" class="sc-input-default" ng-model="formFact.params.telefone" style="min-width: 20em">
+      </label>
+    </div>
+  </div>
+  <div class="flex-row sc-bg-gray-lighter">
+    <div class="sc-p-h-md fcol-lg-23em">
+      <label>
+        <div class="sc-label">Observações:</div>
+        <input type="text" class="sc-input-default" ng-model="formFact.params.observacoes" style="min-width: 90em; min-height: 6em">
+      </label>
+    </div>
+  </div>
+</div>
