@@ -1,19 +1,19 @@
 passagemServicos.factory("FormFact", [
   function() {
-    base_obj = function(pessoa) {
+    base_obj = function(passagem) {
 
       return obj = {
         opened: false,
         new_record: false,
 
-        init: function(pessoa) {
-          this.pessoa = pessoa
+        init: function(passagem) {
+          this.passagem = passagem
           this.opened = true
-          this.new_record = pessoa.id ? false : true
+          // this.new_record = passagem.id ? false : true
         },
 
         close: function(){
-          this.pessoa = {}
+          this.passagem = {}
           this.opened = false
         },
       };

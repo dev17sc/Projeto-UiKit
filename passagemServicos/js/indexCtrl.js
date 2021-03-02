@@ -16,7 +16,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     vmIndex.formFact  = new formFact()
     vmIndex.baseFact = indexFact
 
-    // Init Ctrl
+    // Index Init
     vmIndex.init = function() {
 
     }

@@ -1,4 +1,4 @@
-<div ng-controller="PassagemServicos::FormCtrl as formCtrl" ng-init="formCtrl.init(passagem, formFact, indexCtrl.listCtrl.list)" class="ng-scope">
+<div ng-controller="FormCtrl as formCtrl" ng-init="formCtrl.init(passagem, formFact)" class="ng-scope">
   <form autocomplete="nope" class="sc-m-h-md sc-p-t-sm flex-row ng-valid ng-dirty ng-valid-parse" ng-submit="formCtrl.submit()">
     <div class="sc-fieldset flex-row fcol-xs-100">
       <!-- Observação Importante -->
@@ -78,7 +78,7 @@
     </div>
     <!-- Adicionar Objetos -->
     <div class="fcol-xs-100">
-      <div ng-include="indexCtrl.templates.administrativo.passagem_servicos.form_objetos" class="ng-scope">
+      <div ng-include="'templates/objetos.html'" class="ng-scope">
       </div>
     </div>
     <!-- Campo para Observações -->
@@ -145,12 +145,10 @@
     </div>
     <!-- Botões Salvar e Cancelar -->
     <div class="fcol-xs-100 align-right">
-      <button class="sc-btn sc-btn-blue sc-btn-block-only-xs sc-m-r-lg" ng-class="{'sc-m-b-md': formCtrl.isMobile}" type="submit">
-        <span ng-if="!formCtrl.salvando" class="ng-binding ng-scope">
-          Salvar
-        </span>
+      <button class="sc-btn sc-btn-blue sc-btn-block-only-xs sc-m-r-lg" type="submit">
+        Salvar
       </button>
-      <button class="sc-btn sc-btn-red sc-btn-block-only-xs ng-binding" ng-class="{'sc-m-b-md': formCtrl.isMobile}" ng-click="formCtrl.baseFact.cancelar()" type="button">
+      <button class="sc-btn sc-btn-red sc-btn-block-only-xs ng-binding" ng-click="formFact.close()" type="button">
         Cancelar
       </button>
     </div>

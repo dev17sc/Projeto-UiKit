@@ -10,7 +10,6 @@
   <link rel="stylesheet" type="text/css" href="./icons/sc-icons.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
-
 </head>
 <body ng-app="passagemServicos" ng-controller="PassagemServicos::IndexCtrl as indexCtrl" ng-init="indexCtrl.init()" style="overflow: auto;">
   <div class="sc-bg-blue sc-box-shadow-z1">
@@ -29,7 +28,7 @@
     <div class="sc-p-t-xl sc-bg-white">
       <ul class="sc-accordion ng-isolate-scope" multi-check-group="" sc-scroll="indexCtrl.listCtrl.proximaPagina()" sc-scroll-enabled="!indexCtrl.pagination.finished">
         <li class="sc-acc-blue ng-scope" ng-if="indexCtrl.formFact.opened" style="">
-          <div class="sc-accordion-head flex-row" ng-click="indexCtrl.formFact.cancelar()">
+          <div class="sc-accordion-head flex-row" ng-click="indexCtrl.formFact.close()">
             <div class="fcol-xs-2em">
               <i class="sc-icon sc-icon-mais-1 sc-text-white">
               </i>
@@ -39,7 +38,7 @@
             </span>
           </div>
           <div class="sc-accordion-body">
-            <div ng-include="'templates/form.html'" ng-init="passagem = indexCtrl.formFact.passagem; formFact = indexCtrl.formFact" class="ng-scope">
+            <div ng-include="'templates/form.html'" ng-init="formFact = indexCtrl.formFact" class="ng-scope">
             </div>
           </div>
         </li>

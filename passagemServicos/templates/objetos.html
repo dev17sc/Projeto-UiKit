@@ -13,8 +13,100 @@
           Adicionar
         </span>
       </button>
+      <button class="sc-btn sc-btn-red sc-btn-sm sc-btn-thin sc-m-h-xl" ng-click="" type="button">
+        <span class="hidden-xs ng-binding">
+          Limpar Formulário
+        </span>
+      </button>
     </div>
   </div>
+  <ul class="fcol-xs-100">
+    <li ng-repeat="objetos in formFact.params.objeto" class="ng-scope" style="">
+      <div class="sc-fieldset">
+        <div class="sc-fieldset-head flex-row sc-text-sm">
+          <div class="fcol-xs-100 fcol-sm-50 fcol-md-30 sc-text-sm sc-p-h-o sc-m-r-lg">
+            <div class="sc-label ng-binding">
+              Categoria:
+            </div>
+            <div class="sc-input-group ng-scope" ng-if="!item.categoriaServ.active">
+              <select class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-empty" ng-change="item.categoriaServ.set(item)" ng-class="{'error': item.errors.categoria}" ng-model="item.categoria_id" ng-options="categoria.id as categoria.nome for categoria in item.categoriaServ.list">
+                <option value="" class="" selected="selected">
+                  Selecione
+                </option>
+              </select>
+              <span class="sc-dropdown pull-right ng-scope" ng-if="item.categoriaServ.gerencia_categorias" sc-dropdown-menu="">
+                <div>
+                  <i class="sc-icon-reticiencias-v sc-btn" ng-class="{'sc-btn-gray':menu.isOn}" ng-click="menu.toggle()" style="border-radius: 0 0.3em 0.3em 0;">
+                  </i>
+                </div>
+                <ul class="sc-dropdown-menu ng-animation-slider ng-hide" ng-show="menu.isOn" style="min-width: 0;">
+                  <li>
+                    <a ng-click="">
+                      <i class="sc-icon sc-icon-mais-1 sc-text-green">
+                      </i>
+                      Nova Categoria
+                    </a>
+                  </li>
+                </ul>
+              </span>
+            </div>
+          </div>
+          <div class="align-self-flex-end" style="top: -0.3em">
+            <button class="sc-btn sc-btn-thin sc-btn-green sc-m-r-lg sc-btn-sm" ng-click="formCtrl.objetoCtrl.addItem(objeto)" type="button">
+              <i class="sc-icon sc-icon-mais-1 sc-m-r-sm">
+              </i>
+              Item
+            </button>
+            <i class="sc-icon sc-icon-lixeira-1 sc-badge-hover-red sc-text-sm" ng-click="formCtrl.objetoCtrl.rm(objeto)">
+            </i>
+          </div>
+        </div>
+        <ul class="sc-p-b-xs ng-scope ng-isolate-scope" ng-if="">
+          <li class="flex-row sc-p-b-sm ng-scope" ng-if="">
+            <div class="fcol-xs-3em sc-m-l-xs align-self-center ng-scope" ng-if="">
+              <input class="sc-checkbox sc-checkbox-green" ng-checked="objeto.allExecuted" ng-click="formCtrl.objetoCtrl.setAllItens(objeto)" type="checkbox">
+            </div>
+          </li>
+          <li class="flex-row sc-p-b-md ng-scope" ng-repeat="item in objeto.itens">
+            <div class="fcol-xs-3em align-self-center sc-m-l-sm ng-scope" ng-if="!formCtrl.params.noCopy" sc-stop-click="" style="top: 8px">
+              <div class="sc-label">
+                <input class="sc-checkbox sc-checkbox-green ng-pristine ng-untouched ng-valid ng-empty" multi-check="" ng-click="formCtrl.objetoCtrl.setItem(item, objeto)" ng-model="item.executado" type="checkbox">
+              </div>
+            </div>
+            <div class="fcol-sm-auto fcol-md-70">
+              <div class="sc-label">
+                Item
+              </div>
+              <input class="sc-input-default sc-input-block sc-input-thin ng-pristine ng-untouched ng-valid ng-empty" ng-model="item.descricao" placeholder="Descreva o item aqui" type="text">
+            </div>
+            <div class="fcol-xs-5em sc-m-l-xl" ng-class="screen.isXs ? 'sc-m-l-sm' : 'sc-m-l-xl'">
+              <div class="sc-label">
+                Qtd
+              </div>
+              <input class="sc-input-default sc-input-block sc-input-thin align-right ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-min ng-valid-max" max="999" min="1" ng-model="item.qtd" step="1" type="number">
+            </div>
+            <div class="fcol-xs-auto hidden-sm hidden-xs">
+            </div>
+            <div class="fcol-xs-3em align-self-center" style="top: 8px">
+              <div class="align-right">
+                <i class="sc-icon sc-icon-lixeira-1 sc-badge-hover-red fcol-xs-3em" ng-click="formCtrl.objetoCtrl.rmItem(objeto, item)">
+                </i>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li ng-show="formCtrl.params.objetos.length <= 0" class="ng-hide" style="">
+      <div class="sc-p-b-lg sc-text-blue align-center">
+        <span class="ng-binding">
+          <i class="sc-icon sc-icon-exclamacao-2 sc-m-r-lg">
+          </i>
+          Nenhum objeto cadastrado
+        </span>
+      </div>
+    </li>
+  </ul>
   <ul class="fcol-xs-100">
     <li ng-show="formCtrl.params.objetos.length <= 0" class="">
       <div class="sc-p-b-lg sc-text-blue align-center">
