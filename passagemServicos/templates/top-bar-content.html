@@ -1,0 +1,186 @@
+<div class="flex-row-with-padding sc-p-b-o sc-p-md">
+  <div class="left">
+    <!-- Botão Nova Passagem -->
+    <button class="sc-btn sc-btn-green" type="button" ng-click="indexCtrl.formFact.init(passagem = {})">
+      <div class="sc-btn-text">
+        Nova Passagem
+      </div>
+    </button>
+  </div>
+  <!-- Filtro Simples -->
+  <form ng-submit="indexCtrl.filtroAvancadoCtrl.filtrar()" class="fcol-xs-50">
+    <div class="sc-input-group">
+      <input class="sc-input-default" ng-model="indexCtrl.filtroAvancadoCtrl.localizar[buscarPor]" placeholder="Nome, E-mail, data (de criação), etc" type="text" style="width: 24em">
+      <button class="sc-btn sc-btn-blue" type="submit">
+        <i class="sc-icon-lupa-2" style=""></i>
+      </button>
+      <button class="sc-btn" ng-click="indexCtrl.filtro.toggle()" type="button" ng-class="{'sc-btn-gray': indexCtrl.filtro.avancado}">
+        <i class="sc-icon-filtro-2"></i>
+      </button>
+      <button class="sc-btn" ng-click="" type="button">
+        <i class="sc-icon-impressora"></i>
+      </button>
+    </div>
+  </form>
+  <!-- Menu de Configurações -->
+  <div class="fcol-xs-auto"></div>
+  <div class="sc-dropdown sc-btn sc-btn-default ng-scope sc-m-b-xl" ng-click="menu.toggle()" sc-dropdown-menu="">
+    <i class="sc-icon sc-icon-reticiencias-v"></i>
+    <ul class="sc-dropdown-menu ng-animation-slider pull-right ng-hide" ng-show="menu.isOn" style="width: 100%; display: none;">
+      <li ng-click="">
+        <span class="align-left ng-binding">
+          <i class="sc-icon sc-icon-executivo"></i>
+            Perfis de passagem
+        </span>
+      </li>
+      <li ng-click="">
+        <span class="align-left ng-binding">
+          <i class="sc-icon sc-icon-engrenagem"></i>
+            Configurações
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- Navegação Estrutural -->
+<section id="breadcrumb" class="ng-binding sc-m-l-lg sc-m-b-lg" style="color: #7d858c; font-size: 0.9em">
+  <a class="ng-binding" style="font-size: 0.9em;">Início</a> / Administrativo / Passagem de Serviço
+</section>
+<!-- Filtro Avançado -->
+<div class="flex-row ng-animation-slider sc-p-sm ng-scope" id="top-bar-filter" ng-if="indexCtrl.filtro.avancado" style="display: none;">
+  <form class="col-xs-12 sc-p-lg ng-valid ng-dirty ng-valid-parse" ng-submit="indexCtrl.filtro.exec('avancado')" autocomplete="nope">
+    <div class="col-xs-12 col-sm-6 col-md-3 sc-m-b-md">
+      <div sc-dropdown-menu="" class="ng-scope">
+        <div>
+          <div class="sc-label ng-binding">
+            Pessoas
+          </div>
+          <div class="sc-input-group" style="overflow:visible">
+            <input class="sc-input-default sc-input-block" ng-model="indexCtrl.usersCtrl.atual" placeholder="Digite uma Pessoa" type="text">
+            <div class="sc-btn sc-btn-blue">
+              <i class="sc-icon-lupa-2">
+              </i>
+            </div>
+            <div class="sc-btn sc-relative" ng-click="indexCtrl.usersCtrl.checked.length ? menu.toggle() : menu.close()">
+              <i class="sc-icon sc-icon-visto-1" ng-class="{'sc-icon-menos-1': menu.isOn, 'sc-icon-visto-1': menu.isOff}">
+              </i>
+              <span class="sc-badge sc-badge-fixed sc-bg-yellow ng-binding ng-hide" ng-show="indexCtrl.usersCtrl.checked.length">
+                0
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 sc-p-l-none sc-p-r-xxl ng-animation-slider ng-hide" ng-show="menu.isOn" style="position: absolute;z-index: 50;">
+          <div class="sc-border-radius sc-box-shadow-z1 sc-bg-blue-lighter sc-text-blue-dark" style="overflow-y: auto;max-height: 18em;">
+            <div class="clear">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 sc-m-b-md">
+      <div class="sc-label ng-binding">
+        E-mail:
+      </div>
+      <input class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-empty" ng-model="indexCtrl.filtro.params.email" placeholder="Pesquise por um e-mail" type="text">
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 sc-m-b-md">
+      <div class="sc-label ng-binding">
+        Início:
+      </div>
+      <input class="sc-input-default sc-input-block ng-not-empty ng-valid" ng-model="indexCtrl.filtro.params.inicio" sc-date-input="" max="3000-12-31" type="date">
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 sc-m-b-md">
+      <div class="sc-label ng-binding">
+        Fim:
+      </div>
+      <input class="sc-input-default sc-input-block ng-not-empty ng-valid" ng-model="indexCtrl.filtro.params.fim" sc-date-input="" max="3000-12-31" type="date">
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 sc-m-b-md">
+      <div class="sc-label ng-binding">
+        Tipo de data:
+      </div>
+      <select class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="indexCtrl.filtro.params.input_date" ng-options="tipoData.key as indexCtrl.locale.input_date.opcoes[tipoData.key].label for tipoData in indexCtrl.settings.filtro.input_date">
+        <option label="Criada em" value="string:created_at" selected="selected">
+          Criada em
+        </option>
+        <option label="Passada em" value="string:passada_em">
+          Passada em
+        </option>
+      </select>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 sc-m-b-md">
+      <div class="sc-label ng-binding">
+        Status:
+      </div>
+      <div class="sc-dropdown ng-scope" sc-dropdown-menu="">
+        <button class="sc-btn sc-btn-blue ng-binding" ng-click="menu.toggle()" style="width: 100%" type="button">
+          Selecione
+          <i class="sc-m-l-md sc-icon sc-icon-seta-5-baixo" ng-class="menu.isOn ? 'sc-icon-seta-5-cima' : 'sc-icon-seta-5-baixo'">
+          </i>
+        </button>
+        <ul class="sc-dropdown-menu sc-m-t-o ng-animation-slider sc-scrollbar ng-hide" ng-show="menu.isOn" style="width: 100%; overflow: auto; display: block;">
+          <li ng-repeat="status in indexCtrl.filtro.statusList" class="ng-scope">
+            <div class="vertical-align" ng-click="indexCtrl.filtro.setStatus(status)">
+              <i class="sc-m-l-sm sc-icon-visto-3" ng-class="status.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'">
+              </i>
+              <span class="ng-binding">
+                Pendente
+              </span>
+            </div>
+          </li>
+          <li ng-repeat="status in indexCtrl.filtro.statusList" class="ng-scope">
+            <div class="vertical-align" ng-click="indexCtrl.filtro.setStatus(status)">
+              <i class="sc-m-l-sm sc-icon-visto-3" ng-class="status.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'">
+              </i>
+              <span class="ng-binding">
+                Realizada
+              </span>
+            </div>
+          </li>
+          <li ng-repeat="status in indexCtrl.filtro.statusList" class="ng-scope">
+            <div class="vertical-align" ng-click="indexCtrl.filtro.setStatus(status)">
+              <i class="sc-m-l-sm sc-icon-quadrado-1" ng-class="status.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'">
+              </i>
+              <span class="ng-binding">
+                Desativada
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="clear sc-p-o">
+    </div>
+    <hr>
+    <div class="left sc-m-l-md sc-m-t-lg">
+      <button class="sc-btn sc-btn-blue sc-btn-awesomeness">
+        <div class="sc-btn-icon">
+          <i class="sc-icon sc-icon-visto-1">
+          </i>
+        </div>
+        <div class="sc-btn-text ng-binding">
+          Aplicar
+        </div>
+      </button>
+      <button class="sc-m-h-lg sc-btn sc-btn-green sc-btn-awesomeness" ng-click="indexCtrl.filtro.addData()" type="button">
+        <div class="sc-btn-icon">
+          <i class="sc-icon sc-icon-mais-1">
+          </i>
+        </div>
+        <div class="sc-btn-text ng-binding">
+          Adicionar período
+        </div>
+      </button>
+      <button class="sc-btn sc-btn-red sc-btn-awesomeness" ng-click="indexCtrl.filtro.limparBusca()" type="button">
+        <div class="sc-btn-icon">
+          <i class="sc-icon-fechar-1">
+          </i>
+        </div>
+        <div class="sc-btn-text ng-binding">
+          Limpar busca
+        </div>
+      </button>
+    </div>
+  </form>
+</div>

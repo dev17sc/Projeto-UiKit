@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Passagem de Serviços</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./css/prototype.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  <link rel="stylesheet" type="text/css" href="./css/uikit.css" />
+  <link rel="stylesheet" type="text/css" href="./css/uikit-sample.css" />
+  <link rel="stylesheet" type="text/css" href="./icons/sc-icons.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+
+</head>
+<body ng-app="passagemServicos" ng-controller="PassagemServicos::IndexCtrl as indexCtrl" ng-init="indexCtrl.init()" style="overflow: auto;">
+  <div class="sc-bg-blue sc-box-shadow-z1">
+    <span>
+      <img src="assets/img/seu_condominio.svg" style="max-width: 9em">
+    </span>
+  </div>
+  <!-- Top Bar Content -->
+  <section id="top-bar" style="">
+    <div id="top-bar-content">
+      <div ng-include="'templates/top-bar-content.html'"></div>
+    </div>
+  </section>
+  <!-- Passagens -->
+  <section id="passagens">
+    <div class="sc-p-t-xl sc-bg-white">
+      <ul class="sc-accordion ng-isolate-scope" multi-check-group="" sc-scroll="indexCtrl.listCtrl.proximaPagina()" sc-scroll-enabled="!indexCtrl.pagination.finished">
+        <li class="sc-acc-blue ng-scope" ng-if="indexCtrl.formFact.opened" style="">
+          <div class="sc-accordion-head flex-row" ng-click="indexCtrl.formFact.cancelar()">
+            <div class="fcol-xs-2em">
+              <i class="sc-icon sc-icon-mais-1 sc-text-white">
+              </i>
+            </div>
+            <span class="sc-text-white sc-text-bold ng-binding">
+              Nova passagem
+            </span>
+          </div>
+          <div class="sc-accordion-body">
+            <div ng-include="'templates/form.html'" ng-init="passagem = indexCtrl.formFact.passagem; formFact = indexCtrl.formFact" class="ng-scope">
+            </div>
+          </div>
+        </li>
+        <li class="sc-accordion-head" style="border-bottom: 1px solid #e2e2e2; border-top: none;">
+          <div class="flex-row flex-column align-items-center sc-text-blue" style="min-height: 2.5em;">
+            <div class="fcol-order-0 align-center fcol-sm-3em ng-scope" ng-if="!indexCtrl.filtro.isDirty()">
+              <input class="sc-checkbox sc-checkbox-blue" ng-checked="indexCtrl.selections.allSelected" ng-click="indexCtrl.selections.toggleSelectAll(indexCtrl.selections.allSelected)" type="checkbox">
+            </div>
+            <div class="fcol-xs-7em hidden-xs align-center sc-p-sm sc-cursor-pointer" ng-click="indexCtrl.ordenacao.exec('status')">
+              <i class="sc-m-r-sm sc-icon-seta-5-baixo ng-hide" ng-show="indexCtrl.ordenacao.getByColumn('status')"></i>
+              <span class="sc-ellipsis-inline ng-binding">Status</span>
+            </div>
+            <div class="fcol-xs-auto fcol-order-1 sc-p-sm">
+              <span class="sc-ellipsis-inline ng-binding">Saiu</span>
+            </div>
+            <div class="fcol-xs-auto fcol-order-2 sc-p-sm">
+              <span class="sc-ellipsis-inline ng-binding">Entrou</span>
+            </div>
+            <div class="fcol-xs-7em fcol-order-3 align-center sc-p-sm sc-cursor-pointer" ng-click="indexCtrl.ordenacao.exec('created_at')">
+              <i class="sc-m-r-sm sc-icon-seta-5-baixo ng-hide" ng-show="indexCtrl.ordenacao.getByColumn('created_at')"></i>
+              <span class="sc-ellipsis-inline ng-binding">Criada em</span>
+            </div>
+            <div class="fcol-xs-7em sc-p-md visible-xs fcol-order-4">
+            </div>
+            <div class="fcol-xs-3em sc-p-md fcol-order-5">
+            </div>
+          </div>
+        </li>
+        <li class="sc-accordion-head sc-bg-gray-lighter sc-p-lg ng-scope" ng-if="indexCtrl.listCtrl.list.length == 0 || indexCtrl.listCtrl.loadingList">
+          <div class="sc-text-gray align-center">
+            <div class="sc-text-blue ng-scope" ng-if="" style="">
+              <i class="sc-icon sc-icon-exclamacao-2"></i>
+              <span class="ng-binding"> Nenhuma passagem de serviço encontrada!</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!-- Top Messages -->
+  <div class="sc-top-messages ng-animation-slider" ng-class="scTopMessages.theme"
+    ng-click="scTopMessages.close()" ng-if="scTopMessages.toggler.opened" style="display: block;">
+    <div class="sc-text-white align-center sc-text-shadow-dark flex align-items-center">
+      <div class="sc-top-messages-msgs sc-cursor-default">
+        <p ng-repeat="msg in scTopMessages.messages track by $index" ng-bind="scTopMessages.messages"></p>
+      </div>
+      <div class="sc-top-messages-close-button">
+        <i class="sc-icon-fechar-1 sc-cursor-pointer"></i>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="./js/prototype.js"></script>
+  <script type="text/javascript" src="./js/modernizr.js"></script>
+  <script type="text/javascript" src="./js/indexCtrl.js"></script>
+  <script type="text/javascript" src="./js/indexFactory.js"></script>
+  <script type="text/javascript" src="./js/formFactory.js"></script>
+  <script type="text/javascript" src="./js/formCtrl.js"></script>
+  <script type="text/javascript" src="./js/showCtrl.js"></script>
+</body>
+</html>

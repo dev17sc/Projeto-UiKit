@@ -1,0 +1,29 @@
+<div class="sc-fieldset flex-row fcol-xs-100 ng-scope">
+  <div class="sc-fieldset-head fcol-xs-100">
+    <div class="flex-row">
+      <div class="sc-label sc-text-lg ng-binding">
+        Objetos
+      </div>
+      <div class="sc-tooltip-lg sc-text-normal sc-tooltip-top-right align-self-center sc-m-h-md" sc-tooltip="Adicione aqui um objeto, acontecimento ou outros para a lista de controle abaixo">
+        <i class="sc-icon sc-icon-duvida-2 sc-text-blue">
+        </i>
+      </div>
+      <button class="sc-btn sc-btn-green sc-btn-sm sc-btn-thin sc-m-h-xl" ng-click="formCtrl.objetoCtrl.add()" type="button">
+        <span class="hidden-xs ng-binding">
+          Adicionar
+        </span>
+      </button>
+    </div>
+  </div>
+  <ul class="fcol-xs-100">
+    <li ng-show="formCtrl.params.objetos.length <= 0" class="">
+      <div class="sc-p-b-lg sc-text-blue align-center">
+        <span class="ng-binding">
+          <i class="sc-icon sc-icon-exclamacao-2 sc-m-r-lg">
+          </i>
+          Nenhum objeto cadastrado
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>

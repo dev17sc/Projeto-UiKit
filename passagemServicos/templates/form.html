@@ -1,0 +1,158 @@
+<div ng-controller="PassagemServicos::FormCtrl as formCtrl" ng-init="formCtrl.init(passagem, formFact, indexCtrl.listCtrl.list)" class="ng-scope">
+  <form autocomplete="nope" class="sc-m-h-md sc-p-t-sm flex-row ng-valid ng-dirty ng-valid-parse" ng-submit="formCtrl.submit()">
+    <div class="sc-fieldset flex-row fcol-xs-100">
+      <!-- Observação Importante -->
+      <div class="fcol-xs-100 sc-bg-yellow-lighter">
+        <div class="sc-text-red">
+          <i class="sc-icon sc-icon-exclamacao-3 sc-m-h-sm">
+          </i>
+          <span class="sc-text-bold ng-binding">
+            Importante!
+          </span>
+        </div>
+        <div class="sc-text-blue sc-label sc-m-l-md sc-p-t-xs ng-binding">
+          A passagem será realizada automaticamente caso sejam preenchidos os dados de quem está ENTRANDO (preencher só quem sai habilita a edição do registro até que a passagem seja realizada).
+        </div>
+      </div>
+      <!-- Inputs Passagem-->
+      <div class="fcol-xs-90 fcol-sm-50 fcol-md-25">
+        <div sc-dropdown-menu="" class="ng-scope">
+          <div>
+            <div class="sc-label ng-binding">
+              Quem sai
+            </div>
+            <div class="sc-input-group" style="overflow:visible">
+              <input autocomplete="nope" class="sc-input-default sc-input-block ng-untouched ng-valid typeahead-search ng-empty ng-dirty ng-valid-parse" ng-model="formCtrl.params.user_saiu" placeholder="Digite uma Pessoa" type="text">
+              <div class="sc-btn sc-btn-blue">
+                <i class="sc-icon-lupa-2">
+                </i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fcol-xs-90 fcol-sm-50 fcol-md-25">
+        <div class="sc-label ng-binding">
+          Senha:
+        </div>
+        <input autocomplete="cc-xxxxxxxxxx" class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-empty" ng-model="formCtrl.params.senha_user_saiu" type="password">
+      </div>
+      <div class="fcol-xs-90 fcol-sm-50 fcol-md-25">
+        <div sc-dropdown-menu="" class="ng-scope">
+          <div>
+            <div class="sc-label ng-binding">
+              Quem entra
+            </div>
+            <div class="sc-input-group" style="overflow:visible">
+              <input autocomplete="nope" class="sc-input-default sc-input-block ng-untouched ng-valid typeahead-search ng-empty ng-dirty ng-valid-parse" ng-model="formCtrl.params.user_entrou" placeholder="Digite uma Pessoa" type="text">
+              <div class="sc-btn sc-btn-blue">
+                <i class="sc-icon-lupa-2">
+                </i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fcol-xs-90 fcol-sm-50 fcol-md-25">
+        <div class="sc-label ng-binding">
+          Senha:
+        </div>
+        <input autocomplete="cc-xxxxxxxxxx" class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-empty" ng-model="formCtrl.params.senha_user_entrou" type="password">
+      </div>
+      <div class="clear sc-p-o">
+      </div>
+      <div class="fcol-xs-100">
+        <div class="sc-label ng-binding">
+          Perfil de passagem:
+        </div>
+        <div class="sc-input-group sc-input-block fcol-xs-100 fcol-sm-50 fcol-lg-35">
+          <select class="sc-input-default ng-pristine ng-valid ng-not-empty ng-touched" ng-change="formCtrl.formCtrl.setPerfil()" ng-model="formCtrl.formCtrl.current_perfil" ng-options="perfil as perfil.titulo for perfil in formCtrl.perfilCtrl.list" style="">
+            <option label="Selecione um perfil" ng-value="empty" class="" selected="selected">
+            </option>
+            <option label="Padrão" value="object:2311">
+              Padrão
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- Adicionar Objetos -->
+    <div class="fcol-xs-100">
+      <div ng-include="indexCtrl.templates.administrativo.passagem_servicos.form_objetos" class="ng-scope">
+      </div>
+    </div>
+    <!-- Campo para Observações -->
+    <div class="sc-fieldset flex-row fcol-xs-100 clear">
+      <div class="sc-label sc-p-b-xs clear ng-binding">
+        Observações:
+      </div>
+      <div class="fcol-xs-100 sc-p-t-o">
+        <div class="redactor_box">
+          <ul class="redactor_toolbar wysiwyg-toolbar">
+            <li>
+              <a href="javascript:void(null);" title="Limpar" class="redactor_btn_clearFormat">
+              </a>
+            </li>
+            <li class="redactor_separator">
+            </li>
+            <li>
+              <a href="javascript:void(null);" title="Negrito" class="redactor_btn_bold">
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(null);" title="Italico" class="redactor_btn_italic">
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(null);" title="Removido" class="redactor_btn_deleted">
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(null);" title="Cor do Texto" class="redactor_btn_fontcolor">
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(null);" title="Cor do Fundo do Texto" class="redactor_btn_backcolor">
+              </a>
+            </li>
+            <li class="redactor_separator">
+            </li>
+            <li>
+              <a href="javascript:void(null);" title="Alinhar a Esquerda" class="redactor_btn_alignleft">
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(null);" title="Alinhar ao Centro" class="redactor_btn_aligncenter">
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(null);" title="Alinhar a Direita" class="redactor_btn_alignright">
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(null);" title="Justificar" class="redactor_btn_justify">
+              </a>
+            </li>
+          </ul>
+          <div class="redactor_editor" contenteditable="true" dir="ltr">
+          </div>
+          <textarea class="sc-input-default sc-input-block fcol-xs-100 ng-untouched ng-valid ng-empty ng-dirty ng-valid-parse" ng-model="formCtrl.params.observacoes" redactor="" redactor-buttons="[&quot;clearFormat&quot;,&quot;|&quot;,&quot;bold&quot;,&quot;italic&quot;,&quot;deleted&quot;,&quot;fontcolor&quot;,&quot;backcolor&quot;,&quot;|&quot;,&quot;alignleft&quot;,&quot;aligncenter&quot;,&quot;alignright&quot;,&quot;justify&quot;]" style="height: inherit; width: 100%; display: none;">
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="fcol-md-100 fcol-xs-100 clear">
+    </div>
+    <!-- Botões Salvar e Cancelar -->
+    <div class="fcol-xs-100 align-right">
+      <button class="sc-btn sc-btn-blue sc-btn-block-only-xs sc-m-r-lg" ng-class="{'sc-m-b-md': formCtrl.isMobile}" type="submit">
+        <span ng-if="!formCtrl.salvando" class="ng-binding ng-scope">
+          Salvar
+        </span>
+      </button>
+      <button class="sc-btn sc-btn-red sc-btn-block-only-xs ng-binding" ng-class="{'sc-m-b-md': formCtrl.isMobile}" ng-click="formCtrl.baseFact.cancelar()" type="button">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
