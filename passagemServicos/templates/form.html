@@ -1,5 +1,12 @@
-<div ng-controller="FormCtrl as formCtrl" ng-init="formCtrl.init(passagem, formFact)" class="ng-scope">
-  <form autocomplete="nope" class="sc-m-h-md sc-p-t-sm flex-row ng-valid ng-dirty ng-valid-parse" ng-submit="formCtrl.submit()">
+<div
+  ng-controller="FormCtrl as formCtrl"
+  ng-init="formCtrl.init(passagem, formFact)"
+  class="ng-scope"
+  ng-submit="formCtrl.save(passagem, formFact)">
+  <form
+    autocomplete="nope"
+    class="sc-m-h-md sc-p-t-sm flex-row ng-valid ng-dirty ng-valid-parse"
+    ng-submit="formCtrl.submit()">
     <div class="sc-fieldset flex-row fcol-xs-100">
       <!-- Observação Importante -->
       <div class="fcol-xs-100 sc-bg-yellow-lighter">
@@ -11,7 +18,9 @@
           </span>
         </div>
         <div class="sc-text-blue sc-label sc-m-l-md sc-p-t-xs ng-binding">
-          A passagem será realizada automaticamente caso sejam preenchidos os dados de quem está ENTRANDO (preencher só quem sai habilita a edição do registro até que a passagem seja realizada).
+          A passagem será realizada automaticamente caso sejam preenchidos
+          os dados de quem está ENTRANDO (preencher só quem sai habilita a
+          edição do registro até que a passagem seja realizada).
         </div>
       </div>
       <!-- Inputs Passagem-->
@@ -19,10 +28,16 @@
         <div sc-dropdown-menu="" class="ng-scope">
           <div>
             <div class="sc-label ng-binding">
-              Quem sai
+              Quem sai:
             </div>
             <div class="sc-input-group" style="overflow:visible">
-              <input autocomplete="nope" class="sc-input-default sc-input-block ng-untouched ng-valid typeahead-search ng-empty ng-dirty ng-valid-parse" ng-model="formCtrl.params.user_saiu" placeholder="Digite uma Pessoa" type="text">
+              <input
+                autocomplete="nope"
+                class="sc-input-default sc-input-block ng-untouched ng-valid typeahead-search ng-empty ng-dirty ng-valid-parse"
+                ng-model="formFact.params.nome"
+                placeholder="Digite uma Pessoa"
+                type="text"
+                ng-class="{'error' : formCtrl.nomeErro}">
               <div class="sc-btn sc-btn-blue">
                 <i class="sc-icon-lupa-2">
                 </i>
@@ -35,16 +50,25 @@
         <div class="sc-label ng-binding">
           Senha:
         </div>
-        <input autocomplete="cc-xxxxxxxxxx" class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-empty" ng-model="formCtrl.params.senha_user_saiu" type="password">
+        <input
+          autocomplete="cc-xxxxxxxxxx"
+          class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-empty"
+          ng-model="formCtrl.params.senha_user_saiu"
+          type="password">
       </div>
       <div class="fcol-xs-90 fcol-sm-50 fcol-md-25">
         <div sc-dropdown-menu="" class="ng-scope">
           <div>
             <div class="sc-label ng-binding">
-              Quem entra
+              Quem entra:
             </div>
             <div class="sc-input-group" style="overflow:visible">
-              <input autocomplete="nope" class="sc-input-default sc-input-block ng-untouched ng-valid typeahead-search ng-empty ng-dirty ng-valid-parse" ng-model="formCtrl.params.user_entrou" placeholder="Digite uma Pessoa" type="text">
+              <input
+                autocomplete="nope"
+                class="sc-input-default sc-input-block ng-untouched ng-valid typeahead-search ng-empty ng-dirty ng-valid-parse"
+                ng-model="formCtrl.params.user_entrou"
+                placeholder="Digite uma Pessoa"
+                type="text">
               <div class="sc-btn sc-btn-blue">
                 <i class="sc-icon-lupa-2">
                 </i>
@@ -57,7 +81,11 @@
         <div class="sc-label ng-binding">
           Senha:
         </div>
-        <input autocomplete="cc-xxxxxxxxxx" class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-empty" ng-model="formCtrl.params.senha_user_entrou" type="password">
+        <input
+          autocomplete="cc-xxxxxxxxxx"
+          class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-empty"
+          ng-model="formCtrl.params.senha_user_entrou"
+          type="password">
       </div>
       <div class="clear sc-p-o">
       </div>
@@ -66,7 +94,11 @@
           Perfil de passagem:
         </div>
         <div class="sc-input-group sc-input-block fcol-xs-100 fcol-sm-50 fcol-lg-35">
-          <select class="sc-input-default ng-pristine ng-valid ng-not-empty ng-touched" ng-change="formCtrl.formCtrl.setPerfil()" ng-model="formCtrl.formCtrl.current_perfil" ng-options="perfil as perfil.titulo for perfil in formCtrl.perfilCtrl.list" style="">
+          <select
+            class="sc-input-default ng-pristine ng-valid ng-not-empty ng-touched"
+            ng-change="formCtrl.formCtrl.setPerfil()"
+            ng-model="formCtrl.formCtrl.current_perfil"
+            ng-options="perfil as perfil.titulo for perfil in formCtrl.perfilCtrl.list" style="">
             <option label="Selecione um perfil" ng-value="empty" class="" selected="selected">
             </option>
             <option label="Padrão" value="object:2311">
@@ -136,12 +168,35 @@
           </ul>
           <div class="redactor_editor" contenteditable="true" dir="ltr">
           </div>
-          <textarea class="sc-input-default sc-input-block fcol-xs-100 ng-untouched ng-valid ng-empty ng-dirty ng-valid-parse" ng-model="formCtrl.params.observacoes" redactor="" redactor-buttons="[&quot;clearFormat&quot;,&quot;|&quot;,&quot;bold&quot;,&quot;italic&quot;,&quot;deleted&quot;,&quot;fontcolor&quot;,&quot;backcolor&quot;,&quot;|&quot;,&quot;alignleft&quot;,&quot;aligncenter&quot;,&quot;alignright&quot;,&quot;justify&quot;]" style="height: inherit; width: 100%; display: none;">
+          <textarea
+            class="sc-input-default sc-input-block fcol-xs-100 ng-untouched ng-valid ng-empty ng-dirty ng-valid-parse"
+            ng-model="formCtrl.params.observacoes"
+            redactor=""
+            redactor-buttons=
+            "[
+                &quot;clearFormat&quot;,
+                &quot;|&quot;,
+                &quot;bold&quot;,
+                &quot;italic&quot;,
+                &quot;deleted&quot;,
+                &quot;fontcolor&quot;,
+                &quot;backcolor&quot;,
+                &quot;|&quot;,
+                &quot;alignleft&quot;,
+                &quot;aligncenter&quot;,
+                &quot;alignright&quot;,
+                &quot;justify&quot;
+              ]"
+            style="height: inherit; width: 100%; display: none;">
           </textarea>
         </div>
       </div>
     </div>
     <div class="fcol-md-100 fcol-xs-100 clear">
+    </div>
+    <!-- Anexos -->
+    <div class="fcol-md-100 fcol-xs-100 clear">
+      <div ng-if="!formFact.new_record" ng-include="'templates/anexos.html'" class="ng-scope"></div>
     </div>
     <!-- Botões Salvar e Cancelar -->
     <div class="fcol-xs-100 align-right">

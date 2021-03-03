@@ -4,22 +4,22 @@ passagemServicos.controller("FormCtrl", [
   function(indexFact, scTopMessages) {
     vmForm = this
 
+      //Init Passagem
       vmForm.init = function (passagem, formFact) {
         formFact.params = angular.copy(passagem || {})
       }
 
-
     //Salvar Ctrl
     vmForm.save = function (passagem, formFact) {
       if(!formFact.params.nome) {
-        scTopMessages.openDanger("Preencha o campo Nome", {timeOut: 3000})
+        scTopMessages.openDanger("Quem sai não pode ser vazio", {timeOut: 3000})
         vmForm.nomeErro = true
       }
-
       indexFact.handleCtrl.salvar(formFact.params)
       formFact.close()
     }
 
+    // Adicionar e Remover Objetos
     vmForm.objetoCtrl = {
       add: function (formFact) {
         formFact.params.objeto ||= [];
