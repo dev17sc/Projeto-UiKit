@@ -1,79 +1,136 @@
-<div class="flex-row">
-  <div class="col-xs-12 col-md-6">
-    <div class="sc-fieldset">
-      <div class="sc-fieldset-head">
-        <div class="sc-text-blue sc-text-bold">
-          {{pessoa.nome}}
+<div class="sc-m-h-md sc-p-t-sm flex-row ng-scope">
+  <div class="sc-fieldset sc-bg-white fcol-md-50 fcol-xs-100 flex-row sc-p-h-xs">
+    <div class="fcol-xs-100 sc-p-b-o sc-m-b-md">
+      <div class="sc-text-gray sc-p-b-sm ng-binding">
+        Quem sai:
+        <span class="sc-text-blue ng-binding">
+          {{passagem.nome}}
+        </span>
+      </div>
+      <div class="sc-text-gray sc-p-b-sm ng-binding">
+        Cadastrado por:
+        <span class="sc-text-blue ng-binding">
+          -
+        </span>
+      </div>
+      <div class="sc-text-gray sc-p-b-sm ng-binding">
+        Data cadastro:
+        <span class="sc-text-blue ng-binding">
+          {{passagem.criacao| date: "dd/MM/yyyy"}}
+        </span>
+      </div>
+      <div class="flex-row sc-m-b-sm">
+        <div class="sc-dropdown ng-scope" sc-dropdown-menu="">
+          <button class="sc-btn sc-btn-blue sc-btn-thin sc-btn-md ng-binding" ng-click="menu.toggle()" style="width:100%" type="button">
+            Notificar
+            <i class="sc-icon sc-m-l-md sc-icon-seta-5-baixo" ng-class="menu.isOn ? 'sc-icon-seta-5-cima' : 'sc-icon-seta-5-baixo'">
+            </i>
+            <span class="sc-badge sc-badge-fixed sc-bg-yellow ng-binding">
+              0
+            </span>
+          </button>
+          <ul class="sc-dropdown-menu sc-m-t-o ng-animation-slider sc-scrollbar ng-hide" ng-show="menu.isOn" style="width: 100%; overflow: auto; display: block;">
+            <li ng-if="" ng-repeat="user in indexCtrl.settings.users_notificaveis" class="ng-scope">
+              <div class="vertical-align sc-p-l-md" ng-click="itemCtrl.notificacoes.setUser(user)">
+                <i class="sc-icon sc-icon-quadrado-1" ng-class="user.checked ? 'sc-icon-visto-3' : 'sc-icon-quadrado-1'">
+                </i>
+                <span class="ng-binding">
+                  {{passagem.nome}}
+                </span>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="sc-text-gray">
-        <div ng-show="pessoa.cpf">
-          <i class="sc-icon-cartao-1 sc-p-r-md left"></i>
-          <div class="ng-binding">CPF: {{pessoa.cpf}}</div>
+      <div class="col-xs-12 sc-p-o sc-text-gray">
+        <button class="sc-btn sc-btn-default sc-btn-thin sc-m-b-sm" ng-click="passagem.showNotificacoes.toggle()">
+          <span class="ng-binding">
+            Notificações
+          </span>
+          <i class="sc-icon sc-m-l-md sc-icon-seta-5-baixo" ng-class="passagem.showNotificacoes.opened ? 'sc-icon-seta-5-cima' : 'sc-icon-seta-5-baixo'">
+          </i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="fcol-md-auto fcol-md-50 fcol-xs-100 sc-m-l-lg-md flex ng-scope">
+    <div class="sc-fieldset sc-bg-white fcol-xs-100 ng-scope">
+      <div class="sc-fieldset-head flex align-items-center" style="padding-top: 0;padding-bottom: 0;min-height: 2.05em;">
+        <span class="sc-text-blue sc-text-bold">
+          Anexos
+        </span>
+      </div>
+      <div class="sc-p-b-o">
+        <div class="sc-text-thin sc-p-md sc-p-b-xxxl sc-p-t-xs sc-text-lg align-center sc-text-blue" ng-hide="passagem.anexos.length">
+          Nenhum anexo disponível!
         </div>
-        <div ng-show="pessoa.rg">
-          <i class="sc-icon-cartao-1 sc-p-r-md left"></i>
-          <div class="ng-binding">RG: {{pessoa.rg}}</div>
-        </div>
-        <div ng-show="pessoa.nascimento">
-          <i class="sc-icon-calendario-2 sc-p-r-md left"></i>
-          <div class="ng-binding">Nascimento: {{pessoa.nascimento | date: "dd/MM/yyyy"}}</div>
-        </div>
-        <div ng-show="pessoa.profissao">
-          <i class="sc-icon-maleta sc-p-r-md left"></i>
-          <div class="ng-binding">Profissão: {{pessoa.profissao}}</div>
-        </div>
-        <div ng-show="pessoa.email">
-          <i class="sc-icon-carta-2 sc-p-r-md left"></i>
-          <div class="ng-binding">E-mail: {{pessoa.email}}</div>
-        </div>
-        <div ng-show="pessoa.emailAlternativo">
-          <i class="sc-icon-carta-2 sc-p-r-md left"></i>
-          <div class="ng-binding">E-mails Alternativos: {{pessoa.emailAlternativo}}</div>
-        </div>
-        <div ng-show="pessoa.telefone">
-          <i class="sc-icon-telefone-1 sc-p-r-md left"></i>
-          <div class="ng-binding">Telefones: {{pessoa.telefone}}</div>
-        </div>
-        <div ng-show="pessoa.tituloEndereco">
-          <i class="sc-icon-local sc-p-r-md left"></i>
-          <div class="ng-binding">
-            {{pessoa.tituloEndereco}},
-            {{pessoa.cep}},
-            {{pessoa.cidade}},
-            {{pessoa.logradouro}},
-            {{pessoa.numeroComplemento}},
-            {{pessoa.bairro}}
-          </div>
-        </div>
-        <div ng-show="pessoa.observacoes">
-          <i class="sc-icon-arquivo-4 sc-p-r-md left"></i>
-          <div class="ng-binding">{{pessoa.observacoes}}</div>
+        <div class="flex flex-wrap justify-content-space-evenly">
         </div>
       </div>
     </div>
   </div>
-  <div class="col-xs-12 col-md-6">
-    <div class="sc-fieldset">
-      <div class="sc-fieldset-head">
-        <span class="sc-text-blue sc-text-bold">Anexos</span>
+  <div class="sc-fieldset sc-bg-white fcol-xs-100 flex-row sc-p-xl">
+    <div class="sc-text-gray-dark fcol-xs-100 sc-p-sm ng-binding">
+      Eu,
+      <span class="sc-label ng-binding">
+        {{passagem.nome}}
+      </span>
+      passo o posto de serviço para o(a),
+      <span class="sc-label ng-binding">
+      </span>
+      de acordo com as informações abaixo:
+    </div>
+    <div class="fcol-xs-100 sc-p-h-o sc-p-b-o ng-scope" ng-repeat="objeto in passagem.objetos track by $index">
+      <div class="sc-label sc-text-lg sc-m-l-xs ng-binding">
+        CHAVE
       </div>
-      <div>
-        <div class="sc-text-thin sc-p-md sc-p-b-xxxl sc-p-t-xs sc-text-lg align-center sc-text-blue ng-binding">
-          Nenhum anexo disponível!
-        </div>
+      <table class="sc-table sc-fieldset" style="width:100%">
+        <thead>
+          <tr>
+            <th style="width:4%">
+            </th>
+            <th>
+              <div class="sc-text-bold sc-text-gray-darker ng-binding">
+                Item
+              </div>
+            </th>
+            <th>
+              <div class="sc-text-bold sc-text-gray-darker align-right ng-binding">
+                Qtd
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in objeto.itens track by $index" class="ng-scope">
+            <td style="width:4%">
+              <i class="sc-icon sc-icon-menos-1 sc-text-gray" ng-class="item.executado ? 'sc-icon-visto-1 sc-text-green' : 'sc-icon-menos-1 sc-text-gray'">
+              </i>
+            </td>
+            <td>
+              <div class="sc-text-black ng-binding">
+                Chave da guarita
+              </div>
+            </td>
+            <td class="align-right">
+              <div class="sc-text-gray-darker ng-binding">
+                1
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="sc-fieldset sc-bg-white fcol-xs-100">
+    <div class="sc-fieldset-head sc-p-b-xs">
+      <span class="sc-text-blue sc-text-bold ng-binding">
+        Observações
+      </span>
+    </div>
+    <div class="sc-text-black col-xs-12 sc-bg-white">
+      <div ng-bind-html="passagem.observacoes | nl2br" class="ng-binding">
       </div>
     </div>
-    <!--
-    <div class="pull-right" ng-hide="indexCtrl.formFact.opened">
-      <button class="sc-btn sc-btn-thin sc-btn-red" ng-click="indexCtrl.excluirPagador(pessoa)">
-        <i class="sc-icon-lixeira-1"></i> Excluir
-      </button>
-    </div>
-    <div class="pull-right sc-m-r-sm" ng-hide="indexCtrl.formFact.opened">
-      <button class="sc-btn sc-btn-thin" ng-click="indexCtrl.formFact.init(pessoa); form" type="button">
-        <i class="sc-icon-lapis"></i> Editar
-      </button>
-    </div> -->
   </div>
 </div>

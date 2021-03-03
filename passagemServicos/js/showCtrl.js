@@ -1,4 +1,4 @@
-passagemServicos.controller("Porteiros::ItemCtrl", [
+passagemServicos.controller("PassagemServicos::ItemCtrl", [
   "FormFact",
   function(formFact) {
     vmItem = this
@@ -6,19 +6,19 @@ passagemServicos.controller("Porteiros::ItemCtrl", [
     vmItem.formFact = new formFact()
 
     //Show init Ctrl
-    vmItem.init = function (pessoa) {
-      pessoa.acc = { opened: false }
+    vmItem.init = function (passagem) {
+      passagem.acc = { opened: false }
     }
 
-    //Toggle pessoa Ctrl
-    vmItem.accToggle = function(pessoa) {
-      pessoa.acc.opened = !pessoa.acc.opened
+    //Toggle passagem Ctrl
+    vmItem.accToggle = function(passagem) {
+      passagem.acc.opened = !passagem.acc.opened
     }
 
     vmItem.formularioCtrl = {
-      abrir: function(pessoa, formFact) {
-        if (!pessoa.acc.opened){ vmItem.accToggle(pessoa) }
-        formFact.init(pessoa)
+      abrir: function(passagem, formFact) {
+        if (!passagem.acc.opened){ vmItem.accToggle(passagem) }
+        formFact.init(passagem)
       }
     }
 
