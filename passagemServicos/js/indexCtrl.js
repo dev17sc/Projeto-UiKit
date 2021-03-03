@@ -36,12 +36,12 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     vmIndex.handleCtrl = {
       salvar: function(params){
         if(!params.id) {
-          params.id = vmIndex.porteiros.length + 1
+          params.id = vmIndex.passagem.length + 1
 
-          vmIndex.porteiros.unshift(params)
+          vmIndex.passagem.unshift(params)
         } else {
           pagador = null
-          vmIndex.porteiros.forEach(function(it){
+          vmIndex.passagem.forEach(function(it){
             if (it.id == params.id) { return pagador = it }
           })
 
@@ -49,25 +49,35 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         }
       },
 
-      excluir: function (pessoa) {
-        // vmIndex.porteiros.splice(vmIndex.porteiros.indexOf(pessoa), 1)
-        vmIndex.porteiros.remove(pessoa)
+      excluir: function (passagem) {
+        // vmIndex.passagem.splice(vmIndex.passagem.indexOf(passagem), 1)
+        vmIndex.passagem.remove(passagem)
       }
     }
     vmIndex.baseFact.handleCtrl = vmIndex.handleCtrl
 
     // Abrir formulário de cadastro e de edição Ctrl
     vmIndex.formularioCtrl = {
-      abrir: function(pessoa) {
-        if(!pessoa) {
+      abrir: function(passagem) {
+        if(!passagem) {
           vmIndex.new_record = true
           vmIndex.formFact.init({})
         } else {
           vmIndex.new_record = false
-          vmIndex.formFact.init(pessoa)
+          vmIndex.formFact.init(passagem)
         }
       }
     }
+
+    // Lista das passagens
+    vmIndex.list = [
+      {
+        id: 1,
+        nome: 'Erick Teixeira',
+        criacao: new Date(),
+      },
+
+    ]
 
     return vmIndex;
   }

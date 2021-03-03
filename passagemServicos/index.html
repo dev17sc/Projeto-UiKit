@@ -11,7 +11,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
 </head>
-<body ng-app="passagemServicos" ng-controller="PassagemServicos::IndexCtrl as indexCtrl" ng-init="indexCtrl.init()" style="overflow: auto;">
+<body
+  ng-app="passagemServicos"
+  ng-controller="PassagemServicos::IndexCtrl as indexCtrl"
+  ng-init="indexCtrl.init()" style="overflow: auto;">
   <div class="sc-bg-blue sc-box-shadow-z1">
     <span>
       <img src="assets/img/seu_condominio.svg" style="max-width: 9em">
@@ -21,61 +24,6 @@
   <section id="top-bar" style="">
     <div id="top-bar-content">
       <div ng-include="'templates/top-bar-content.html'"></div>
-    </div>
-  </section>
-  <!-- Passagens -->
-  <section id="passagens">
-    <div class="sc-p-t-xl sc-bg-white">
-      <ul class="sc-accordion ng-isolate-scope" multi-check-group="" sc-scroll="indexCtrl.listCtrl.proximaPagina()" sc-scroll-enabled="!indexCtrl.pagination.finished">
-        <li class="sc-acc-blue ng-scope" ng-if="indexCtrl.formFact.opened" style="">
-          <div class="sc-accordion-head flex-row" ng-click="indexCtrl.formFact.close()">
-            <div class="fcol-xs-2em">
-              <i class="sc-icon sc-icon-mais-1 sc-text-white">
-              </i>
-            </div>
-            <span class="sc-text-white sc-text-bold ng-binding">
-              Nova passagem
-            </span>
-          </div>
-          <div class="sc-accordion-body">
-            <div ng-include="'templates/form.html'" ng-init="formFact = indexCtrl.formFact" class="ng-scope">
-            </div>
-          </div>
-        </li>
-        <li class="sc-accordion-head" style="border-bottom: 1px solid #e2e2e2; border-top: none;">
-          <div class="flex-row flex-column align-items-center sc-text-blue" style="min-height: 2.5em;">
-            <div class="fcol-order-0 align-center fcol-sm-3em ng-scope" ng-if="!indexCtrl.filtro.isDirty()">
-              <input class="sc-checkbox sc-checkbox-blue" ng-checked="indexCtrl.selections.allSelected" ng-click="indexCtrl.selections.toggleSelectAll(indexCtrl.selections.allSelected)" type="checkbox">
-            </div>
-            <div class="fcol-xs-7em hidden-xs align-center sc-p-sm sc-cursor-pointer" ng-click="indexCtrl.ordenacao.exec('status')">
-              <i class="sc-m-r-sm sc-icon-seta-5-baixo ng-hide" ng-show="indexCtrl.ordenacao.getByColumn('status')"></i>
-              <span class="sc-ellipsis-inline ng-binding">Status</span>
-            </div>
-            <div class="fcol-xs-auto fcol-order-1 sc-p-sm">
-              <span class="sc-ellipsis-inline ng-binding">Saiu</span>
-            </div>
-            <div class="fcol-xs-auto fcol-order-2 sc-p-sm">
-              <span class="sc-ellipsis-inline ng-binding">Entrou</span>
-            </div>
-            <div class="fcol-xs-7em fcol-order-3 align-center sc-p-sm sc-cursor-pointer" ng-click="indexCtrl.ordenacao.exec('created_at')">
-              <i class="sc-m-r-sm sc-icon-seta-5-baixo ng-hide" ng-show="indexCtrl.ordenacao.getByColumn('created_at')"></i>
-              <span class="sc-ellipsis-inline ng-binding">Criada em</span>
-            </div>
-            <div class="fcol-xs-7em sc-p-md visible-xs fcol-order-4">
-            </div>
-            <div class="fcol-xs-3em sc-p-md fcol-order-5">
-            </div>
-          </div>
-        </li>
-        <li class="sc-accordion-head sc-bg-gray-lighter sc-p-lg ng-scope" ng-if="indexCtrl.listCtrl.list.length == 0 || indexCtrl.listCtrl.loadingList">
-          <div class="sc-text-gray align-center">
-            <div class="sc-text-blue ng-scope" ng-if="" style="">
-              <i class="sc-icon sc-icon-exclamacao-2"></i>
-              <span class="ng-binding"> Nenhuma passagem de serviço encontrada!</span>
-            </div>
-          </div>
-        </li>
-      </ul>
     </div>
   </section>
   <!-- Top Messages -->
@@ -90,6 +38,177 @@
       </div>
     </div>
   </div>
+  <!-- Accordion Nova Passagem -->
+  <section id="list">
+    <div class="sc-p-t-xl sc-bg-white">
+      <ul
+        class="sc-accordion ng-isolate-scope"
+        multi-check-group=""
+        sc-scroll="indexCtrl.listCtrl.proximaPagina()"
+        sc-scroll-enabled="!indexCtrl.pagination.finished">
+        <li class="sc-acc-blue ng-scope" ng-if="indexCtrl.formFact.opened" style="">
+          <div class="sc-accordion-head flex-row" ng-click="indexCtrl.formFact.close()">
+            <div class="fcol-xs-2em">
+              <i class="sc-icon sc-icon-mais-1 sc-text-white">
+              </i>
+            </div>
+            <span class="sc-text-white sc-text-bold ng-binding">
+              Nova passagem
+            </span>
+          </div>
+          <!-- Formulário -->
+          <div class="sc-accordion-body">
+            <div ng-include="'templates/form.html'" ng-init="formFact = indexCtrl.formFact" class="ng-scope">
+            </div>
+          </div>
+        </li>
+        <li class="sc-accordion-head" style="border-bottom: 1px solid #e2e2e2; border-top: none;">
+          <div class="flex-row flex-column align-items-center sc-text-blue" style="min-height: 2.5em;">
+            <div class="fcol-order-0 align-center fcol-sm-3em ng-scope" ng-if="!indexCtrl.filtro.isDirty()">
+              <input class="sc-checkbox sc-checkbox-blue" ng-checked="indexCtrl.selections.allSelected"
+                ng-click="indexCtrl.selections.toggleSelectAll(indexCtrl.selections.allSelected)" type="checkbox">
+            </div>
+            <div
+              class="fcol-xs-7em hidden-xs align-center sc-p-sm sc-cursor-pointer"
+              ng-click="indexCtrl.ordenacao.exec('status')">
+              <i class="sc-m-r-sm sc-icon-seta-5-baixo ng-hide" ng-show="indexCtrl.ordenacao.getByColumn('status')"></i>
+              <span class="sc-ellipsis-inline ng-binding">Status</span>
+            </div>
+            <div class="fcol-xs-auto fcol-order-1 sc-p-sm">
+              <span class="sc-ellipsis-inline ng-binding">Saiu</span>
+            </div>
+            <div class="fcol-xs-auto fcol-order-2 sc-p-sm">
+              <span class="sc-ellipsis-inline ng-binding">Entrou</span>
+            </div>
+            <div
+              class="fcol-xs-7em fcol-order-3 align-center sc-p-sm sc-cursor-pointer"
+              ng-click="indexCtrl.ordenacao.exec('created_at')">
+              <i class="sc-m-r-sm sc-icon-seta-5-baixo ng-hide" ng-show="indexCtrl.ordenacao.getByColumn('created_at')"></i>
+              <span class="sc-ellipsis-inline ng-binding">Criada em</span>
+            </div>
+            <div class="fcol-xs-7em sc-p-md visible-xs fcol-order-4">
+            </div>
+            <div class="fcol-xs-3em sc-p-md fcol-order-5">
+            </div>
+          </div>
+        </li>
+        <!-- Passagens Accordion Head -->
+        <li
+          class="sc-accordion-head ng-scope"
+          ng-class="{'sc-acc-blue': passagem.acc.opened, 'sc-acc-gray-lighter': !passagem.acc.opened}"
+          ng-controller="PassagemServicos::ItemCtrl as itemCtrl"
+          ng-init="itemCtrl.init(passagem)"
+          ng-repeat="passagem in indexCtrl.list track by passagem.id" style="">
+          <div
+            class="flex-row flex-column sc-accordion-head sc-text-gray"
+            ng-class="{'sc-opac-70': passagem.deleting, 'sc-acc-selected': passagem.checked }"
+            ng-click="itemCtrl.accToggle(passagem)">
+            <div class="fcol-xs-3em align-center fcol-order-0" sc-stop-click="">
+              <input
+                class="sc-checkbox sc-checkbox-blue ng-pristine ng-untouched ng-valid ng-empty"
+                multi-check=""
+                ng-click="indexCtrl.selections.selectPassagem(passagem, $event)" ng-model="passagem.checked" type="checkbox">
+            </div>
+            <div class="fcol-xs-7em hidden-xs align-center sc-p-sm">
+              <span class="sc-border-radius sc-text-white sc-p-v-xs sc-p-h-lg sc-text-sm sc-bg-yellow">
+                Pendente
+              </span>
+            </div>
+            <div class="fcol-xs-auto fcol-order-1 sc-p-sm">
+              <i
+                class="sc-icon sc-icon-seta-8-baixo sc-text-red hidden-xs sc-p-r-md"
+                ng-class="{'sc-text-white': itemCtrl.formFact.opened || passagem.acc.opened }" style="">
+              </i>
+              <span class="sc-ellipsis ng-binding">
+                {{passagem.nome}}
+              </span>
+            </div>
+            <div class="fcol-xs-auto fcol-order-2 sc-p-sm">
+              <i
+                class="sc-icon sc-icon-seta-8-cima sc-text-green hidden-xs sc-p-r-md"
+                ng-class="{'sc-text-white': itemCtrl.formFact.opened || passagem.acc.opened }" style="">
+              </i>
+              <span ng-if="!passagem.user_entrou.nome" class="ng-scope">
+                -
+              </span>
+            </div>
+            <div
+              class="fcol-xs-7em fcol-order-3 sc-p-sm ng-binding"
+              ng-class="{'sc-text-white': itemCtrl.formFact.opened || passagem.acc.opened }" style="">
+              {{passagem.criacao | date: "dd/MM/yyyy"}}
+            </div>
+            <div class="fcol-xs-7em fcol-order-4 visible-xs sc-p-sm">
+            </div>
+            <div class="fcol-xs-3em align-center sc-p-sm fcol-order-5" sc-stop-click="">
+              <span class="sc-dropdown ng-scope" sc-dropdown-menu="">
+                <div>
+                  <i
+                    class="sc-icon sc-icon-reticiencias-v sc-badge-hover-gray"
+                    ng-class="{'sc-text-white sc-badge-hover-white': itemCtrl.formFact.opened || passagem.acc.opened }"
+                    ng-click="menu.toggle()" style="">
+                  </i>
+                </div>
+                <ul class="sc-dropdown-menu ng-animation-slider pull-right ng-hide" ng-show="menu.isOn">
+                  <li
+                    ng-click="indexCtrl.itemCtrl.passarServico(passagem, itemCtrl.formFact.opened)"
+                    ng-if="passagem.status.key != 'realizada' &amp;&amp; passagem.status.key != 'desativada'"
+                    sc-dropdown-close-menu="" class="ng-scope">
+                    <span class="ng-binding">
+                      <i class="sc-icon sc-icon-seta-6-direita-esquerda">
+                      </i>
+                      Passar serviço
+                    </span>
+                  </li>
+                  <li
+                    ng-click="itemCtrl.formCtrl.open()"
+                    ng-if="passagem.ver_botao_edicao" sc-dropdown-close-menu="" class="ng-scope">
+                    <span class="ng-binding">
+                      <i class="sc-icon sc-icon-lapis">
+                      </i>
+                      Editar
+                    </span>
+                  </li>
+                  <li ng-click="indexCtrl.itemCtrl.duplicar(passagem)" sc-dropdown-close-menu="">
+                    <span class="ng-binding">
+                      <i class="sc-icon sc-icon">
+                      </i>
+                      Duplicar
+                    </span>
+                  </li>
+                  <li ng-click="indexCtrl.itemCtrl.disable(passagem)" sc-dropdown-close-menu="">
+                    <span ng-if="passagem.status.key != 'desativada'" class="ng-binding ng-scope">
+                      <i class="sc-icon sc-icon-banir">
+                      </i>
+                      Desativar
+                    </span>
+                  </li>
+                  <li ng-click="indexCtrl.itemCtrl.rmv(passagem)" sc-dropdown-close-menu="">
+                    <span class="ng-binding">
+                      <i class="sc-icon sc-icon-lixeira-1">
+                      </i>
+                      Excluir
+                    </span>
+                  </li>
+                </ul>
+              </span>
+            </div>
+          </div>
+          <div ng-if="passagem.acc.opened" class="sc-accordion-body ng-animation-slider" ng-init="formFact = itemCtrl.formFact">
+            <!-- Show -->
+            <div ng-include="'templates/show.html'"></div>
+          </div>
+          <li class="sc-accordion-head sc-bg-gray-lighter sc-p-lg ng-scope" ng-if="indexCtrl.list.length == 0">
+            <div class="sc-text-gray align-center">
+              <div class="sc-text-blue ng-scope" ng-if="indexCtrl.list.length == 0" style="">
+                <i class="sc-icon sc-icon-exclamacao-2"></i>
+                <span class="ng-binding"> Nenhuma passagem de serviço encontrada!</span>
+              </div>
+            </div>
+          </li>
+        </li>
+      </ul>
+    </div>
+  </section>
   <script type="text/javascript" src="./js/prototype.js"></script>
   <script type="text/javascript" src="./js/modernizr.js"></script>
   <script type="text/javascript" src="./js/indexCtrl.js"></script>
