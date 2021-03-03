@@ -32,28 +32,28 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       },
     }
 
-    // Excluir Pagador Ctrl
+    // Salvar e Excluir passagem
     vmIndex.handleCtrl = {
       salvar: function(params){
         if(!params.id) {
-          params.id = vmIndex.passagem.length + 1
+          params.id = vmIndex.list.length + 1
 
-          vmIndex.passagem.unshift(params)
+          vmIndex.list.unshift(params)
         } else {
-          pagador = null
-          vmIndex.passagem.forEach(function(it){
-            if (it.id == params.id) { return pagador = it }
+          passagem = null
+          vmIndex.list.forEach(function(it){
+            if (it.id == params.id) { return passagem = it }
           })
 
-          angular.extend(pagador, params)
+          angular.extend(passagem, params)
         }
       },
 
       excluir: function (passagem) {
-        // vmIndex.passagem.splice(vmIndex.passagem.indexOf(passagem), 1)
-        vmIndex.passagem.remove(passagem)
+        vmIndex.list.remove(passagem)
       }
     }
+
     vmIndex.baseFact.handleCtrl = vmIndex.handleCtrl
 
     // Abrir formulário de cadastro e de edição Ctrl

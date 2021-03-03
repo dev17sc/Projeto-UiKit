@@ -15,10 +15,11 @@ passagemServicos.controller("PassagemServicos::ItemCtrl", [
       passagem.acc.opened = !passagem.acc.opened
     }
 
+    // Abrindo Edição
     vmItem.formularioCtrl = {
       abrir: function(passagem, formFact) {
         if (!passagem.acc.opened){ vmItem.accToggle(passagem) }
-        formFact.init(passagem)
+        vmItem.formFact.init(passagem)
       }
     }
 

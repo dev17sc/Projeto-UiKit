@@ -9,7 +9,7 @@ passagemServicos.factory("FormFact", [
         init: function(passagem) {
           this.passagem = passagem
           this.opened = true
-          // this.new_record = passagem.id ? false : true
+          this.new_record = passagem.id ? false : true
         },
 
         close: function(){

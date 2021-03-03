@@ -160,29 +160,29 @@
                     </span>
                   </li>
                   <li
-                    ng-click="itemCtrl.formCtrl.open()"
-                    ng-if="passagem.ver_botao_edicao" sc-dropdown-close-menu="" class="ng-scope">
+                    ng-click="itemCtrl.formularioCtrl.abrir(passagem, indexCtrl.formFact)"
+                    sc-dropdown-close-menu="" class="ng-scope">
                     <span class="ng-binding">
                       <i class="sc-icon sc-icon-lapis">
                       </i>
                       Editar
                     </span>
                   </li>
-                  <li ng-click="indexCtrl.itemCtrl.duplicar(passagem)" sc-dropdown-close-menu="">
+                  <li ng-click="" sc-dropdown-close-menu="">
                     <span class="ng-binding">
                       <i class="sc-icon sc-icon">
                       </i>
                       Duplicar
                     </span>
                   </li>
-                  <li ng-click="indexCtrl.itemCtrl.disable(passagem)" sc-dropdown-close-menu="">
+                  <li ng-click="" sc-dropdown-close-menu="">
                     <span ng-if="passagem.status.key != 'desativada'" class="ng-binding ng-scope">
                       <i class="sc-icon sc-icon-banir">
                       </i>
                       Desativar
                     </span>
                   </li>
-                  <li ng-click="indexCtrl.itemCtrl.rmv(passagem)" sc-dropdown-close-menu="">
+                  <li ng-click="indexCtrl.handleCtrl.excluir(passagem)" sc-dropdown-close-menu="" ng-class="{'error' : indexCtrl.nomeErro}">
                     <span class="ng-binding">
                       <i class="sc-icon sc-icon-lixeira-1">
                       </i>
@@ -195,7 +195,9 @@
           </div>
           <div ng-if="passagem.acc.opened" class="sc-accordion-body ng-animation-slider" ng-init="formFact = itemCtrl.formFact">
             <!-- Show -->
-            <div ng-include="'templates/show.html'"></div>
+            <div ng-if="!formFact.opened" ng-include="'templates/show.html'"></div>
+            <!-- Formulário de edição -->
+            <div ng-if="formFact.opened" ng-include="'templates/form.html'" >
           </div>
           <li class="sc-accordion-head sc-bg-gray-lighter sc-p-lg ng-scope" ng-if="indexCtrl.list.length == 0">
             <div class="sc-text-gray align-center">
