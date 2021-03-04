@@ -21,17 +21,6 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
 
     }
 
-    //Filtro Ctrl
-    vmIndex.filtro = {
-
-      avancado: false,
-
-      toggle: function () {
-        console.log('abrindo; fechando')
-        vmIndex.avancado = !vmIndex.avancado;
-      },
-    }
-
     // Salvar e Excluir passagem
     vmIndex.handleCtrl = {
       salvar: function(params){
@@ -69,14 +58,19 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       }
     }
 
-    // Lista das passagens
+    // Lista de Passagens
     vmIndex.list = [
       {
         id: 1,
-        nome: 'Erick Teixeira',
+        saiu: 'Erick Teixeira',
+        senhaSaiu:'',
         criacao: new Date(),
+        categoria: 'CHAVE',
+        item: 'Chave da Guarita',
+        quantidade: 1,
+        entrou: 'Antônio',
+        senhaEntrou:'',
       },
-
     ]
 
     return vmIndex;

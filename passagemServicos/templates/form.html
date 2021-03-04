@@ -1,7 +1,6 @@
 <div
   ng-controller="FormCtrl as formCtrl"
   ng-init="formCtrl.init(passagem, formFact)"
-  class="ng-scope"
   ng-submit="formCtrl.save(passagem, formFact)">
   <form
     autocomplete="nope"
@@ -13,11 +12,11 @@
         <div class="sc-text-red">
           <i class="sc-icon sc-icon-exclamacao-3 sc-m-h-sm">
           </i>
-          <span class="sc-text-bold ng-binding">
+          <span class="sc-text-bold">
             Importante!
           </span>
         </div>
-        <div class="sc-text-blue sc-label sc-m-l-md sc-p-t-xs ng-binding">
+        <div class="sc-text-blue sc-label sc-m-l-md sc-p-t-xs">
           A passagem será realizada automaticamente caso sejam preenchidos
           os dados de quem está ENTRANDO (preencher só quem sai habilita a
           edição do registro até que a passagem seja realizada).
@@ -25,16 +24,16 @@
       </div>
       <!-- Inputs Passagem-->
       <div class="fcol-xs-90 fcol-sm-50 fcol-md-25">
-        <div sc-dropdown-menu="" class="ng-scope">
+        <div sc-dropdown-menu="">
           <div>
-            <div class="sc-label ng-binding">
+            <div class="sc-label">
               Quem sai:
             </div>
             <div class="sc-input-group" style="overflow:visible">
               <input
                 autocomplete="nope"
                 class="sc-input-default sc-input-block ng-untouched ng-valid typeahead-search ng-empty ng-dirty ng-valid-parse"
-                ng-model="formFact.params.nome"
+                ng-model="formFact.params.saiu"
                 placeholder="Digite uma Pessoa"
                 type="text"
                 ng-class="{'error' : formCtrl.nomeErro}">
@@ -47,26 +46,27 @@
         </div>
       </div>
       <div class="fcol-xs-90 fcol-sm-50 fcol-md-25">
-        <div class="sc-label ng-binding">
+        <div class="sc-label">
           Senha:
         </div>
         <input
           autocomplete="cc-xxxxxxxxxx"
           class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-empty"
-          ng-model="formCtrl.params.senha_user_saiu"
+          ng-class="{'error' : formCtrl.senhaErro}"
+          ng-model="formFact.params.senhaSaiu"
           type="password">
       </div>
       <div class="fcol-xs-90 fcol-sm-50 fcol-md-25">
-        <div sc-dropdown-menu="" class="ng-scope">
+        <div sc-dropdown-menu="">
           <div>
-            <div class="sc-label ng-binding">
+            <div class="sc-label">
               Quem entra:
             </div>
             <div class="sc-input-group" style="overflow:visible">
               <input
                 autocomplete="nope"
                 class="sc-input-default sc-input-block ng-untouched ng-valid typeahead-search ng-empty ng-dirty ng-valid-parse"
-                ng-model="formCtrl.params.user_entrou"
+                ng-model="formFact.params.entrou"
                 placeholder="Digite uma Pessoa"
                 type="text">
               <div class="sc-btn sc-btn-blue">
@@ -78,19 +78,20 @@
         </div>
       </div>
       <div class="fcol-xs-90 fcol-sm-50 fcol-md-25">
-        <div class="sc-label ng-binding">
+        <div class="sc-label">
           Senha:
         </div>
         <input
           autocomplete="cc-xxxxxxxxxx"
           class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-empty"
-          ng-model="formCtrl.params.senha_user_entrou"
+          ng-class="{'error' : formCtrl.senhaErro}"
+          ng-model="formFact.params.senhaEntrou"
           type="password">
       </div>
       <div class="clear sc-p-o">
       </div>
       <div class="fcol-xs-100">
-        <div class="sc-label ng-binding">
+        <div class="sc-label">
           Perfil de passagem:
         </div>
         <div class="sc-input-group sc-input-block fcol-xs-100 fcol-sm-50 fcol-lg-35">
@@ -99,7 +100,7 @@
             ng-change="formCtrl.formCtrl.setPerfil()"
             ng-model="formCtrl.formCtrl.current_perfil"
             ng-options="perfil as perfil.titulo for perfil in formCtrl.perfilCtrl.list" style="">
-            <option label="Selecione um perfil" ng-value="empty" class="" selected="selected">
+            <option label="Selecione um perfil" ng-value="empty" selected="selected">
             </option>
             <option label="Padrão" value="object:2311">
               Padrão
@@ -110,12 +111,12 @@
     </div>
     <!-- Adicionar Objetos -->
     <div class="fcol-xs-100">
-      <div ng-include="'templates/objetos.html'" class="ng-scope">
+      <div ng-include="'templates/objetos.html'">
       </div>
     </div>
     <!-- Campo para Observações -->
     <div class="sc-fieldset flex-row fcol-xs-100 clear">
-      <div class="sc-label sc-p-b-xs clear ng-binding">
+      <div class="sc-label sc-p-b-xs clear">
         Observações:
       </div>
       <div class="fcol-xs-100 sc-p-t-o">
@@ -196,14 +197,14 @@
     </div>
     <!-- Anexos -->
     <div class="fcol-md-100 fcol-xs-100 clear">
-      <div ng-if="!formFact.new_record" ng-include="'templates/anexos.html'" class="ng-scope"></div>
+      <div ng-if="!formFact.new_record" ng-include="'templates/anexos.html'"></div>
     </div>
     <!-- Botões Salvar e Cancelar -->
     <div class="fcol-xs-100 align-right">
       <button class="sc-btn sc-btn-blue sc-btn-block-only-xs sc-m-r-lg" type="submit">
         Salvar
       </button>
-      <button class="sc-btn sc-btn-red sc-btn-block-only-xs ng-binding" ng-click="formFact.close()" type="button">
+      <button class="sc-btn sc-btn-red sc-btn-block-only-xs" ng-click="formFact.close()" type="button">
         Cancelar
       </button>
     </div>

@@ -19,9 +19,26 @@ passagemServicos.controller("PassagemServicos::ItemCtrl", [
     vmItem.formularioCtrl = {
       abrir: function(passagem, formFact) {
         if (!passagem.acc.opened){ vmItem.accToggle(passagem) }
-        vmItem.formFact.init(passagem)
+        formFact.init(passagem)
       }
     }
+
+    // vmItem.objetos =
+    // [
+    //   {
+    //     id: 1,
+    //     nome: 'CHAVE',
+    //   },
+    // ]
+
+    // vmItem.itens =
+    // [
+    //   {
+    //     id: 1,
+    //     nome: 'Chave da guarita',
+    //     quantidade: 1,
+    //   },
+    // ]
 
     return vmItem
   }
