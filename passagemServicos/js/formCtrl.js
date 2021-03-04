@@ -12,12 +12,15 @@ passagemServicos.controller("FormCtrl", [
 
     //Salvar Ctrl
     vmForm.save = function (passagem, formFact) {
-      if(!formFact.params.saiu) {
+      if(!formFact.params.pessoaSaiu) {
         scTopMessages.openDanger("Quem sai não pode ser vazio", {timeOut: 3000})
-        vmForm.nomeErro = true
-      } else if(formFact.params.entrou && !formFact.params.senhaEntrou) {
+        vmForm.saiuErro = true
+      } else if(!formFact.params.senhaSaiu || !formFact.params.senhaEntrou) {
         scTopMessages.openDanger("É necessário preencher a senha de quem sai e quem entra para realizar a passagem de serviço!", {timeOut: 3000})
         vmForm.senhaErro = true
+      } else if(!formFact.params.pessoaEntrou){
+        scTopMessages.openDanger("Quem entra não pode ser vazio", {timeOut: 3000})
+        vmForm.entrouErro = true
       } else {
         vmForm.formFact.params.criacao = new Date()
         indexFact.handleCtrl.salvar(formFact.params)
@@ -37,21 +40,32 @@ passagemServicos.controller("FormCtrl", [
         vmForm.formFact.params.objetos ||= [];
         vmForm.formFact.params.objetos.remove(objeto);
       },
-    }
 
-    // Adicionar e Remover Itens
-    vmForm.itemCtrl = {
-      add: function (item) {
+      itemAdd: function () {
         vmForm.formFact.params.itens ||= [];
-        vmForm.formFact.params.itens.push(item);
+        vmForm.formFact.params.itens.push();
         console.log('Adicionando')
       },
 
-      rmv: function (item, formFact) {
+      itemRmv: function (item, formFact) {
         vmForm.formFact.params.itens ||= [];
         vmForm.formFact.params.itens.remove(item);
       },
     }
+
+    // // Adicionar e Remover Itens
+    // vmForm.itemCtrl = {
+    //   itemAdd: function (item) {
+    //     vmForm.formFact.params.itens ||= [];
+    //     vmForm.formFact.params.itens.push(item);
+    //     console.log('Adicionando')
+    //   },
+
+    //   itemRmv: function (item, formFact) {
+    //     vmForm.formFact.params.itens ||= [];
+    //     vmForm.formFact.params.itens.remove(item);
+    //   },
+    // }
 
     return vmForm;
   }

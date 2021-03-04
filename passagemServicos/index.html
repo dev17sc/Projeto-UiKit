@@ -97,7 +97,7 @@
         <!-- Passagens Accordion Head -->
         <li
           class="sc-accordion-head "
-          ng-class="{'sc-acc-blue': passagem.acc.opened, 'sc-acc-gray-lighter': !passagem.acc.opened, 'sc-acc-yellow-lighter': !passagem.entrou}"
+          ng-class="{'sc-acc-blue': passagem.acc.opened, 'sc-acc-gray-lighter': !passagem.acc.opened, 'sc-acc-yellow-lighter': !passagem.pessoaEntrou}"
           ng-controller="PassagemServicos::ItemCtrl as itemCtrl"
           ng-init="itemCtrl.init(passagem)"
           ng-repeat="passagem in indexCtrl.list track by passagem.id" style="">
@@ -111,10 +111,10 @@
                 ng-click="indexCtrl.selections.selectPassagem(passagem, $event)" ng-model="passagem.checked" type="checkbox">
             </div>
             <div class="fcol-xs-7em hidden-xs align-center sc-p-sm">
-              <span ng-show="!passagem.entrou" class="sc-border-radius sc-text-white sc-p-v-xs sc-p-h-lg sc-text-sm sc-bg-yellow">
+              <span ng-show="!passagem.pessoaEntrou" class="sc-border-radius sc-text-white sc-p-v-xs sc-p-h-lg sc-text-sm sc-bg-yellow">
                 Pendente
               </span>
-              <span ng-show="passagem.entrou" class="sc-border-radius sc-text-white sc-p-v-xs sc-p-h-lg sc-text-sm sc-bg-green">
+              <span ng-show="passagem.pessoaEntrou" class="sc-border-radius sc-text-white sc-p-v-xs sc-p-h-lg sc-text-sm sc-bg-green">
                 Realizada
               </span>
             </div>
@@ -124,7 +124,7 @@
                 ng-class="{'sc-text-white': itemCtrl.formFact.opened || passagem.acc.opened }" style="">
               </i>
               <span class="sc-ellipsis">
-                {{passagem.saiu}}
+                {{passagem.pessoaSaiu}}
               </span>
             </div>
             <div class="fcol-xs-auto fcol-order-2 sc-p-sm">
@@ -133,7 +133,7 @@
                 ng-class="{'sc-text-white': itemCtrl.formFact.opened || passagem.acc.opened }" style="">
               </i>
               <span class="">
-                {{passagem.entrou}}
+                {{passagem.pessoaEntrou}}
               </span>
             </div>
             <div
@@ -153,7 +153,7 @@
                 <ul class="sc-dropdown-menu ng-animation-slider pull-right ng-hide" ng-show="menu.isOn">
                   <li
                     ng-click="indexCtrl.itemCtrl.passarServico(passagem, itemCtrl.formFact.opened)"
-                    ng-hide="passagem.entrou"
+                    ng-hide="passagem.pessoaEntrou"
                     sc-dropdown-close-menu="" class="">
                     <span>
                       <i class="sc-icon sc-icon-seta-6-direita-esquerda">

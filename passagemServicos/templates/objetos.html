@@ -37,7 +37,7 @@
                 class="sc-input-default sc-input-block ng-pristine ng-untouched ng-valid ng-empty"
                 ng-change="item.categoriaServ.set(item)"
                 ng-class="{'error': item.errors.categoria}"
-                ng-model="item.categoria_id"
+                ng-model="formFact.params.categoria"
                 ng-options="categoria.id as categoria.nome for categoria in item.categoriaServ.list">
                 <option value="" class="" selected="selected">
                   Selecione
@@ -69,7 +69,7 @@
           <div class="align-self-flex-end" style="top: -0.3em">
             <button
               class="sc-btn sc-btn-thin sc-btn-green sc-m-r-lg sc-btn-sm"
-              ng-click="formCtrl.itemCtrl.add(item)" type="button">
+              ng-click="formCtrl.objetoCtrl.itemAdd(item)" type="button">
               <i class="sc-icon sc-icon-mais-1 sc-m-r-sm">
               </i>
               Item
@@ -84,11 +84,11 @@
               <input
                 class="sc-checkbox sc-checkbox-green"
                 ng-checked="objeto.allExecuted"
-                ng-click="formCtrl.objetoCtrl.setAllItens(objeto)"
+                ng-click=""
                 type="checkbox">
             </div>
           </li>
-          <li class="flex-row sc-p-b-md ng-scope" ng-repeat="item in formCtrl.formFact.params.itens track by $index">
+          <li class="flex-row sc-p-b-md ng-scope" ng-repeat="item in objeto.itens">
             <div
               class="fcol-xs-3em align-self-center sc-m-l-sm ng-scope"
               sc-stop-click=""
@@ -96,9 +96,8 @@
               <div class="sc-label">
                 <input
                   class="sc-checkbox sc-checkbox-green ng-pristine ng-untouched ng-valid ng-empty"
-                  multi-check=""
-                  ng-click="formCtrl.objetoCtrl.setItem(item, objeto)"
-                  ng-model="item.executado"
+                  ng-click=""
+                  ng-model="formFact.params.itemCheckbox"
                   type="checkbox">
               </div>
             </div>
@@ -108,7 +107,7 @@
               </div>
               <input
                 class="sc-input-default sc-input-block sc-input-thin ng-pristine ng-untouched ng-valid ng-empty"
-                ng-model="item.descricao"
+                ng-model="formFact.params.item"
                 placeholder="Descreva o item aqui"
                 type="text">
             </div>
@@ -120,7 +119,7 @@
                 class="sc-input-default sc-input-block sc-input-thin align-right ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-min ng-valid-max"
                 max="999"
                 min="1"
-                ng-model="item.qtd"
+                ng-model="formFact.params.quantidade"
                 step="1"
                 type="number">
             </div>
@@ -130,7 +129,7 @@
               <div class="align-right">
                 <i
                   class="sc-icon sc-icon-lixeira-1 sc-badge-hover-red fcol-xs-3em"
-                  ng-click="formCtrl.itemCtrl.rmv(item)">
+                  ng-click="formCtrl.objetoCtrl.itemRmv(item)">
                 </i>
               </div>
             </div>

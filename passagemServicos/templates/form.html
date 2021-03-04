@@ -33,10 +33,10 @@
               <input
                 autocomplete="nope"
                 class="sc-input-default sc-input-block ng-untouched ng-valid typeahead-search ng-empty ng-dirty ng-valid-parse"
-                ng-model="formFact.params.saiu"
+                ng-model="formFact.params.pessoaSaiu"
                 placeholder="Digite uma Pessoa"
                 type="text"
-                ng-class="{'error' : formCtrl.nomeErro}">
+                ng-class="{'error' : formCtrl.saiuErro}">
               <div class="sc-btn sc-btn-blue">
                 <i class="sc-icon-lupa-2">
                 </i>
@@ -66,8 +66,9 @@
               <input
                 autocomplete="nope"
                 class="sc-input-default sc-input-block ng-untouched ng-valid typeahead-search ng-empty ng-dirty ng-valid-parse"
-                ng-model="formFact.params.entrou"
+                ng-model="formFact.params.pessoaEntrou"
                 placeholder="Digite uma Pessoa"
+                ng-class="{'error': formCtrl.entrouErro}"
                 type="text">
               <div class="sc-btn sc-btn-blue">
                 <i class="sc-icon-lupa-2">

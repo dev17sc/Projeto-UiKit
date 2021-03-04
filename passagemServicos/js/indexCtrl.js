@@ -62,13 +62,13 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     vmIndex.list = [
       {
         id: 1,
-        saiu: 'Erick Teixeira',
+        pessoaSaiu: 'Erick Teixeira',
         senhaSaiu:'',
         criacao: new Date(),
         categoria: 'CHAVE',
         item: 'Chave da Guarita',
         quantidade: 1,
-        entrou: 'Antônio',
+        pessoaEntrou: 'Antônio',
         senhaEntrou:'',
       },
     ]
