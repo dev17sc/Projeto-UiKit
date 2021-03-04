@@ -1,10 +1,10 @@
 Checklist Passagem Serviços
   Prototipar:
-    - esqueleto da página
+    - editar
+    - criar
+    CONCLUÍDO - esqueleto da página
       * Aqui conterá somente:
       ** top_bar_content com todos os items do sistema (novo, input de busca, botões)
       ** conteudo vázio sem items (nenhuma passagem de serviço encontrada)
-    - listagem
-    - show
-    - editar
-    - criar
+    CONCLUÍDO - listagem
+    CONCLUÍDO - show
