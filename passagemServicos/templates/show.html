@@ -1,0 +1,64 @@
+<div class="sc-bg-gray-lighter">
+  <div class="flex-row">
+    <div class="sc-fieldset fcol-xs-45 sc-m-lg sc-bg-white">
+      <div class="sc-text-gray sc-p-b-xs">
+        Quem sai:
+        <span class="sc-text-blue">
+          {{passagem.pessoaSaiu}}
+        </span>
+      </div>
+      <div class="sc-text-gray sc-p-v-xs">
+        Cadastrado por:
+        <span class="sc-text-blue">
+          -
+        </span>
+      </div>
+      <div class="sc-text-gray sc-p-v-xs">
+        Data cadastro:
+        <span class="sc-text-blue">
+          {{passagem.criacao | date:"dd/MM/yyyy"}}
+        </span>
+      </div>
+      <div class="sc-p-v-xs">
+        <button  type="button" class="sc-btn sc-btn-thin sc-btn-blue">
+          Notificar
+          <i class="sc-icon sc-icon-seta-5-baixo"></i>
+        </button>
+      </div>
+      <div class="sc-p-v-xs sc-m-b-lg">
+        <button  type="button" class="sc-btn sc-btn-thin">
+          Notificações
+          <i class="sc-icon sc-icon-seta-5-baixo"></i>
+        </button>
+      </div>
+    </div>
+    <div class="sc-fieldset fcol-xs-auto sc-m-lg sc-bg-white">
+      <div class="sc-fieldset-head">
+        <span class="sc-text-blue sc-text-bold">
+          Anexos
+        </span>
+      </div>
+      <div class="align-center sc-text-blue sc-text-lg-md sc-m-t-lg">
+        Nenhum anexo disponível!
+      </div>
+    </div>
+  </div>
+  <div class="sc-fieldset sc-bg-white sc-m-h-lg sc-m-t-lg sc-m-b-xxxl">
+    <div class="sc-text-gray-dark">
+      Eu,
+      <span class="sc-text-blue sc-text-bold">
+        {{passagem.pessoaSaiu}}
+      </span>
+      passo o posto de serviço para o(a), de acordo com as informações abaixo:
+    </div>
+  </div>
+  <div class="sc-fieldset sc-m-lg sc-bg-white">
+    <div class="sc-fieldset-head">
+      <span class="sc-text-blue sc-text-bold">
+        Observações
+      </span>
+    </div>
+    <div>
+    </div>
+  </div>
+</div>
