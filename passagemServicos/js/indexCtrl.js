@@ -12,6 +12,25 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
   function() {
     vmIndex = this
 
+    vmIndex.init = function() {
+    }
+
+    // Toggle Accordion
+    vmIndex.opened = false
+    vmIndex.accToggle = function() {
+      vmIndex.opened = !vmIndex.opened
+    }
+
+    // Lista de Passagens
+    vmIndex.list = [
+      {
+        id: 1,
+        pessoaSaiu: 'Erick Teixeira',
+        pessoaEntrou: 'Antônio',
+        criacao: new Date(),
+      }
+    ]
+
     return vmIndex;
   }
 ]);

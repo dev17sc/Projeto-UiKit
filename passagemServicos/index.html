@@ -23,8 +23,95 @@
     </span>
   </div>
 
-  <section>
+  <!-- Top Bar Content -->
+  <div id="topBarContent">
+    <div ng-include="'templates/topBarContent.html'"></div>
+  </div>
+
     <!-- Corpo do código -->
+  <section>
+    <!-- Top Bar Accordion-->
+    <div class="sc-bg-white">
+      <ul class="sc-accordion">
+        <div class="flex-row sc-p-xl sc-m-t-md">
+          <div class="sc-text-blue fcol-xs-6em sc-m-l-lg">
+            Status
+          </div>
+          <div class="sc-text-blue fcol-xs-40">
+            Saiu
+          </div>
+          <div class="sc-text-blue fcol-xs-45">
+            Entrou
+          </div>
+          <div class="sc-text-blue">
+            Criada em
+          </div>
+        </div>
+        <!-- Accordion Head Lista de Passagens -->
+        <li class="sc-acc-gray-lighter">
+          <div class="sc-accordion-head" ng-repeat="passagem in passagemServicosCtrl.list">
+            <div ng-click="passagemServicosCtrl.accToggle()" class="sc-accordion-elastic-col flex-row">
+              <span
+                class="sc-border-radius sc-bg-yellow sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg"
+                style="font-size: smaller">
+                Pendente
+              </span>
+              <span class="sc-m-l-xxxl sc-m-t-md fcol-xs-40 sc-text-gray">
+                <i class="sc-icon sc-text-red sc-icon-seta-8-baixo"></i>
+                {{passagem.pessoaSaiu}}
+              </span>
+              <span class="fcol-xs-auto sc-text-gray sc-m-t-md">
+                <i class="sc-icon sc-text-green sc-icon-seta-8-cima"></i>
+                {{passagem.pessoaEntrou}}
+              </span>
+              <span class="fcol-xs-6em sc-text-gray sc-m-t-md">
+                {{passagem.criacao | date:"dd/MM/yyyy"}}
+              </span>
+              <!-- Menu da Lista de Passagens -->
+              <span sc-dropdown-menu class="sc-dropdown sc-m-t-xs">
+                <div ng-click="menu.toggle()">
+                  <i class="sc-badge-hover-gray sc-icon-reticiencias-v"></i>
+                </div>
+                <ul class="sc-dropdown-menu ng-animation-slider pull-right" ng-show="menu.isOn">
+                  <li>
+                    <span>
+                      <i class="sc-icon sc-icon-seta-6-direita-esquerda"></i>
+                      Passar Serviço
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <i class="sc-icon sc-icon-lapis"></i>
+                      Editar
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      Duplicar
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <i class="sc-icon sc-icon-banir"></i>
+                      Desativar
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <i class="sc-icon sc-icon-lixeira-1"></i>
+                      Excluir
+                    </span>
+                  </li>
+                </ul>
+              </span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="show">
+      <div ng-include="'templates/show.html'"></div>
+    </div>
   </section>
 
   <!-- Top Messages -->
@@ -43,9 +130,5 @@
   <script type="text/javascript" src="./js/prototype.js"></script>
   <script type="text/javascript" src="./js/modernizr.js"></script>
   <script type="text/javascript" src="./js/indexCtrl.js"></script>
-  <script type="text/javascript" src="./js/indexFactory.js"></script>
-  <script type="text/javascript" src="./js/formFactory.js"></script>
-  <script type="text/javascript" src="./js/formCtrl.js"></script>
-  <script type="text/javascript" src="./js/showCtrl.js"></script>
 </body>
 </html>
