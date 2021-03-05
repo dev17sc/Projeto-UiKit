@@ -1,0 +1,45 @@
+<div class="sc-bg-gray-lighter">
+  <div class="flex-row sc-m-md">
+    <div class="sc-btn sc-btn-green">
+      Nova Passagem
+    </div>
+    <div class="fcol-xs-40 sc-m-l-xxxl sc-input-group">
+      <input type="text" class="sc-input-group" placeholder=" Nome, e-mail, data (de criação), etc...">
+      <button type="button" class="sc-btn sc-btn-blue">
+        <i class="sc-icon sc-icon-lupa-1"></i>
+      </button>
+      <button type="button" class="sc-btn">
+        <i class="sc-icon sc-icon-filtro-2"></i>
+      </button>
+      <button type="button" class="sc-btn">
+        <i class="sc-icon sc-icon-impressora"></i>
+      </button>
+    </div>
+    <div class="fcol-lg-auto"></div>
+    <span sc-dropdown-menu class="sc-dropdown">
+      <button type="button" class="sc-btn" ng-click="menu.toggle()">
+        <i class="sc-icon sc-icon-reticiencias-v"></i>
+      </button>
+      <ul class="sc-dropdown-menu ng-animation-slider pull-right" ng-show="menu.isOn">
+        <li>
+          <span>
+            <i class="sc-icon sc-icon-executivo"></i>
+            Perfis de Passagem
+          </span>
+        </li>
+        <li>
+          <span>
+            <i class="sc-icon sc-icon-engrenagem"></i>
+            Configurações
+          </span>
+        </li>
+      </ul>
+    </span>
+  </div>
+  <section class="flex-row sc-m-l-md" style="font-size: smaller;">
+    <a class="sc-text-blue">Início</a>
+    <div class="sc-text-gray sc-m-l-xs">
+      / Administrativo / Passagem de Serviço
+    </div>
+  </section>
+</div>
