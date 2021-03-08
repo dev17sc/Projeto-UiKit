@@ -30,6 +30,10 @@
 
     <!-- Corpo do código -->
   <section>
+    <!-- Form Nova Passagem -->
+    <div id="formNew">
+      <div ng-include="'templates/form.html'"></div>
+    </div>
     <!-- Top Bar Accordion-->
     <div class="sc-bg-white">
       <ul class="sc-accordion">
@@ -49,7 +53,7 @@
         </div>
         <!-- Accordion Head Lista de Passagens -->
         <li class="sc-acc-gray-lighter">
-          <div class="sc-accordion-head" ng-repeat="passagem in passagemServicosCtrl.list">
+          <div class="sc-accordion-head" ng-repeat="passagem in passagemServicosCtrl.list" ng-class="{'sc-acc-blue': passagem.accToggle.opened}">
             <div ng-click="passagemServicosCtrl.accToggle()" class="sc-accordion-elastic-col flex-row">
               <span
                 class="sc-border-radius sc-bg-yellow sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg"
@@ -109,8 +113,12 @@
         </li>
       </ul>
     </div>
+    <!-- Form de edição e Show -->
+    <div id="formEditing">
+      <div ng-if="" ng-include="'templates/form.html'"></div>
+    </div>
     <div id="show">
-      <div ng-include="'templates/show.html'"></div>
+      <div ng-if="passagem.accToggle.opened" ng-include="'templates/show.html'"></div>
     </div>
   </section>
 
@@ -130,5 +138,6 @@
   <script type="text/javascript" src="./js/prototype.js"></script>
   <script type="text/javascript" src="./js/modernizr.js"></script>
   <script type="text/javascript" src="./js/indexCtrl.js"></script>
+  <script type="text/javascript" src="./js/showCtrl.js" ></script>
 </body>
 </html>
