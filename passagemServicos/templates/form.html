@@ -1,3 +1,4 @@
+<div ng-controller="PassagemServicos::FormCtrl as formCtrl">
 <!-- Accordion Nova Passagem -->
 <ul class="sc-accordion">
   <li class="sc-acc-blue">
@@ -33,7 +34,7 @@
             Quem sai:
           </div>
           <div class="sc-input-group">
-            <input type="text" class="sc-input-group">
+            <input ng-model="formCtrl.quemSai" type="text" class="sc-input-group">
             <button type="button" class="sc-btn sc-btn-blue">
               <i class="sc-icon sc-icon-lupa-2"></i>
             </button>
@@ -44,7 +45,7 @@
             Senha:
           </div>
           <div class="sc-input-group">
-            <input type="text" class="sc-input-default">
+            <input type="text" class="sc-input-default" ng-model="formCtrl.senhaQuemSai">
           </div>
         </div>
         <div class="fcol-xs-22em sc-m-r-xxxl">
@@ -52,7 +53,7 @@
             Quem entra:
           </div>
           <div class="sc-input-group">
-            <input type="text" class="sc-input-group">
+            <input ng-model="formCtrl.quemEntra" type="text" class="sc-input-group">
             <button type="button" class="sc-btn sc-btn-blue">
               <i class="sc-icon sc-icon-lupa-2"></i>
             </button>
@@ -63,7 +64,7 @@
             Senha:
           </div>
           <div class="sc-input-group">
-            <input type="text" class="sc-input-default">
+            <input ng-model="formCtrl.senhaQuemEntra" type="text" class="sc-input-default">
           </div>
         </div>
       </div>
@@ -94,7 +95,7 @@
             Perfil de passagem:
           </div>
           <div class="sc-input-group">
-            <select class="sc-input-default">
+            <select ng-model="formCtrl.perfilPassagem" class="sc-input-default">
               <option label="Selecione um perfil" class-selected="selected"></option>
               <option label="Padrão"></option>
             </select>
@@ -128,12 +129,12 @@
   <div class="flex-row">
     <div class="fcol-xs-100">
       <div class="pull-right sc-m-r-lg sc-m-b-lg">
-        <button class="sc-btn sc-btn-blue sc-m-r-md">
+        <button type="submit" class="sc-btn sc-btn-blue sc-m-r-md">
           Salvar
         </button>
-        <div class="sc-btn sc-btn-red">
+        <button type="button" class="sc-btn sc-btn-red">
           Cancelar
-        </div>
+        </button>
       </div>
     </div>
   </div>

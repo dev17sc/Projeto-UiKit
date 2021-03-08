@@ -76,7 +76,7 @@
 
               <!-- Menu da Lista de Passagens -->
               <span sc-dropdown-menu class="sc-dropdown sc-m-t-xs">
-                <div ng-click="menu.toggle()">
+                <div ng-click="menu.toggle()" sc-stop-click>
                   <i class="sc-badge-hover-gray sc-icon-reticiencias-v" ng-class="{'sc-badge-hover-white': passagemServicosCtrl.opened}"></i>
                 </div>
                 <ul class="sc-dropdown-menu ng-animation-slider pull-right" ng-show="menu.isOn">
