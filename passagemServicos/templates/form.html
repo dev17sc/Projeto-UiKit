@@ -1,4 +1,4 @@
-
+<!-- Accordion Nova Passagem -->
 <ul class="sc-accordion">
   <li class="sc-acc-blue">
     <div class="sc-accordion-head">
@@ -12,6 +12,8 @@
       </div>
     </div>
   </li>
+
+  <!-- Observação -->
   <div class="sc-fieldset sc-bg-yellow-lighter sc-m-h-lg">
     <div class="sc-text-red sc-text-bold sc-p-b-xs">
       <i class="sc-icon sc-icon-exclamacao-3"></i>
@@ -22,6 +24,8 @@
       os dados de quem está ENTRANDO (preencher só quem sai habilita
       a edição do registro até que a passsagem seja realizada).
     </div>
+
+    <!-- Inputs de passagem -->
     <div class="sc-bg-gray-lighter">
       <div class="flex-row sc-m-b-lg">
         <div class="fcol-xs-22em sc-m-r-xxxl">
@@ -63,6 +67,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Confirmação da passagem -->
       <div class="flex-row sc-m-b-lg">
         <div class="sc-m-r-sm">
           Eu,
@@ -80,6 +86,8 @@
           ,conforme as informações abaixo:
         </div>
       </div>
+
+      <!-- Perfil de Passagem -->
       <div class="flex-row">
         <div class="fcol-xs-30em">
           <div class="sc-text-blue sc-text-bold">
@@ -95,15 +103,38 @@
       </div>
     </div>
   </div>
+
+  <!-- Include Objetos -->
   <div id="objetos">
     <div ng-include="'templates/objetos.html'"></div>
   </div>
+
+  <!-- Campo para observações -->
   <div class="sc-fieldset sc-m-h-lg sc-bg-white">
     <div class="sc-text-blue sc-text-bold">
       Observações:
     </div>
     <div>
 
+    </div>
+  </div>
+
+  <!-- Include Anexos -->
+  <div id="anexos">
+    <div ng-include="'templates/anexos.html'"></div>
+  </div>
+
+    <!-- Botão Salvar e Cancelar -->
+  <div class="flex-row">
+    <div class="fcol-xs-100">
+      <div class="pull-right sc-m-r-lg sc-m-b-lg">
+        <button class="sc-btn sc-btn-blue sc-m-r-md">
+          Salvar
+        </button>
+        <div class="sc-btn sc-btn-red">
+          Cancelar
+        </div>
+      </div>
     </div>
   </div>
 </ul>

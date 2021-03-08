@@ -32,8 +32,9 @@
   <section>
     <!-- Form Nova Passagem -->
     <div id="formNew">
-      <div ng-include="'templates/form.html'"></div>
+      <div ng-if="" ng-include="'templates/form.html'"></div>
     </div>
+
     <!-- Top Bar Accordion-->
     <div class="sc-bg-white">
       <ul class="sc-accordion">
@@ -51,30 +52,32 @@
             Criada em
           </div>
         </div>
+
         <!-- Accordion Head Lista de Passagens -->
-        <li class="sc-acc-gray-lighter">
-          <div class="sc-accordion-head" ng-repeat="passagem in passagemServicosCtrl.list" ng-class="{'sc-acc-blue': passagem.accToggle.opened}">
+        <li class="sc-acc-gray-lighter" ng-class="{'sc-acc-blue': passagemServicosCtrl.opened}">
+          <div class="sc-accordion-head" ng-repeat="passagem in passagemServicosCtrl.list">
             <div ng-click="passagemServicosCtrl.accToggle()" class="sc-accordion-elastic-col flex-row">
               <span
                 class="sc-border-radius sc-bg-yellow sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg"
                 style="font-size: smaller">
                 Pendente
               </span>
-              <span class="sc-m-l-xxxl sc-m-t-md fcol-xs-40 sc-text-gray">
-                <i class="sc-icon sc-text-red sc-icon-seta-8-baixo"></i>
+              <span class="sc-m-l-xxxl sc-m-t-md fcol-xs-40 sc-text-gray" ng-class="{'sc-text-white': passagemServicosCtrl.opened}">
+                <i class="sc-icon sc-text-red sc-icon-seta-8-baixo" ng-class="{'sc-text-white': passagemServicosCtrl.opened}"></i>
                 {{passagem.pessoaSaiu}}
               </span>
-              <span class="fcol-xs-auto sc-text-gray sc-m-t-md">
-                <i class="sc-icon sc-text-green sc-icon-seta-8-cima"></i>
+              <span class="fcol-xs-auto sc-text-gray sc-m-t-md" ng-class="{'sc-text-white': passagemServicosCtrl.opened}">
+                <i class="sc-icon sc-text-green sc-icon-seta-8-cima" ng-class="{'sc-text-white': passagemServicosCtrl.opened}"></i>
                 {{passagem.pessoaEntrou}}
               </span>
-              <span class="fcol-xs-6em sc-text-gray sc-m-t-md">
+              <span class="fcol-xs-6em sc-text-gray sc-m-t-md" ng-class="{'sc-text-white': passagemServicosCtrl.opened}">
                 {{passagem.criacao | date:"dd/MM/yyyy"}}
               </span>
+
               <!-- Menu da Lista de Passagens -->
               <span sc-dropdown-menu class="sc-dropdown sc-m-t-xs">
                 <div ng-click="menu.toggle()">
-                  <i class="sc-badge-hover-gray sc-icon-reticiencias-v"></i>
+                  <i class="sc-badge-hover-gray sc-icon-reticiencias-v" ng-class="{'sc-badge-hover-white': passagemServicosCtrl.opened}"></i>
                 </div>
                 <ul class="sc-dropdown-menu ng-animation-slider pull-right" ng-show="menu.isOn">
                   <li>
@@ -113,12 +116,13 @@
         </li>
       </ul>
     </div>
+
     <!-- Form de edição e Show -->
     <div id="formEditing">
       <div ng-if="" ng-include="'templates/form.html'"></div>
     </div>
     <div id="show">
-      <div ng-if="passagem.accToggle.opened" ng-include="'templates/show.html'"></div>
+      <div ng-if="passagemServicosCtrl.opened" ng-include="'templates/show.html'"></div>
     </div>
   </section>
 
@@ -139,5 +143,6 @@
   <script type="text/javascript" src="./js/modernizr.js"></script>
   <script type="text/javascript" src="./js/indexCtrl.js"></script>
   <script type="text/javascript" src="./js/showCtrl.js" ></script>
+  <script type="text/javascript" src="./js/formCtrl.js" ></script>
 </body>
 </html>
