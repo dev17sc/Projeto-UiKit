@@ -1,8 +1,9 @@
-<div class="sc-bg-gray-lighter">
+
+<div ng-controller="PassagemServicos::FormCtrl as formCtrl" class="sc-bg-gray-lighter">
   <div class="flex-row sc-m-md">
-    <div class="sc-btn sc-btn-green">
+    <button ng-click="formCtrl.formulario.abrir()" type="button" class="sc-btn sc-btn-green">
       Nova Passagem
-    </div>
+    </button>
     <div class="fcol-xs-40 sc-m-l-xxxl sc-input-group">
       <input type="text" class="sc-input-group" placeholder=" Nome, e-mail, data (de criação), etc...">
       <button type="button" class="sc-btn sc-btn-blue">

@@ -3,8 +3,21 @@ passagemServicos.controller("PassagemServicos::FormCtrl", [
     vmForm = this
 
     vmForm.init = function() {
-      show = false
+
     }
 
+    vmForm.opened = false
+    vmForm.formulario = {
+      abrir: function() {
+        vmForm.opened = true
+      },
+      fechar: function() {
+        vmForm.opened = false
+      }
+    }
+
+
+
+    return vmForm
   }
 ])

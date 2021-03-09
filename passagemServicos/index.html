@@ -31,8 +31,9 @@
     <!-- Corpo do código -->
   <section>
     <!-- Form Nova Passagem -->
-    <div id="formNew">
-      <div ng-if="" ng-include="'templates/form.html'"></div>
+
+    <div id="formNew" ng-controller="PassagemServicos::FormCtrl as formCtrl">
+      <div ng-if="formCtrl.formulario.opened" ng-include="'templates/form.html'"></div>
     </div>
 
     <!-- Top Bar Accordion-->
@@ -58,9 +59,16 @@
           <div class="sc-accordion-head" ng-repeat="passagem in passagemServicosCtrl.list">
             <div ng-click="passagemServicosCtrl.accToggle()" class="sc-accordion-elastic-col flex-row">
               <span
+                ng-if="!passagem.pessoaEntrou"
                 class="sc-border-radius sc-bg-yellow sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg"
                 style="font-size: smaller">
                 Pendente
+              </span>
+              <span
+                ng-if="passagem.pessoaEntrou"
+                class="sc-border-radius sc-bg-green sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg"
+                style="font-size: smaller">
+                Realizada
               </span>
               <span class="sc-m-l-xxxl sc-m-t-md fcol-xs-40 sc-text-gray" ng-class="{'sc-text-white': passagemServicosCtrl.opened}">
                 <i class="sc-icon sc-text-red sc-icon-seta-8-baixo" ng-class="{'sc-text-white': passagemServicosCtrl.opened}"></i>
@@ -81,13 +89,13 @@
                 </div>
                 <ul class="sc-dropdown-menu ng-animation-slider pull-right" ng-show="menu.isOn">
                   <li>
-                    <span>
+                    <span ng-if="!passagem.pessoaEntrou">
                       <i class="sc-icon sc-icon-seta-6-direita-esquerda"></i>
                       Passar Serviço
                     </span>
                   </li>
                   <li>
-                    <span>
+                    <span ng-if="!passagem.pessoaEntrou">
                       <i class="sc-icon sc-icon-lapis"></i>
                       Editar
                     </span>
@@ -104,7 +112,7 @@
                     </span>
                   </li>
                   <li>
-                    <span>
+                    <span ng-click="">
                       <i class="sc-icon sc-icon-lixeira-1"></i>
                       Excluir
                     </span>
@@ -118,11 +126,13 @@
     </div>
 
     <!-- Form de edição e Show -->
-    <div id="formEditing">
-      <div ng-if="" ng-include="'templates/form.html'"></div>
-    </div>
-    <div id="show">
-      <div ng-if="passagemServicosCtrl.opened" ng-include="'templates/show.html'"></div>
+    <div>
+      <div id="formEditing">
+        <div ng-if="" ng-include="'templates/form.html'"></div>
+      </div>
+      <div id="show">
+        <div ng-if="passagemServicosCtrl.opened" ng-include="'templates/show.html'"></div>
+      </div>
     </div>
   </section>
 
