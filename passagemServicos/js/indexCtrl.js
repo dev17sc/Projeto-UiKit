@@ -12,6 +12,9 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
   function() {
     vmIndex = this
 
+
+
+
     vmIndex.init = function() {
     }
 
@@ -21,6 +24,18 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       vmIndex.opened = !vmIndex.opened
     }
 
+
+    //Abrir e Fechar Formulário
+    vmIndex.show = false
+    vmIndex.formulario = {
+      abrir: function() {
+        vmIndex.show = true
+      },
+      fechar: function() {
+        vmIndex.show = false
+      },
+    }
+
     // Lista de Passagens
     vmIndex.list = [
       {
@@ -28,9 +43,15 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaSaiu: 'Erick Teixeira',
         pessoaEntrou: 'Antônio',
         criacao: new Date(),
-      }
+      },
+      {
+        id: 2,
+        pessoaSaiu: 'Carol',
+        pessoaEntrou: '',
+        criacao: new Date(),
+      },
     ]
 
-    return vmIndex;
+    return vmIndex
   }
 ]);

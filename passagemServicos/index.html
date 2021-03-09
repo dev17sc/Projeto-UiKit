@@ -32,8 +32,8 @@
   <section>
     <!-- Form Nova Passagem -->
 
-    <div id="formNew" ng-controller="PassagemServicos::FormCtrl as formCtrl">
-      <div ng-if="formCtrl.formulario.opened" ng-include="'templates/form.html'"></div>
+    <div id="formNew" >
+      <div ng-if="passagemServicosCtrl.show" ng-include="'templates/form.html'"></div>
     </div>
 
     <!-- Top Bar Accordion-->
@@ -83,7 +83,7 @@
               </span>
 
               <!-- Menu da Lista de Passagens -->
-              <span sc-dropdown-menu class="sc-dropdown sc-m-t-xs">
+              <span sc-dropdown-menu class="sc-m-t-xs">
                 <div ng-click="menu.toggle()" sc-stop-click>
                   <i class="sc-badge-hover-gray sc-icon-reticiencias-v" ng-class="{'sc-badge-hover-white': passagemServicosCtrl.opened}"></i>
                 </div>
@@ -95,7 +95,7 @@
                     </span>
                   </li>
                   <li>
-                    <span ng-if="!passagem.pessoaEntrou">
+                    <span ng-click="passagemServicosCtrl.formulario.abrir()" ng-if="!passagem.pessoaEntrou">
                       <i class="sc-icon sc-icon-lapis"></i>
                       Editar
                     </span>
@@ -128,9 +128,9 @@
     <!-- Form de edição e Show -->
     <div>
       <div id="formEditing">
-        <div ng-if="" ng-include="'templates/form.html'"></div>
+        <div ng-if="passagemServicosCtrl.showEdit" ng-include="'templates/form.html'"></div>
       </div>
-      <div id="show">
+      <div id="show" ng-if="!passagemServicosCtrl.showEdit">
         <div ng-if="passagemServicosCtrl.opened" ng-include="'templates/show.html'"></div>
       </div>
     </div>
