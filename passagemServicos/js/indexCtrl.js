@@ -13,26 +13,25 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     vmIndex = this
 
 
-
-
     vmIndex.init = function() {
+
     }
 
     // Toggle Accordion
-    vmIndex.opened = false
-    vmIndex.accToggle = function() {
-      vmIndex.opened = !vmIndex.opened
+    vmIndex.accToggle = function(passagem) {
+      passagem.accOpened = !passagem.accOpened
     }
 
 
+
     //Abrir e Fechar Formulário
-    vmIndex.show = false
+    vmIndex.form = false
     vmIndex.formulario = {
       abrir: function() {
-        vmIndex.show = true
+        vmIndex.form = true
       },
       fechar: function() {
-        vmIndex.show = false
+        vmIndex.form = false
       },
     }
 
