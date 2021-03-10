@@ -24,20 +24,33 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     }
 
 
-
     //Abrir e Fechar Formulário
+    vmIndex.newRecord = false
     vmIndex.formulario = {
       abrir: function(passagem) {
         if (!passagem) {
-          passagem.form = true
+          vmIndex.newRecord = true
         } else {
+          passagem.accOpened = true
           passagem.editing = true
         }
       },
       fechar: function(passagem) {
-        passagem.form = false
+        vmIndex.newRecord = false
       },
     }
+
+    //Submit do Formulário
+    vmIndex.salvar = function(passagem) {
+      if(passagem) {
+        vmIndex.list.unshift(passagem)
+        vmIndex.newRecord = false
+        passagem = {}
+      } else {
+        vmIndex.passagem = passagem
+      }
+    }
+
 
     // Lista de Passagens
     vmIndex.list = [

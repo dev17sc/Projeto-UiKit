@@ -33,7 +33,7 @@
     <!-- Form Nova Passagem -->
 
     <div id="formNew" >
-      <div ng-if="passagem.form" ng-include="'templates/form.html'"></div>
+      <div ng-if="passagemServicosCtrl.newRecord" ng-include="'templates/form.html'"></div>
     </div>
 
     <!-- Listagem-->
@@ -58,7 +58,7 @@
         <li
           class="sc-acc-gray-lighter"
           ng-repeat="passagem in passagemServicosCtrl.list"
-          ng-class="{'sc-acc-blue': passagem.accOpened}"
+          ng-class="[{'sc-acc-blue': passagem.accOpened}, {'sc-acc-yellow-lighter': !passagem.pessoaEntrou}]"
         >
           <div class="sc-accordion-head flex">
             <div ng-click="passagemServicosCtrl.accToggle(passagem)" class="sc-accordion-elastic-col flex-row">
@@ -99,7 +99,7 @@
                   </span>
                 </li>
                 <li>
-                  <span ng-click="passagemServicosCtrl.formulario.abrir()" ng-if="!passagem.pessoaEntrou">
+                  <span ng-click="passagemServicosCtrl.formulario.abrir(passagem)" ng-if="!passagem.pessoaEntrou">
                     <i class="sc-icon sc-icon-lapis"></i>
                     Editar
                   </span>
@@ -124,12 +124,14 @@
               </ul>
             </span>
           </div>
+
+          <!-- Show e form edit -->
           <div ng-if="passagem.accOpened">
             <div id="formEditing">
-              <div ng-if="passagem.editing.form" ng-include="'templates/form.html'"></div>
+              <div ng-if="passagem.editing" ng-include="'templates/form.html'"></div>
             </div>
             <div id="show">
-              <div ng-if="!passagem.editing.form" ng-include="'templates/show.html'"></div>
+              <div ng-if="!passagem.editing" ng-include="'templates/show.html'"></div>
             </div>
           </div>
         </li>
