@@ -51,6 +51,10 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       }
     }
 
+    //Excluir passagem
+    vmIndex.excluir = function(passagem) {
+      vmIndex.list.remove(passagem)
+    }
 
     // Lista de Passagens
     vmIndex.list = [
