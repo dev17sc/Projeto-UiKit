@@ -1,4 +1,4 @@
-<form ng-submit="passagemServicosCtrl.salvar(passagem)">
+<form ng-submit="passagemServicosCtrl.salvar(passagem, params)">
   <!-- Accordion Nova Passagem -->
   <ul class="sc-accordion">
     <li ng-if="!passagem" class="sc-acc-blue">
@@ -34,7 +34,7 @@
               Quem sai:
             </div>
             <div class="sc-input-group">
-              <input ng-model="params.pessoaSaiu" type="text" class="sc-input-group sc-input-default">
+              <input ng-model="passagemServicosCtrl.params.pessoaSaiu" type="text" class="sc-input-group sc-input-default">
               <button type="button" class="sc-btn sc-btn-blue">
                 <i class="sc-icon sc-icon-lupa-2"></i>
               </button>
@@ -45,7 +45,7 @@
               Senha:
             </div>
             <div class="sc-input-group">
-              <input type="text" class="sc-input-default" ng-model="params.senhaQuemSai">
+              <input type="text" class="sc-input-default" ng-model="passagemServicosCtrl.params.senhaQuemSai">
             </div>
           </div>
           <div class="fcol-xs-22em sc-m-r-xxxl">
@@ -53,7 +53,7 @@
               Quem entra:
             </div>
             <div class="sc-input-group">
-              <input ng-model="params.pessoaEntrou" type="text" class="sc-input-group sc-input-default">
+              <input ng-model="passagemServicosCtrl.params.pessoaEntrou" type="text" class="sc-input-group sc-input-default">
               <button type="button" class="sc-btn sc-btn-blue">
                 <i class="sc-icon sc-icon-lupa-2"></i>
               </button>
@@ -64,7 +64,7 @@
               Senha:
             </div>
             <div class="sc-input-group">
-              <input ng-model="params.senhaQuemEntra" type="text" class="sc-input-default">
+              <input ng-model="passagemServicosCtrl.params.senhaQuemEntra" type="text" class="sc-input-default">
             </div>
           </div>
         </div>
@@ -132,7 +132,7 @@
           <button type="submit" class="sc-btn sc-btn-blue sc-m-r-md">
             Salvar
           </button>
-          <button ng-click="passagemServicosCtrl.formulario.fechar()" type="button" class="sc-btn sc-btn-red">
+          <button ng-click="passagemServicosCtrl.formulario.fechar(passagem)" type="button" class="sc-btn sc-btn-red">
             Cancelar
           </button>
         </div>

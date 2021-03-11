@@ -28,30 +28,35 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     //Abrir e Fechar Formulário
     vmIndex.newRecord = false
     vmIndex.formulario = {
-      abrir: function(passagem) {
+      abrir: function(passagem, params) {
         if (!passagem) {
+          vmIndex.params = angular.copy(vmIndex.list)
+          vmIndex.list = {}
           vmIndex.newRecord = true
         } else {
+          vmIndex.params = angular.copy(vmIndex.list)
+          vmIndex.list = {passagem}
           passagem.accOpened = true
           passagem.editing = true
         }
       },
       fechar: function(passagem) {
         vmIndex.newRecord = false
+        passagem.editing = false
       },
     }
 
 
     //Submit do Formulário
     vmIndex.salvar = function(passagem, params) {
-      if(!params.id) {
-        params.id = vmIndex.list.length + 1
-        vmIndex.list.unshift(passagem)
+      if(!vmIndex.params.id) {
+        vmIndex.params.id = vmIndex.list.length + 1
+        vmIndex.list.unshift(params)
         vmIndex.newRecord = false
-        console.log('salvando novo')
+        passagem.criacao = new Date()
       } else {
         vmIndex.passagem = passagem
-        console.log('editando')
+        passagem.editing = false
       }
     }
 
