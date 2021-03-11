@@ -9,7 +9,8 @@ passagemServicos.run([
 ]);
 
 passagemServicos.controller("PassagemServicos::IndexCtrl", [
-  function() {
+  'scTopMessages',
+  function(scTopMessages) {
     vmIndex = this
 
 
@@ -40,14 +41,17 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       },
     }
 
+
     //Submit do Formulário
-    vmIndex.salvar = function(passagem) {
-      if(passagem) {
+    vmIndex.salvar = function(passagem, params) {
+      if(!params.id) {
+        params.id = vmIndex.list.length + 1
         vmIndex.list.unshift(passagem)
         vmIndex.newRecord = false
-        passagem = {}
+        console.log('salvando novo')
       } else {
         vmIndex.passagem = passagem
+        console.log('editando')
       }
     }
 
@@ -61,15 +65,20 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       {
         id: 1,
         pessoaSaiu: 'Erick Teixeira',
+        senhaQuemSai: '',
         pessoaEntrou: 'Antônio',
+        senhaQuemEntra: '',
         criacao: new Date(),
       },
       {
         id: 2,
         pessoaSaiu: 'Carol',
+        senhaQuemSai: '',
         pessoaEntrou: '',
+        senhaQuemEntra: '',
         criacao: new Date(),
       },
+
     ]
 
     return vmIndex
