@@ -37,23 +37,23 @@
     </div>
 
     <!-- Listagem-->
-    <div class="sc-bg-white">
+    <div class="sc-bg-white" multi-check-group>
       <ul class="sc-accordion">
         <div class="flex-row sc-p-xl sc-m-t-md">
-          <div class="sc-text-blue fcol-xs-6em sc-m-l-lg">
+          <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-checkbox sc-m-t-xs">
+          <div class="sc-text-blue fcol-xs-7em sc-m-l-lg sc-p-l-lg">
             Status
           </div>
-          <div class="sc-text-blue fcol-xs-40">
+          <div class="sc-text-blue fcol-xs-35">
             Saiu
           </div>
           <div class="sc-text-blue fcol-xs-45">
             Entrou
           </div>
-          <div class="sc-text-blue">
+          <div class="sc-text-blue sc-m-l-xxxl">
             Criada em
           </div>
         </div>
-
         <!-- Accordion Head Lista de Passagens -->
         <li
           class="sc-acc-gray-lighter"
@@ -61,28 +61,29 @@
           ng-class="[{'sc-acc-blue': passagem.accOpened}, {'sc-acc-yellow-lighter': !passagem.pessoaEntrou}]"
         >
           <div class="sc-accordion-head flex">
+            <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-checkbox sc-m-l-xl sc-m-t-xxl sc-m-r-sm">
             <div ng-click="passagemServicosCtrl.accToggle(passagem)" class="sc-accordion-elastic-col flex-row">
               <span
                 ng-if="!passagem.pessoaEntrou"
-                class="sc-border-radius sc-bg-yellow sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg"
+                class="sc-border-radius sc-bg-yellow sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg sc-m-r-xxxl"
                 style="font-size: smaller">
                 Pendente
               </span>
               <span
                 ng-if="passagem.pessoaEntrou"
-                class="sc-border-radius sc-bg-green sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg"
+                class="sc-border-radius sc-bg-green sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg sc-m-r-xxxl"
                 style="font-size: smaller">
                 Realizada
               </span>
-              <span class="sc-m-l-xxxl sc-m-t-md fcol-xs-40 sc-text-gray" ng-class="{'sc-text-white': passagem.accOpened}">
+              <span class="sc-m-l-xxxl sc-m-t-md fcol-xs-35 sc-text-gray" ng-class="{'sc-text-white': passagem.accOpened}">
                 <i class="sc-icon sc-text-red sc-icon-seta-8-baixo" ng-class="{'sc-text-white': passagem.accOpened}"></i>
                 {{passagem.pessoaSaiu}}
               </span>
-              <span class="fcol-xs-auto sc-text-gray sc-m-t-md" ng-class="{'sc-text-white': passagem.accOpened}">
+              <span class="fcol-xs-auto sc-text-gray sc-m-t-md sc-m-l-xxl" ng-class="{'sc-text-white': passagem.accOpened}">
                 <i class="sc-icon sc-text-green sc-icon-seta-8-cima" ng-class="{'sc-text-white': passagem.accOpened}"></i>
                 {{passagem.pessoaEntrou}}
               </span>
-              <span class="fcol-xs-6em sc-text-gray sc-m-t-md" ng-class="{'sc-text-white': passagem.accOpened}">
+              <span class="fcol-xs-6em sc-text-gray sc-m-t-md sc-m-r-lg" ng-class="{'sc-text-white': passagem.accOpened}">
                 {{passagem.criacao | date:"dd/MM/yyyy"}}
               </span>
             </div>

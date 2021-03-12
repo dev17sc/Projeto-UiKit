@@ -13,10 +13,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
   function(scTopMessages) {
     vmIndex = this
 
-
     vmIndex.init = function() {
-
-
     }
 
     // Toggle Accordion
@@ -24,20 +21,18 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       passagem.accOpened = !passagem.accOpened
     }
 
-
     //Abrir e Fechar Formulário
     vmIndex.newRecord = false
     vmIndex.formulario = {
       abrir: function(passagem, params) {
         if (!passagem) {
-          vmIndex.params = angular.copy(vmIndex.list)
-          vmIndex.list = {}
           vmIndex.newRecord = true
+          console.log('criando nova passagem')
         } else {
-          vmIndex.params = angular.copy(vmIndex.list)
-          vmIndex.list = {passagem}
+          vmIndex.params = angular.copy(passagem)
           passagem.accOpened = true
           passagem.editing = true
+          console.log('editando a passagem')
         }
       },
       fechar: function(passagem) {
@@ -46,17 +41,29 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       },
     }
 
-
     //Submit do Formulário
     vmIndex.salvar = function(passagem, params) {
-      if(!vmIndex.params.id) {
-        vmIndex.params.id = vmIndex.list.length + 1
+      if(!params || !params.pessoaSaiu) {
+        scTopMessages.openDanger("Quem sai não pode ser vazio",{timeOut: 3000})
+        vmIndex.pessoaSaiuErro = true
+      } else if(params.pessoaEntrou && !params.senhaQuemEntra) {
+        scTopMessages.openDanger("É necessário preencher a senha de quem sai e quem entra para realizar a passagem de serviço!",{timeOut: 3000})
+        vmIndex.senhaErro = true
+      } else if(params.senhaQuemSai && params.senhaQuemEntra && !params.pessoaEntrou) {
+         scTopMessages.openDanger("Quem entra não pode ser vazio",{timeOut: 3000})
+         vmIndex.pessoaEntrouErro = true
+      } else if(!params.id) {
+        scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
+        params.id = vmIndex.list.length + 1
         vmIndex.list.unshift(params)
         vmIndex.newRecord = false
-        passagem.criacao = new Date()
+        params.criacao = new Date()
+        console.log('salvando nova passagem')
       } else {
-        vmIndex.passagem = passagem
+        scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
+        vmIndex.params = passagem
         passagem.editing = false
+        console.log('salvando edição')
       }
     }
 
