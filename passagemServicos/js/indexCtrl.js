@@ -27,6 +27,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       abrir: function(passagem, params) {
         if (!passagem) {
           vmIndex.newRecord = true
+          vmIndex.objetos = []
           console.log('criando nova passagem')
         } else {
           vmIndex.params = angular.copy(passagem)
@@ -72,6 +73,26 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       vmIndex.list.remove(passagem)
     }
 
+    //Adicionar e Remover Objeto
+    vmIndex.objeto = {
+      add: function(params) {
+        vmIndex.objetos.push({})
+      },
+      rmv: function(objeto) {
+        vmIndex.objetos.remove(objeto)
+      }
+    }
+
+    //Adicionar e Remover Item
+    vmIndex.item = {
+      add: function(params) {
+        vmIndex.itens.push({})
+      },
+      rmv: function(item) {
+        vmIndex.itens.remove(item)
+      }
+    }
+
     // Lista de Passagens
     vmIndex.list = [
       {
@@ -91,6 +112,21 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         criacao: new Date(),
       },
 
+    ]
+
+    vmIndex.objetos = [
+      {
+        id: 1,
+        categoria:'Chave',
+      },
+    ]
+
+    vmIndex.itens = [
+      {
+        id: 1,
+        descricao: 'Chave da guarita',
+        quantidade: 1,
+      },
     ]
 
     return vmIndex
