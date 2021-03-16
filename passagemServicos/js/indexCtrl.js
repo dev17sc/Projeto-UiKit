@@ -10,7 +10,7 @@ passagemServicos.run([
 
 passagemServicos.controller("PassagemServicos::IndexCtrl", [
   'scTopMessages',
-  function(scTopMessages) {
+  function(scTopMessages,) {
     vmIndex = this
 
     vmIndex.init = function() {
@@ -28,12 +28,11 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         if (!passagem) {
           vmIndex.newRecord = true
           vmIndex.objetos = []
-          console.log('criando nova passagem')
         } else {
+
           vmIndex.params = angular.copy(passagem)
           passagem.accOpened = true
           passagem.editing = true
-          console.log('editando a passagem')
         }
       },
       fechar: function(passagem) {
@@ -44,52 +43,55 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
 
     //Submit do Formulário
     vmIndex.salvar = function(passagem, params) {
-      if(!params || !params.pessoaSaiu) {
+      if(!vmIndex.params || !vmIndex.params.pessoaSaiu) {
         scTopMessages.openDanger("Quem sai não pode ser vazio",{timeOut: 3000})
         vmIndex.pessoaSaiuErro = true
-      } else if(params.pessoaEntrou && !params.senhaQuemEntra) {
+      } else if(vmIndex.params.pessoaEntrou && !vmIndex.params.senhaQuemEntra) {
         scTopMessages.openDanger("É necessário preencher a senha de quem sai e quem entra para realizar a passagem de serviço!",{timeOut: 3000})
         vmIndex.senhaErro = true
-      } else if(params.senhaQuemSai && params.senhaQuemEntra && !params.pessoaEntrou) {
+      } else if(vmIndex.params.senhaQuemSai && vmIndex.params.senhaQuemEntra && !vmIndex.params.pessoaEntrou) {
          scTopMessages.openDanger("Quem entra não pode ser vazio",{timeOut: 3000})
          vmIndex.pessoaEntrouErro = true
-      } else if(!params.id) {
+      } else if(!vmIndex.params.id) {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
-        params.id = vmIndex.list.length + 1
-        vmIndex.list.unshift(params)
+        vmIndex.params.id = vmIndex.list.length + 1
+        vmIndex.list.unshift(vmIndex.params)
         vmIndex.newRecord = false
-        params.criacao = new Date()
-        console.log('salvando nova passagem')
+        vmIndex.params.criacao = new Date()
+        vmIndex.params = {}
       } else {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
-        vmIndex.params = passagem
+        vmIndex.editando = vmIndex.list.map(function(it) {
+          return it.id
+        }).indexOf(passagem.id)
+        vmIndex.list[vmIndex.editando] = vmIndex.params
         passagem.editing = false
-        console.log('salvando edição')
       }
     }
 
     //Excluir passagem
     vmIndex.excluir = function(passagem) {
+      scTopMessages.openSuccess("Registro excluído com sucesso",{timeOut: 2000})
       vmIndex.list.remove(passagem)
     }
 
     //Adicionar e Remover Objeto
     vmIndex.objeto = {
       add: function(params) {
-        vmIndex.objetos.push({})
+        vmIndex.list.objetos.push({})
       },
       rmv: function(objeto) {
-        vmIndex.objetos.remove(objeto)
+        vmIndex.list.objetos.remove(objeto)
       }
     }
 
     //Adicionar e Remover Item
     vmIndex.item = {
       add: function(params) {
-        vmIndex.itens.push({})
+        vmIndex.list.itens.push({})
       },
       rmv: function(item) {
-        vmIndex.itens.remove(item)
+        vmIndex.list.itens.remove(item)
       }
     }
 
@@ -102,6 +104,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: 'Antônio',
         senhaQuemEntra: '',
         criacao: new Date(),
+        objetos: [{categoria: 'Chave', item: [{descricao: 'Chave da Guarita', quantidade: 1}]}]
       },
       {
         id: 2,
@@ -110,22 +113,6 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: '',
         senhaQuemEntra: '',
         criacao: new Date(),
-      },
-
-    ]
-
-    vmIndex.objetos = [
-      {
-        id: 1,
-        categoria:'Chave',
-      },
-    ]
-
-    vmIndex.itens = [
-      {
-        id: 1,
-        descricao: 'Chave da guarita',
-        quantidade: 1,
       },
     ]
 

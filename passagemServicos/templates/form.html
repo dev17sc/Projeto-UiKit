@@ -34,7 +34,7 @@
               Quem sai:
             </div>
             <div class="sc-input-group">
-              <input ng-model="params.pessoaSaiu" type="text" class="sc-input-group sc-input-default" ng-class="{'error': passagemServicosCtrl.pessoaSaiuErro}">
+              <input ng-model="passagemServicosCtrl.params.pessoaSaiu" type="text" class="sc-input-group sc-input-default" ng-class="{'error': passagemServicosCtrl.pessoaSaiuErro}">
               <button type="button" class="sc-btn sc-btn-blue">
                 <i class="sc-icon sc-icon-lupa-2"></i>
               </button>
@@ -45,7 +45,7 @@
               Senha:
             </div>
             <div class="sc-input-group">
-              <input type="password" class="sc-input-default" ng-model="params.senhaQuemSai" ng-class="{'error': passagemServicosCtrl.senhaErro}">
+              <input type="password" class="sc-input-default" ng-model="passagemServicosCtrl.params.senhaQuemSai" ng-class="{'error': passagemServicosCtrl.senhaErro}">
             </div>
           </div>
           <div class="fcol-xs-22em sc-m-r-xxxl">
@@ -53,7 +53,7 @@
               Quem entra:
             </div>
             <div class="sc-input-group">
-              <input ng-model="params.pessoaEntrou" type="text" class="sc-input-group sc-input-default" ng-class="{'error': passagemServicosCtrl.pessoaEntrouErro}">
+              <input ng-model="passagemServicosCtrl.params.pessoaEntrou" type="text" class="sc-input-group sc-input-default" ng-class="{'error': passagemServicosCtrl.pessoaEntrouErro}">
               <button type="button" class="sc-btn sc-btn-blue">
                 <i class="sc-icon sc-icon-lupa-2"></i>
               </button>
@@ -64,7 +64,7 @@
               Senha:
             </div>
             <div class="sc-input-group">
-              <input ng-model="params.senhaQuemEntra" ng-class="{'error': passagemServicosCtrl.senhaErro}" type="password" class="sc-input-default">
+              <input ng-model="passagemServicosCtrl.params.senhaQuemEntra" ng-class="{'error': passagemServicosCtrl.senhaErro}" type="password" class="sc-input-default">
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@
     </div>
 
     <!-- Include Objetos -->
-    <div id="objetos">
+    <div id="objetos" >
       <div ng-include="'templates/objetos.html'"></div>
     </div>
 

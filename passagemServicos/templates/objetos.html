@@ -16,7 +16,7 @@
         Adicionar
       </button>
       <button
-        ng-click="passagemServicosCtrl.objeto.rmv(objeto); passagemServicosCtrl.item.rmv(item)"
+        ng-click="passagemServicosCtrl.objeto.rmv(objeto)"
         type="button"
         ng-if="passagemServicosCtrl.objetos.length > 0"
         class="sc-btn sc-btn-red sc-btn-thin sc-m-l-lg"
@@ -28,7 +28,7 @@
   </div>
 
   <!-- Selecionar Categoria -->
-  <div ng-repeat="objeto in passagemServicosCtrl.objetos track by $index">
+  <div ng-repeat="objeto in passagemServicosCtrl.list.objetos track by $index">
     <div class="sc-fieldset sc-m-h-lg sc-bg-white sc-m-b-xs">
       <div class="sc-fieldset-head">
         <div class="flex-row sc-p-l-o sc-p-t-o">
@@ -78,7 +78,7 @@
         <div ng-if="!passagemServicosCtrl.itens.length <= 0" class="fcol-xs-100">
           <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-checkbox">
         </div>
-        <div ng-repeat="item in passagemServicosCtrl.itens track by $index" style="background-color: #f1f1f1">
+        <div ng-repeat="item in passagemServicosCtrl.list.itens track by $index" style="background-color: #f1f1f1">
           <div class="flex-row sc-bg-gray-lighter sc-m-b-lg">
             <div class="fcol-xs-60 sc-m-r-lg">
               <div class="sc-text-blue sc-text-bold sc-m-b-xs sc-m-l-xxxl" style="margin-left: 1.7em">
