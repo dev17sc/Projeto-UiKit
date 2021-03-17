@@ -30,8 +30,8 @@
 
     <!-- Corpo do código -->
   <section>
-    <!-- Form Nova Passagem -->
 
+    <!-- Form Nova Passagem -->
     <div id="formNew" >
       <div ng-if="passagemServicosCtrl.newRecord" ng-include="'templates/form.html'"></div>
     </div>
@@ -62,7 +62,7 @@
         >
           <div class="sc-accordion-head flex">
             <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-checkbox sc-m-l-xl sc-m-t-xxl sc-m-r-sm">
-            <div ng-click="passagemServicosCtrl.accToggle(passagem); passagemServicosCtrl.formulario.fechar(passagem)" class="sc-accordion-elastic-col flex-row">
+            <div ng-click="passagemServicosCtrl.accToggle(passagem)" class="sc-accordion-elastic-col flex-row">
               <span
                 ng-if="!passagem.pessoaEntrou"
                 class="sc-border-radius sc-bg-yellow sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg sc-m-r-xxxl"
@@ -100,7 +100,7 @@
                   </span>
                 </li>
                 <li>
-                  <span ng-click="passagemServicosCtrl.formulario.abrir(passagem)" ng-if="!passagem.pessoaEntrou">
+                  <span ng-click="passagemServicosCtrl.formulario.abrir(passagem); passagemServicosCtrl.formulario.fechar(passagem)" ng-if="!passagem.pessoaEntrou">
                     <i class="sc-icon sc-icon-lapis"></i>
                     Editar
                   </span>

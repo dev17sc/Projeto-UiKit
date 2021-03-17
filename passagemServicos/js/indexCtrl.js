@@ -22,20 +22,23 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     }
 
     //Abrir e Fechar Formulário
+    passagem = {}
+    passagem.editing = false
     vmIndex.newRecord = false
     vmIndex.formulario = {
       abrir: function(passagem, params) {
         if (!passagem) {
+          vmIndex.params = {}
           vmIndex.newRecord = true
-          vmIndex.objetos = []
+          vmIndex.objetos = {}
         } else {
-
           vmIndex.params = angular.copy(passagem)
           passagem.accOpened = true
           passagem.editing = true
         }
       },
-      fechar: function(passagem) {
+      fechar: function(passagem, params) {
+        vmIndex.params = {}
         vmIndex.newRecord = false
         passagem.editing = false
       },
@@ -58,7 +61,6 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         vmIndex.list.unshift(vmIndex.params)
         vmIndex.newRecord = false
         vmIndex.params.criacao = new Date()
-        vmIndex.params = {}
       } else {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
         vmIndex.editando = vmIndex.list.map(function(it) {
@@ -66,6 +68,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         }).indexOf(passagem.id)
         vmIndex.list[vmIndex.editando] = vmIndex.params
         passagem.editing = false
+        vmIndex.params = {}
       }
     }
 
