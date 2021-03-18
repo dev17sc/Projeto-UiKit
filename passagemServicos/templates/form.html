@@ -1,7 +1,7 @@
 <form ng-submit="passagemServicosCtrl.salvar(passagem, params)">
   <!-- Accordion Nova Passagem -->
   <ul class="sc-accordion">
-    <li ng-if="!passagem" class="sc-acc-blue">
+    <li ng-if="!passagem.editing" class="sc-acc-blue">
       <div class="sc-accordion-head" ng-click="passagemServicosCtrl.formulario.fechar()">
         <div class="sc-accordion-elastic-col">
           <div class="flex-row">
@@ -34,7 +34,7 @@
               Quem sai:
             </div>
             <div class="sc-input-group">
-              <input ng-model="passagemServicosCtrl.params.pessoaSaiu" type="text" class="sc-input-group sc-input-default" ng-class="{'error': passagemServicosCtrl.pessoaSaiuErro}">
+              <input ng-model="passagem.params.pessoaSaiu" type="text" class="sc-input-group sc-input-default" ng-class="{'error': passagem.pessoaSaiuErro}">
               <button type="button" class="sc-btn sc-btn-blue">
                 <i class="sc-icon sc-icon-lupa-2"></i>
               </button>
@@ -45,7 +45,7 @@
               Senha:
             </div>
             <div class="sc-input-group">
-              <input type="password" class="sc-input-default" ng-model="passagemServicosCtrl.params.senhaQuemSai" ng-class="{'error': passagemServicosCtrl.senhaErro}">
+              <input type="password" class="sc-input-default" ng-model="passagem.params.senhaQuemSai" ng-class="{'error': passagem.senhaErro}">
             </div>
           </div>
           <div class="fcol-xs-22em sc-m-r-xxxl">
@@ -53,7 +53,7 @@
               Quem entra:
             </div>
             <div class="sc-input-group">
-              <input ng-model="passagemServicosCtrl.params.pessoaEntrou" type="text" class="sc-input-group sc-input-default" ng-class="{'error': passagemServicosCtrl.pessoaEntrouErro}">
+              <input ng-model="passagem.params.pessoaEntrou" type="text" class="sc-input-group sc-input-default" ng-class="{'error': passagem.pessoaEntrouErro}">
               <button type="button" class="sc-btn sc-btn-blue">
                 <i class="sc-icon sc-icon-lupa-2"></i>
               </button>
@@ -64,7 +64,7 @@
               Senha:
             </div>
             <div class="sc-input-group">
-              <input ng-model="passagemServicosCtrl.params.senhaQuemEntra" ng-class="{'error': passagemServicosCtrl.senhaErro}" type="password" class="sc-input-default">
+              <input ng-model="passagem.params.senhaQuemEntra" ng-class="{'error': passagem.senhaErro}" type="password" class="sc-input-default">
             </div>
           </div>
         </div>
@@ -122,7 +122,7 @@
 
     <!-- Include Anexos -->
     <div id="anexos">
-      <div ng-if="passagem" ng-include="'templates/anexos.html'"></div>
+      <div ng-if="passagem.editing" ng-include="'templates/anexos.html'"></div>
     </div>
 
       <!-- Botão Salvar e Cancelar -->

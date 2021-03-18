@@ -14,6 +14,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     vmIndex = this
 
     vmIndex.init = function() {
+
     }
 
     // Toggle Accordion
@@ -23,52 +24,54 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
 
     //Abrir e Fechar Formulário
     passagem = {}
-    passagem.editing = false
     vmIndex.newRecord = false
     vmIndex.formulario = {
       abrir: function(passagem, params) {
         if (!passagem) {
-          vmIndex.params = {}
           vmIndex.newRecord = true
-          vmIndex.objetos = {}
+          vmIndex.objetos = []
         } else {
           vmIndex.params = angular.copy(passagem)
+          passagem.params = angular.copy(passagem)
           passagem.accOpened = true
           passagem.editing = true
         }
       },
       fechar: function(passagem, params) {
         vmIndex.params = {}
-        vmIndex.newRecord = false
-        passagem.editing = false
+        if (passagem) {
+          passagem.editing = false
+        } else {
+          vmIndex.newRecord = false
+        }
       },
     }
 
     //Submit do Formulário
     vmIndex.salvar = function(passagem, params) {
-      if(!vmIndex.params || !vmIndex.params.pessoaSaiu) {
+      if(!passagem.params || !passagem.params.pessoaSaiu) {
         scTopMessages.openDanger("Quem sai não pode ser vazio",{timeOut: 3000})
-        vmIndex.pessoaSaiuErro = true
-      } else if(vmIndex.params.pessoaEntrou && !vmIndex.params.senhaQuemEntra) {
+        passagem.pessoaSaiuErro = true
+      } else if(passagem.params.pessoaEntrou && !passagem.params.senhaQuemEntra) {
         scTopMessages.openDanger("É necessário preencher a senha de quem sai e quem entra para realizar a passagem de serviço!",{timeOut: 3000})
-        vmIndex.senhaErro = true
-      } else if(vmIndex.params.senhaQuemSai && vmIndex.params.senhaQuemEntra && !vmIndex.params.pessoaEntrou) {
+        passagem.senhaErro = true
+      } else if(passagem.params.senhaQuemSai && passagem.params.senhaQuemEntra && !passagem.params.pessoaEntrou) {
          scTopMessages.openDanger("Quem entra não pode ser vazio",{timeOut: 3000})
-         vmIndex.pessoaEntrouErro = true
-      } else if(!vmIndex.params.id) {
+         passagem.pessoaEntrouErro = true
+      } else if(!passagem.params.id) {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
-        vmIndex.params.id = vmIndex.list.length + 1
-        vmIndex.list.unshift(vmIndex.params)
+        passagem.params.id = vmIndex.list.length + 1
+        vmIndex.list.unshift(passagem.params)
         vmIndex.newRecord = false
-        vmIndex.params.criacao = new Date()
+        passagem.params.criacao = new Date()
       } else {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
         vmIndex.editando = vmIndex.list.map(function(it) {
           return it.id
-        }).indexOf(passagem.id)
-        vmIndex.list[vmIndex.editando] = vmIndex.params
+        }).indexOf(passagem.params.id)
+        vmIndex.list[vmIndex.editando] = passagem.params
         passagem.editing = false
-        vmIndex.params = {}
+        passagem.params = {}
       }
     }
 
@@ -79,24 +82,26 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     }
 
     //Adicionar e Remover Objeto
-    vmIndex.objeto = {
-      add: function(params) {
-        vmIndex.list.objetos.push({})
+    vmIndex.objetoCtrl = {
+      add: function() {
+        vmIndex.objetos.push({})
       },
-      rmv: function(objeto) {
-        vmIndex.list.objetos.remove(objeto)
+      rmv: function(objeto, item) {
+        vmIndex.objetos.remove(objeto, item)
       }
     }
 
     //Adicionar e Remover Item
-    vmIndex.item = {
-      add: function(params) {
-        vmIndex.list.itens.push({})
-      },
-      rmv: function(item) {
-        vmIndex.list.itens.remove(item)
-      }
-    }
+    // vmIndex.itemCtrl = {
+    //   add: function(passagem) {
+    //     passagem.params.item.push({})
+    //   },
+    //   rmv: function(item, passagem) {
+    //     passagem.params.item.remove(item)
+    //   }
+    // }
+
+    // vmIndex.objeto = []
 
     // Lista de Passagens
     vmIndex.list = [
@@ -107,7 +112,6 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: 'Antônio',
         senhaQuemEntra: '',
         criacao: new Date(),
-        objetos: [{categoria: 'Chave', item: [{descricao: 'Chave da Guarita', quantidade: 1}]}]
       },
       {
         id: 2,
@@ -116,6 +120,18 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: '',
         senhaQuemEntra: '',
         criacao: new Date(),
+      },
+    ]
+
+    vmIndex.objetos = [
+      {
+        categoria: 'Chave',
+        item: [
+          {
+            descricao: 'Chave da Guarita',
+            quantidade: 1,
+          },
+        ]
       },
     ]
 
