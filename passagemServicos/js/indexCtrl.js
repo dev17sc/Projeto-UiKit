@@ -30,6 +30,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         if (!passagem) {
           vmIndex.newRecord = true
           vmIndex.objetos = []
+          vmIndex.itens = []
         } else {
           vmIndex.params = angular.copy(passagem)
           passagem.params = angular.copy(passagem)
@@ -49,7 +50,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
 
     //Submit do Formulário
     vmIndex.salvar = function(passagem, params) {
-      if(!passagem.params || !passagem.params.pessoaSaiu) {
+      if(!passagem || !passagem.params.pessoaSaiu) {
         scTopMessages.openDanger("Quem sai não pode ser vazio",{timeOut: 3000})
         passagem.pessoaSaiuErro = true
       } else if(passagem.params.pessoaEntrou && !passagem.params.senhaQuemEntra) {
@@ -64,6 +65,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         vmIndex.list.unshift(passagem.params)
         vmIndex.newRecord = false
         passagem.params.criacao = new Date()
+        passagem.params.categoria = passagem.categoria
       } else {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
         vmIndex.editando = vmIndex.list.map(function(it) {
@@ -86,22 +88,20 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       add: function() {
         vmIndex.objetos.push({})
       },
-      rmv: function(objeto, item) {
-        vmIndex.objetos.remove(objeto, item)
+      rmv: function(objeto) {
+        vmIndex.objetos.remove(objeto)
       }
     }
 
-    //Adicionar e Remover Item
-    // vmIndex.itemCtrl = {
-    //   add: function(passagem) {
-    //     passagem.params.item.push({})
-    //   },
-    //   rmv: function(item, passagem) {
-    //     passagem.params.item.remove(item)
-    //   }
-    // }
-
-    // vmIndex.objeto = []
+    // Adicionar e Remover Item
+    vmIndex.itemCtrl = {
+      add: function() {
+        vmIndex.itens.push({})
+      },
+      rmv: function(item) {
+        vmIndex.itens.remove(item)
+      }
+    }
 
     // Lista de Passagens
     vmIndex.list = [
@@ -120,18 +120,6 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: '',
         senhaQuemEntra: '',
         criacao: new Date(),
-      },
-    ]
-
-    vmIndex.objetos = [
-      {
-        categoria: 'Chave',
-        item: [
-          {
-            descricao: 'Chave da Guarita',
-            quantidade: 1,
-          },
-        ]
       },
     ]
 

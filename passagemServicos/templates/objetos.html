@@ -16,7 +16,7 @@
         Adicionar
       </button>
       <button
-        ng-click="passagemServicosCtrl.objetoCtrl.rmv(objeto)"
+        ng-click="passagemServicosCtrl.objetoCtrl.rmv(objeto); passagemServicosCtrl.itemCtrl.rmv(item)"
         type="button"
         ng-if="passagemServicosCtrl.objetos.length > 0"
         class="sc-btn sc-btn-red sc-btn-thin sc-m-l-lg"
@@ -28,7 +28,7 @@
   </div>
 
   <!-- Selecionar Categoria -->
-  <div ng-repeat="objeto in passagemServicosCtrl.objetos">
+  <div ng-repeat="objeto in passagemServicosCtrl.objetos track by $index">
     <div class="sc-fieldset sc-m-h-lg sc-bg-white sc-m-b-xs">
       <div class="sc-fieldset-head">
         <div class="flex-row sc-p-l-o sc-p-t-o">
@@ -39,7 +39,8 @@
             <div class="sc-input-group">
               <select ng-model="passagem.params.categoria" class="sc-input-default">
                 <option label="Selecione" class-selected="selected"></option>
-                <option label="Chave" class-selected="selected"></option>
+                <option label="CHAVE"></option>
+                <option label="EQUIPAMENTO"></option>
               </select>
               <span sc-dropdown-menu>
                 <button ng-click="menu.toggle()" type="button" class="sc-btn">
@@ -78,7 +79,7 @@
         <div ng-if="!passagemServicosCtrl.itens.length <= 0" class="fcol-xs-100">
           <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-checkbox">
         </div>
-        <div ng-repeat="item in passagemServicosCtrl.objetos track by $index" style="background-color: #f1f1f1">
+        <div ng-repeat="item in passagemServicosCtrl.itens track by $index" style="background-color: #f1f1f1">
           <div class="flex-row sc-bg-gray-lighter sc-m-b-lg">
             <div class="fcol-xs-60 sc-m-r-lg">
               <div class="sc-text-blue sc-text-bold sc-m-b-xs sc-m-l-xxxl" style="margin-left: 1.7em">
@@ -86,7 +87,7 @@
               </div>
               <div class="sc-input-group">
                 <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-m-t-lg sc-m-r-lg sc-checkbox">
-                <input ng-model="passagem.params.descricao" class="sc-input-default" placeholder="Descreva o item aqui">
+                <input ng-model="params.descricao" class="sc-input-default" placeholder="Descreva o item aqui">
               </div>
             </div>
             <div class="">
@@ -94,11 +95,11 @@
                 Qtd
               </div>
               <div class="sc-input-group">
-                <input type="number" ng-model="passagem.params.quantidade" min="1" max="999" class="sc-input-default align-xs-right">
+                <input type="number" ng-model="params.quantidade" min="1" max="999" class="sc-input-default align-xs-right">
               </div>
             </div>
             <div class="fcol-xs-auto"></div>
-            <i ng-click="passagemServicosCtrl.objetoCtrl.rmv(item)" class="sc-badge-hover-red sc-icon-lixeira-1 sc-m-t-xxxl"></i>
+            <i ng-click="passagemServicosCtrl.itemCtrl.rmv(item)" class="sc-badge-hover-red sc-icon-lixeira-1 sc-m-t-xxxl"></i>
           </div>
         </div>
       </div>

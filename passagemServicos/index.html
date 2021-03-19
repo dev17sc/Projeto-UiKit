@@ -93,13 +93,13 @@
                 <i class="sc-badge-hover-gray sc-icon-reticiencias-v" ng-class="{'sc-badge-hover-white': passagem.accOpened}"></i>
               </div>
               <ul class="sc-dropdown-menu ng-animation-slider pull-right" ng-show="menu.isOn">
-                <li>
+                <li sc-dropdown-close-menu>
                   <span ng-if="!passagem.pessoaEntrou">
                     <i class="sc-icon sc-icon-seta-6-direita-esquerda"></i>
                     Passar Serviço
                   </span>
                 </li>
-                <li>
+                <li sc-dropdown-close-menu>
                   <span ng-click="passagemServicosCtrl.formulario.abrir(passagem)" ng-if="!passagem.pessoaEntrou">
                     <i class="sc-icon sc-icon-lapis"></i>
                     Editar

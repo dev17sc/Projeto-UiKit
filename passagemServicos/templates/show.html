@@ -60,8 +60,8 @@
       </span>
       de acordo com as informações abaixo:
     </div>
-    <div >
-      <div class="sc-text-bold sc-text-blue sc-m-l-lg" style="font-size: larger; padding: 0.2em">
+    <div ng-repeat="objeto in passagemServicosCtrl.objetos track by $index">
+      <div class="sc-text-bold sc-text-blue" style="font-size: larger; padding: 0.2em">
         {{objeto.categoria}}
       </div>
       <div class="sc-fieldset sc-bg-gray-lighter" style="padding: 0">
@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        <div class="sc-bg-gray-lighter">
+        <div ng-repeat="item in passagemServicosCtrl.itens track by $index" class="sc-bg-gray-lighter">
           <i class="sc-m-r-lg sc-icon sc-icon-menos-1 sc-text-gray"></i>
             {{item.descricao}}
           <div class="pull-right">
