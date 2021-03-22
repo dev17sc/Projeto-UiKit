@@ -1,4 +1,4 @@
-<div class="sc-fieldset sc-m-h-lg">
+<div class="sc-fieldset sc-m-h-lg" ng-init="passagemServicosCtrl.newRecord ? passagem = passagemServicosCtrl.passagem : passagem">
   <div class="sc-fieldset-head sc-bg-white">
     <div class="flex-row">
       <div class="sc-text-blue sc-text-bold sc-m-t-xs">
@@ -8,7 +8,7 @@
         <i class="sc-icon sc-icon-duvida-2 sc-text-blue"></i>
       </div>
       <button
-        ng-click="passagemServicosCtrl.objetoCtrl.add()"
+        ng-click="passagemServicosCtrl.objetoCtrl.add(passagem)"
         type="button"
         class="sc-btn sc-btn-green sc-btn-thin sc-m-l-lg"
         style="font-size: smaller;"
@@ -28,7 +28,7 @@
   </div>
 
   <!-- Selecionar Categoria -->
-  <div ng-repeat="objeto in passagemServicosCtrl.objetos track by $index">
+  <div ng-repeat="objeto in passagem.params.objetos">
     <div class="sc-fieldset sc-m-h-lg sc-bg-white sc-m-b-xs">
       <div class="sc-fieldset-head">
         <div class="flex-row sc-p-l-o sc-p-t-o">
@@ -36,32 +36,45 @@
             <div class="sc-text-blue sc-text-bold sc-m-b-xs">
               Categoria:
             </div>
-            <div class="sc-input-group">
-              <select ng-model="passagem.params.categoria" class="sc-input-default">
+            <div ng-if="!passagemServicosCtrl.novaCategoria"class="sc-input-group">
+              <select ng-model="objeto.categoria" class="sc-input-default">
                 <option label="Selecione" class-selected="selected"></option>
-                <option label="CHAVE"></option>
-                <option label="EQUIPAMENTO"></option>
+                <option ng-repeat="categoria in passagemServicosCtrl.categorias track by $index" value="{{categoria.id}}">{{categoria.nome}}</option>
               </select>
               <span sc-dropdown-menu>
                 <button ng-click="menu.toggle()" type="button" class="sc-btn">
                   <i class="sc-icon sc-icon-reticiencias-v"></i>
                 </button>
                 <ul class="sc-dropdown-menu ng-animation-slider pull-right" ng-show="menu.isOn">
-                  <li>
-                    <span>
+                  <li sc-dropdown-close-menu>
+                    <span ng-click="passagemServicosCtrl.categoriaCtrl.show(novaCategoria)">
                       <i class="sc-text-green sc-icon sc-icon-mais-1"></i>
                       Nova Categoria
+                    </span>
+                    <span ng-if="objeto.categoria">
+                      <i class="sc-text-yellow sc-icon sc-icon-lapis"></i>
+                      Editar
+                    </span>
+                    <span ng-if="objeto.categoria">
+                      <i class="sc-text-red sc-icon sc-icon-lixeira-1"></i>
+                      Excluir
                     </span>
                   </li>
                 </ul>
               </span>
+            </div>
+            <!-- Nova Categoria -->
+            <div ng-if="passagemServicosCtrl.novaCategoria" class="sc-input-group">
+              <input type="text" class="sc-input-default" ng-model="categoria.adicionar">
+              <i ng-click="passagemServicosCtrl.categoriaCtrl.hide(novaCategoria)" class="sc-btn sc-btn-red sc-icon sc-icon-fechar-1"></i>
+              <i ng-click="passagemServicosCtrl.categoriaCtrl.add()" class="sc-btn sc-btn-green sc-icon sc-icon-visto-1"></i>
             </div>
           </div>
 
           <!-- Botão Adicionar Item -->
           <div class="sc-m-r-xxxl sc-m-t-xl">
             <button
-              ng-click="passagemServicosCtrl.itemCtrl.add()"
+              ng-click="passagemServicosCtrl.itemCtrl.add(objeto)"
               type="button"
               class="sc-btn sc-btn-green sc-btn-thin"
               style="font-size: smaller;"
@@ -76,10 +89,10 @@
 
       <!-- Descrição e Qtd do item -->
       <div multi-check-group class="sc-bg-gray-lighter">
-        <div ng-if="!passagemServicosCtrl.itens.length <= 0" class="fcol-xs-100">
+        <div ng-if="!objeto.itens.length <= 0" class="fcol-xs-100">
           <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-checkbox">
         </div>
-        <div ng-repeat="item in passagemServicosCtrl.itens track by $index" style="background-color: #f1f1f1">
+        <div ng-repeat="item in objeto.itens" style="background-color: #f1f1f1">
           <div class="flex-row sc-bg-gray-lighter sc-m-b-lg">
             <div class="fcol-xs-60 sc-m-r-lg">
               <div class="sc-text-blue sc-text-bold sc-m-b-xs sc-m-l-xxxl" style="margin-left: 1.7em">
@@ -87,7 +100,7 @@
               </div>
               <div class="sc-input-group">
                 <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-m-t-lg sc-m-r-lg sc-checkbox">
-                <input ng-model="params.descricao" class="sc-input-default" placeholder="Descreva o item aqui">
+                <input ng-model="item.descricao" class="sc-input-default" placeholder="Descreva o item aqui">
               </div>
             </div>
             <div class="">
@@ -95,7 +108,7 @@
                 Qtd
               </div>
               <div class="sc-input-group">
-                <input type="number" ng-model="params.quantidade" min="1" max="999" class="sc-input-default align-xs-right">
+                <input type="number" ng-model="item.quantidade" min="1" max="999" class="sc-input-default align-xs-right">
               </div>
             </div>
             <div class="fcol-xs-auto"></div>
@@ -105,7 +118,7 @@
       </div>
     </div>
   </div>
-  <div ng-if="passagemServicosCtrl.objetos.length <= 0" class="sc-text-blue sc-m-t-sm align-center">
+  <div ng-if="passagem.params.objetos.length <= 0" class="sc-text-blue sc-m-t-sm align-center">
     <i class="sc-icon sc-icon-exclamacao-2"></i>
     Nenhum objeto cadastrado
   </div>

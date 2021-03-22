@@ -29,11 +29,11 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       abrir: function(passagem, params) {
         if (!passagem) {
           vmIndex.newRecord = true
-          vmIndex.objetos = []
-          vmIndex.itens = []
+          vmIndex.passagem = { params: {}, objetos: [] }
         } else {
           vmIndex.params = angular.copy(passagem)
           passagem.params = angular.copy(passagem)
+          passagem.params.objetos ||= []
           passagem.accOpened = true
           passagem.editing = true
         }
@@ -85,23 +85,58 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
 
     //Adicionar e Remover Objeto
     vmIndex.objetoCtrl = {
-      add: function() {
-        vmIndex.objetos.push({})
+      add: function(passagem) {
+        obj = { itens: []}
+        passagem.params.objetos ||= []
+        passagem.params.objetos.push(obj)
       },
-      rmv: function(objeto) {
-        vmIndex.objetos.remove(objeto)
+      rmv: function(objeto, passagem) {
+        passagem.params.objetos ||= []
+        console.log(passagem)
+        passagem.params.objetos.remove(objeto)
       }
     }
 
     // Adicionar e Remover Item
     vmIndex.itemCtrl = {
-      add: function() {
-        vmIndex.itens.push({})
+      add: function(objeto) {
+        item = { descricao: '', quantidade: 1}
+        objeto.itens.push(item)
       },
-      rmv: function(item) {
-        vmIndex.itens.remove(item)
+      rmv: function(item, objeto) {
+        console.log(objeto)
+        objeto.itens.remove(item)
       }
     }
+
+    // Adicionar e Remover Categoria
+    vmIndex.categoriaCtrl = {
+      show: function(novaCategoria) {
+        vmIndex.novaCategoria = true
+      },
+      hide: function(novaCategoria) {
+        vmIndex.novaCategoria = false
+      },
+      add: function(novaCategoria) {
+        vmIndex.categorias.push({})
+        vmIndex.novaCategoria = false
+      },
+      rmv: function(categoria) {
+        vmIndex.categorias.remove(categoria)
+      },
+    }
+
+    // Lista de Categorias
+    vmIndex.categorias = [
+      {
+        id: 1,
+        nome: 'CHAVE'
+      },
+      {
+        id: 2,
+        nome: 'EQUIPAMENTO'
+      }
+    ]
 
     // Lista de Passagens
     vmIndex.list = [
@@ -112,6 +147,8 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: 'Antônio',
         senhaQuemEntra: '',
         criacao: new Date(),
+        objetos: [],
+        itens: [],
       },
       {
         id: 2,
@@ -120,6 +157,8 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: '',
         senhaQuemEntra: '',
         criacao: new Date(),
+        objetos: [],
+        itens: [],
       },
     ]
 
