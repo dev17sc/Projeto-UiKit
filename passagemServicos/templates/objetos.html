@@ -16,9 +16,9 @@
         Adicionar
       </button>
       <button
-        ng-click="passagemServicosCtrl.objetoCtrl.rmv(objeto); passagemServicosCtrl.itemCtrl.rmv(item)"
+        ng-click="objeto.itens.splice($index, 1); passagem.params.objetos.splice($index, 1)"
         type="button"
-        ng-if="passagemServicosCtrl.objetos.length > 0"
+        ng-if="passagem.params.objetos"
         class="sc-btn sc-btn-red sc-btn-thin sc-m-l-lg"
         style="font-size: smaller;"
       >
@@ -37,9 +37,9 @@
               Categoria:
             </div>
             <div ng-if="!passagemServicosCtrl.novaCategoria"class="sc-input-group">
-              <select ng-model="objeto.categoria" class="sc-input-default">
+              <select ng-model="categoria.nome" class="sc-input-default">
                 <option label="Selecione" class-selected="selected"></option>
-                <option ng-repeat="categoria in passagemServicosCtrl.categorias track by $index" value="{{categoria.id}}">{{categoria.nome}}</option>
+                <option ng-repeat="categoria in passagemServicosCtrl.categorias" value="{{categoria.id}}">{{categoria.nome}}</option>
               </select>
               <span sc-dropdown-menu>
                 <button ng-click="menu.toggle()" type="button" class="sc-btn">
@@ -83,7 +83,7 @@
               Item
             </button>
           </div>
-          <i ng-click="passagemServicosCtrl.objetoCtrl.rmv(objeto)" class="sc-badge-hover-red sc-icon-lixeira-1 sc-m-t-xl sc-text-sm"></i>
+          <i ng-click="passagem.params.objetos.splice($index, 1)" class="sc-badge-hover-red sc-icon-lixeira-1 sc-m-t-xl sc-text-sm"></i>
         </div>
       </div>
 
@@ -112,13 +112,13 @@
               </div>
             </div>
             <div class="fcol-xs-auto"></div>
-            <i ng-click="passagemServicosCtrl.itemCtrl.rmv(item)" class="sc-badge-hover-red sc-icon-lixeira-1 sc-m-t-xxxl"></i>
+            <i ng-click="objeto.itens.splice($index, 1)" class="sc-badge-hover-red sc-icon-lixeira-1 sc-m-t-xxxl"></i>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div ng-if="passagem.params.objetos.length <= 0" class="sc-text-blue sc-m-t-sm align-center">
+  <div ng-if="!passagem.params.objetos" class="sc-text-blue sc-m-t-sm align-center">
     <i class="sc-icon sc-icon-exclamacao-2"></i>
     Nenhum objeto cadastrado
   </div>

@@ -65,7 +65,6 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         vmIndex.list.unshift(passagem.params)
         vmIndex.newRecord = false
         passagem.params.criacao = new Date()
-        passagem.params.categoria = passagem.categoria
       } else {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
         vmIndex.editando = vmIndex.list.map(function(it) {
@@ -91,9 +90,11 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         passagem.params.objetos.push(obj)
       },
       rmv: function(objeto, passagem) {
+        passagem = {}
+        passagem.params = {}
         passagem.params.objetos ||= []
-        console.log(passagem)
         passagem.params.objetos.remove(objeto)
+        console.log('excluindo')
       }
     }
 
@@ -101,15 +102,19 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     vmIndex.itemCtrl = {
       add: function(objeto) {
         item = { descricao: '', quantidade: 1}
+        objeto.itens ||= []
         objeto.itens.push(item)
       },
       rmv: function(item, objeto) {
-        console.log(objeto)
+        objeto = {}
+        objeto.itens ||= []
         objeto.itens.remove(item)
+        console.log('excluindo')
       }
     }
 
     // Adicionar e Remover Categoria
+    categoria = {}
     vmIndex.categoriaCtrl = {
       show: function(novaCategoria) {
         vmIndex.novaCategoria = true
@@ -117,7 +122,8 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       hide: function(novaCategoria) {
         vmIndex.novaCategoria = false
       },
-      add: function(novaCategoria) {
+      add: function(categoria, novaCategoria) {
+        categoria.params.id = vmIndex.categorias.length + 1
         vmIndex.categorias.push({})
         vmIndex.novaCategoria = false
       },
@@ -130,11 +136,11 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     vmIndex.categorias = [
       {
         id: 1,
-        nome: 'CHAVE'
+        nome: 'CHAVE',
       },
       {
         id: 2,
-        nome: 'EQUIPAMENTO'
+        nome: 'EQUIPAMENTO',
       }
     ]
 
@@ -147,8 +153,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: 'Antônio',
         senhaQuemEntra: '',
         criacao: new Date(),
-        objetos: [],
-        itens: [],
+        objetos: [{itens: []}],
       },
       {
         id: 2,
@@ -157,8 +162,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: '',
         senhaQuemEntra: '',
         criacao: new Date(),
-        objetos: [],
-        itens: [],
+        objetos: [{itens: []}],
       },
     ]
 
