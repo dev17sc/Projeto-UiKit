@@ -16,7 +16,7 @@
         Adicionar
       </button>
       <button
-        ng-click="objeto.itens.splice($index, 1); passagem.params.objetos.splice($index, 1)"
+        ng-click="objeto.itens.splice($index); passagem.params.objetos.splice($index)"
         type="button"
         ng-if="passagem.params.objetos"
         class="sc-btn sc-btn-red sc-btn-thin sc-m-l-lg"
@@ -39,7 +39,7 @@
             <div ng-if="!passagemServicosCtrl.novaCategoria"class="sc-input-group">
               <select ng-model="categoria.nome" class="sc-input-default">
                 <option label="Selecione" class-selected="selected"></option>
-                <option ng-repeat="categoria in passagemServicosCtrl.categorias" value="{{categoria.id}}">{{categoria.nome}}</option>
+                <option ng-repeat="categoria in passagemServicosCtrl.categorias track by $index" value="{{categoria.id}}">{{categoria.nome || passagem.categoria.nome}}</option>
               </select>
               <span sc-dropdown-menu>
                 <button ng-click="menu.toggle()" type="button" class="sc-btn">
@@ -47,15 +47,15 @@
                 </button>
                 <ul class="sc-dropdown-menu ng-animation-slider pull-right" ng-show="menu.isOn">
                   <li sc-dropdown-close-menu>
-                    <span ng-click="passagemServicosCtrl.categoriaCtrl.show(novaCategoria)">
+                    <span ng-click="passagemServicosCtrl.categoriaCtrl.show(categoria, novaCategoria)">
                       <i class="sc-text-green sc-icon sc-icon-mais-1"></i>
                       Nova Categoria
                     </span>
-                    <span ng-if="objeto.categoria">
+                    <span ng-if="passagem.params.categoria">
                       <i class="sc-text-yellow sc-icon sc-icon-lapis"></i>
                       Editar
                     </span>
-                    <span ng-if="objeto.categoria">
+                    <span ng-click="passagemServicosCtrl.categorias.splice($index, 1)" ng-if="passagem.params.categoria">
                       <i class="sc-text-red sc-icon sc-icon-lixeira-1"></i>
                       Excluir
                     </span>
@@ -65,9 +65,9 @@
             </div>
             <!-- Nova Categoria -->
             <div ng-if="passagemServicosCtrl.novaCategoria" class="sc-input-group">
-              <input type="text" class="sc-input-default" ng-model="categoria.adicionar">
+              <input type="text" class="sc-input-default" ng-model="passagem.categoria.nome">
               <i ng-click="passagemServicosCtrl.categoriaCtrl.hide(novaCategoria)" class="sc-btn sc-btn-red sc-icon sc-icon-fechar-1"></i>
-              <i ng-click="passagemServicosCtrl.categoriaCtrl.add()" class="sc-btn sc-btn-green sc-icon sc-icon-visto-1"></i>
+              <i ng-click="passagemServicosCtrl.categoriaCtrl.add(categoria,passagem)" class="sc-btn sc-btn-green sc-icon sc-icon-visto-1"></i>
             </div>
           </div>
 
@@ -100,7 +100,7 @@
               </div>
               <div class="sc-input-group">
                 <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-m-t-lg sc-m-r-lg sc-checkbox">
-                <input ng-model="item.descricao" class="sc-input-default" placeholder="Descreva o item aqui">
+                <input ng-model="objeto.item.descricao" class="sc-input-default" placeholder="Descreva o item aqui">
               </div>
             </div>
             <div class="">
@@ -108,7 +108,7 @@
                 Qtd
               </div>
               <div class="sc-input-group">
-                <input type="number" ng-model="item.quantidade" min="1" max="999" class="sc-input-default align-xs-right">
+                <input type="number" ng-model="objeto.item.quantidade" min="1" max="999" class="sc-input-default align-xs-right">
               </div>
             </div>
             <div class="fcol-xs-auto"></div>

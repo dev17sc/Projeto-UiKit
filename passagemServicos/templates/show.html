@@ -63,7 +63,7 @@
     <div>
       <div ng-repeat="categoria in passagemServicosCtrl.categorias">
         <div class="sc-text-bold sc-text-blue" style="font-size: larger; padding: 0.2em">
-          {{categoria.nome}}
+          {{categoria.nome || passagem.categoria.nome}}
         </div>
         <div class="sc-fieldset sc-bg-gray-lighter" style="padding: 0">
           <div class="sc-fieldset-head" style="background-color: #f1f1f1">

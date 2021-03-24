@@ -29,11 +29,10 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       abrir: function(passagem, params) {
         if (!passagem) {
           vmIndex.newRecord = true
-          vmIndex.passagem = { params: {}, objetos: [] }
+          vmIndex.passagem = { params: {}, objetos:[{itens: [{}]}], categorias: [{}]}
         } else {
           vmIndex.params = angular.copy(passagem)
           passagem.params = angular.copy(passagem)
-          passagem.params.objetos ||= []
           passagem.accOpened = true
           passagem.editing = true
         }
@@ -65,6 +64,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         vmIndex.list.unshift(passagem.params)
         vmIndex.newRecord = false
         passagem.params.criacao = new Date()
+        vmIndex.categorias.unshift(passagem)
       } else {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
         vmIndex.editando = vmIndex.list.map(function(it) {
@@ -118,13 +118,14 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     vmIndex.categoriaCtrl = {
       show: function(novaCategoria) {
         vmIndex.novaCategoria = true
+        vmIndex.passagem.categoria = {}
       },
-      hide: function(novaCategoria) {
+      hide: function(passagem, novaCategoria) {
         vmIndex.novaCategoria = false
       },
-      add: function(categoria, novaCategoria) {
-        categoria.params.id = vmIndex.categorias.length + 1
-        vmIndex.categorias.push({})
+      add: function(passagem, categoria, novaCategoria) {
+        vmIndex.passagem.categoria.id = vmIndex.categorias.length + 1
+        vmIndex.categorias.unshift(categoria)
         vmIndex.novaCategoria = false
       },
       rmv: function(categoria) {
@@ -153,7 +154,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: 'Antônio',
         senhaQuemEntra: '',
         criacao: new Date(),
-        objetos: [{itens: []}],
+        objetos: [{itens: [{}]}],
       },
       {
         id: 2,
