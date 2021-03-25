@@ -1,0 +1,79 @@
+<div class="flex-row">
+  <div class="col-xs-12 col-md-6">
+    <div class="sc-fieldset">
+      <div class="sc-fieldset-head">
+        <div class="sc-text-blue sc-text-bold">
+          {{pessoa.nome}}
+        </div>
+      </div>
+      <div class="sc-text-gray">
+        <div ng-show="pessoa.cpf">
+          <i class="sc-icon-cartao-1 sc-p-r-md left"></i>
+          <div class="ng-binding">CPF: {{pessoa.cpf}}</div>
+        </div>
+        <div ng-show="pessoa.rg">
+          <i class="sc-icon-cartao-1 sc-p-r-md left"></i>
+          <div class="ng-binding">RG: {{pessoa.rg}}</div>
+        </div>
+        <div ng-show="pessoa.nascimento">
+          <i class="sc-icon-calendario-2 sc-p-r-md left"></i>
+          <div class="ng-binding">Nascimento: {{pessoa.nascimento | date: "dd/MM/yyyy"}}</div>
+        </div>
+        <div ng-show="pessoa.profissao">
+          <i class="sc-icon-maleta sc-p-r-md left"></i>
+          <div class="ng-binding">Profissão: {{pessoa.profissao}}</div>
+        </div>
+        <div ng-show="pessoa.email">
+          <i class="sc-icon-carta-2 sc-p-r-md left"></i>
+          <div class="ng-binding">E-mail: {{pessoa.email}}</div>
+        </div>
+        <div ng-show="pessoa.emailAlternativo">
+          <i class="sc-icon-carta-2 sc-p-r-md left"></i>
+          <div class="ng-binding">E-mails Alternativos: {{pessoa.emailAlternativo}}</div>
+        </div>
+        <div ng-show="pessoa.telefone">
+          <i class="sc-icon-telefone-1 sc-p-r-md left"></i>
+          <div class="ng-binding">Telefones: {{pessoa.telefone}}</div>
+        </div>
+        <div ng-show="pessoa.tituloEndereco">
+          <i class="sc-icon-local sc-p-r-md left"></i>
+          <div class="ng-binding">
+            {{pessoa.tituloEndereco}},
+            {{pessoa.cep}},
+            {{pessoa.cidade}},
+            {{pessoa.logradouro}},
+            {{pessoa.numeroComplemento}},
+            {{pessoa.bairro}}
+          </div>
+        </div>
+        <div ng-show="pessoa.observacoes">
+          <i class="sc-icon-arquivo-4 sc-p-r-md left"></i>
+          <div class="ng-binding">{{pessoa.observacoes}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <div class="sc-fieldset">
+      <div class="sc-fieldset-head">
+        <span class="sc-text-blue sc-text-bold">Anexos</span>
+      </div>
+      <div>
+        <div class="sc-text-thin sc-p-md sc-p-b-xxxl sc-p-t-xs sc-text-lg align-center sc-text-blue ng-binding">
+          Nenhum anexo disponível!
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="pull-right" ng-hide="indexCtrl.formFact.opened">
+      <button class="sc-btn sc-btn-thin sc-btn-red" ng-click="indexCtrl.excluirPagador(pessoa)">
+        <i class="sc-icon-lixeira-1"></i> Excluir
+      </button>
+    </div>
+    <div class="pull-right sc-m-r-sm" ng-hide="indexCtrl.formFact.opened">
+      <button class="sc-btn sc-btn-thin" ng-click="indexCtrl.formFact.init(pessoa); form" type="button">
+        <i class="sc-icon-lapis"></i> Editar
+      </button>
+    </div> -->
+  </div>
+</div>

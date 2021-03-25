@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Passagem de Serviços</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./css/prototype.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  <link rel="stylesheet" type="text/css" href="./css/uikit.css" />
+  <link rel="stylesheet" type="text/css" href="./css/uikit-sample.css" />
+  <link rel="stylesheet" type="text/css" href="./icons/sc-icons.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+</head>
+<body
+  style="overflow: auto;"
+  ng-app="passagemServicos"
+  ng-controller="PassagemServicos::IndexCtrl as passagemServicosCtrl"
+  ng-init="passagemServicosCtrl.init()"
+>
+  <div class="sc-bg-blue sc-box-shadow-z1">
+    <span>
+      <img src="assets/img/seu_condominio.svg" style="max-width: 9em">
+    </span>
+  </div>
+
+  <!-- Top Bar Content -->
+  <div id="topBarContent">
+    <div ng-include="'templates/topBarContent.html'"></div>
+  </div>
+
+    <!-- Corpo do código -->
+  <section>
+
+    <!-- Form Nova Passagem -->
+    <div id="formNew" >
+      <div ng-if="passagemServicosCtrl.newRecord" ng-include="'templates/form.html'"></div>
+    </div>
+
+    <!-- Listagem-->
+    <div class="sc-bg-white" multi-check-group>
+      <ul class="sc-accordion">
+        <div class="flex-row sc-p-xl sc-m-t-md">
+          <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-checkbox sc-m-t-xs">
+          <div class="sc-text-blue fcol-xs-7em sc-m-l-lg sc-p-l-lg">
+            Status
+          </div>
+          <div class="sc-text-blue fcol-xs-35">
+            Saiu
+          </div>
+          <div class="sc-text-blue fcol-xs-45">
+            Entrou
+          </div>
+          <div class="sc-text-blue sc-m-l-xxxl">
+            Criada em
+          </div>
+        </div>
+        <!-- Accordion Head Lista de Passagens -->
+        <li
+          class="sc-acc-gray-lighter"
+          ng-repeat="passagem in passagemServicosCtrl.list"
+          ng-class="[{'sc-acc-blue': passagem.accOpened}, {'sc-acc-yellow-lighter': !passagem.pessoaEntrou}]"
+        >
+          <div class="sc-accordion-head flex">
+            <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-checkbox sc-m-l-xl sc-m-t-xxl sc-m-r-sm">
+            <div ng-click="passagemServicosCtrl.accToggle(passagem)" class="sc-accordion-elastic-col flex-row">
+              <span
+                ng-if="!passagem.pessoaEntrou"
+                class="sc-border-radius sc-bg-yellow sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg sc-m-r-xxxl"
+                style="font-size: smaller">
+                Pendente
+              </span>
+              <span
+                ng-if="passagem.pessoaEntrou"
+                class="sc-border-radius sc-bg-green sc-text-white sc-p-h-md sc-p-v-xs sc-m-t-md sc-m-b-lg sc-m-r-xxxl"
+                style="font-size: smaller">
+                Realizada
+              </span>
+              <span class="sc-m-l-xxxl sc-m-t-md fcol-xs-35 sc-text-gray" ng-class="{'sc-text-white': passagem.accOpened}">
+                <i class="sc-icon sc-text-red sc-icon-seta-8-baixo" ng-class="{'sc-text-white': passagem.accOpened}"></i>
+                {{passagem.pessoaSaiu}}
+              </span>
+              <span class="fcol-xs-auto sc-text-gray sc-m-t-md sc-m-l-xxl" ng-class="{'sc-text-white': passagem.accOpened}">
+                <i class="sc-icon sc-text-green sc-icon-seta-8-cima" ng-class="{'sc-text-white': passagem.accOpened}"></i>
+                {{passagem.pessoaEntrou}}
+              </span>
+              <span class="fcol-xs-6em sc-text-gray sc-m-t-md sc-m-r-lg" ng-class="{'sc-text-white': passagem.accOpened}">
+                {{passagem.criacao | date:"dd/MM/yyyy"}}
+              </span>
+            </div>
+            <!-- Menu da Lista de Passagens -->
+            <span sc-dropdown-menu class="sc-m-t-xs">
+              <div ng-click="menu.toggle()" sc-stop-click>
+                <i class="sc-badge-hover-gray sc-icon-reticiencias-v" ng-class="{'sc-badge-hover-white': passagem.accOpened}"></i>
+              </div>
+              <ul class="sc-dropdown-menu ng-animation-slider pull-right" ng-show="menu.isOn">
+                <li sc-dropdown-close-menu>
+                  <span ng-if="!passagem.pessoaEntrou">
+                    <i class="sc-icon sc-icon-seta-6-direita-esquerda"></i>
+                    Passar Serviço
+                  </span>
+                </li>
+                <li sc-dropdown-close-menu>
+                  <span ng-click="passagemServicosCtrl.formulario.abrir(passagem)" ng-if="!passagem.pessoaEntrou">
+                    <i class="sc-icon sc-icon-lapis"></i>
+                    Editar
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    Duplicar
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <i class="sc-icon sc-icon-banir"></i>
+                    Desativar
+                  </span>
+                </li>
+                <li>
+                  <span ng-click="passagemServicosCtrl.excluir(passagem)">
+                    <i class="sc-icon sc-icon-lixeira-1"></i>
+                    Excluir
+                  </span>
+                </li>
+              </ul>
+            </span>
+          </div>
+
+          <!-- Show e form edit -->
+          <div ng-if="passagem.accOpened">
+            <div id="formEditing">
+              <div ng-if="passagem.editing" ng-include="'templates/form.html'"></div>
+            </div>
+            <div id="show">
+              <div ng-if="!passagem.editing" ng-include="'templates/show.html'"></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div ng-if="passagemServicosCtrl.list.length == 0" class="sc-text-blue align-center sc-m-t-lg sc-m-b-lg">
+      <i class="sc-icon sc-icon-exclamacao-2 "></i>
+      Nenhuma passagem de serviço encontrada!
+    </div>
+  </section>
+
+  <!-- Top Messages -->
+  <div class="sc-top-messages ng-animation-slider" ng-class="scTopMessages.theme"
+    ng-click="scTopMessages.close()" ng-if="scTopMessages.toggler.opened" style="display: block;">
+    <div class="sc-text-white align-center sc-text-shadow-dark flex align-items-center">
+      <div class="sc-top-messages-msgs sc-cursor-default">
+        <p ng-repeat="msg in scTopMessages.messages track by $index" ng-bind="scTopMessages.messages"></p>
+      </div>
+      <div class="sc-top-messages-close-button">
+        <i class="sc-icon-fechar-1 sc-cursor-pointer"></i>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="./js/prototype.js"></script>
+  <script type="text/javascript" src="./js/modernizr.js"></script>
+  <script type="text/javascript" src="./js/indexCtrl.js"></script>
+  <script type="text/javascript" src="./js/showCtrl.js" ></script>
+  <script type="text/javascript" src="./js/formCtrl.js" ></script>
+</body>
+</html>

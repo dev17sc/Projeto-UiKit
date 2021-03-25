@@ -1,0 +1,73 @@
+<div class="sc-fieldset">
+  <div class="sc-fieldset-head flex">
+    <span class="sc-text-blue sc-text-bold sc-m-t-sm">Reajuste Contratual</span>
+    <label class="sc-toggle sc-toggle-true-blue sc-toggle-false-red sc-m-l-lg">
+      <input type="checkbox" ng-model="formFact.params.reajuste_contratual"/>
+      <span label-true="Reajustar" label-false="Não Reajustar" style="font-size: 0.9em"></span>
+    </label>
+  </div>
+  <div class="sc-text-blue sc-text-lg align-center" ng-hide="formFact.params.reajuste_contratual">Não será reajustado nenhum débito desta pessoa!</div>
+  <div ng-if="formFact.params.reajuste_contratual">
+    <div class="flex-row sc-bg-gray-lighter">
+      <div class="fcol-md-15">
+        <div class="sc-label">Tipo de Reajuste:</div>
+        <div class="sc-btn-group">
+          <button class="sc-btn" type="button">
+            <i class="sc-icon sc-icon-dinheiro-2"></i> Valor
+          </button>
+          <button class="sc-btn sc-btn-blue" type="button" style=""><i class="sc-icon sc-icon-grafico-3"></i> Índice
+          </button>
+        </div>
+      </div>
+      <div class="fcol-md-13em" style="">
+        <label>
+          <div class="sc-label ng-binding">Índice Reajuste:</div>
+          <select class="sc-input-default" style="">
+            <option class="ng-binding">Selecione</option>
+            <option label="INPC (IBGE) - BR">INPC (IBGE) - BR</option>
+            <option label="IGP-DI (FGV) - BR">IGP-DI (FGV) - BR</option>
+            <option label="IPA-M (FGV) - BR">IPA-M (FGV) - BR</option>
+            <option label="IPA-DI (FGV) - BR">IPA-DI (FGV) - BR</option>
+            <option label="INCC-M (FGV) - BR">INCC-M (FGV) - BR</option>
+            <option label="INCC-DI (FGV) - BR">INCC-DI (FGV) - BR</option>
+            <option label="TJ-MG (TJMG) - BR">TJ-MG (TJMG) - BR</option>
+            <option label="Poupança - BR">Poupança - BR</option>
+            <option label="IPC-DI (FGV) - BR">IPC-DI (FGV) - BR</option>
+            <option label="Salário Mínimo - BR">Salário Mínimo - BR</option>
+            <option label="ENCOGE (JEBR0718N) - BR">ENCOGE (JEBR0718N) - BR</option>
+            <option label="ENCOG (JEBR0719N) - BR">ENCOG (JEBR0719N) - BR</option>
+            <option label="ENCOGE (JEBR0620N) - BR">ENCOGE (JEBR0620N) - BR</option>
+            <option label="TJ-SP (TJSP) - BR">TJ-SP (TJSP) - BR</option>
+            <option label="ENCONGE (JEBR0820N) - BR">ENCONGE (JEBR0820N) - BR</option>
+            <option label="IGP-M (FGV) - BR" selected="selected">IGP-M (FGV) - BR</option>
+          </select>
+        </label>
+      </div>
+      <div class="fcol-md-18em">
+        <div class="sc-label ng-binding">Reajustar a cada:</div>
+        <div class="sc-input-group">
+          <input class="sc-input-default" style="width: 5em; min-width: 5em;" type="number" ng-model="formFact.params.reajustar">
+          <select class="sc-input-default" style="">
+            <option value="" class="ng-binding">Selecione</option>
+            <option label="Dias" value="string:day">Dias</option>
+            <option label="Meses" value="string:month" selected="selected">Meses</option>
+            <option label="Anos" value="string:year">Anos</option>
+          </select>
+        </div>
+      </div>
+      <div class="fcol-md-15em sc-p-l-xxxl">
+        <label>
+          <div class="sc-label ng-binding">Ultimo reajuste em:</div>
+          <input class="sc-input-default" type="date" style="" ng-model="formFact.params.ultimoReajuste">
+        </label>
+      </div>
+      <div class="fcol-md-10">
+        <div class="sc-label ng-binding">Notificar reajuste?</div>
+        <label class="sc-toggle sc-m-t-sm">
+          <input type="checkbox" style="" ng-model="formFact.params.notificarReajuste">
+          <span label-false="Não" label-true="Sim"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

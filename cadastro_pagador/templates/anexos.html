@@ -1,0 +1,24 @@
+<div class="sc-fieldset">
+  <div class="sc-fieldset-head">
+    <span class="sc-text-blue sc-text-bold sc-m-t-sm">Anexos</span>
+    <div class="sc-btn-group sc-m-r-xl sc-m-v-sm" style="font-size: .9em;">
+      <button class="sc-btn sc-btn-blue sc-btn-thin sc-text-sm ng-scope" type="button">
+        <i class="sc-icon-camera-1 sc-m-r-sm"></i>
+        <span class="sc-text-lg ng-binding">Tirar Foto</span>
+      </button>
+      <label class="sc-btn sc-btn-blue sc-btn-thin sc-text-sm sc-text-normal">
+        <input type="file" accept="image/*,application/pdf" ng-model="formFact.params.anexo" uploader="uploader" style="display: none;" multiple="">
+        <i class="sc-icon-clipe sc-m-r-sm"></i>
+        <span class="sc-text-lg ng-binding">Anexar</span>
+      </label>
+    </div>
+    <select class="sc-input-default sc-p-v-o sc-m-v-sm" ng-model="formFact.params.tipo" style="font-size: 0.833333em; min-height: 1.7em;">
+      <option value="" class="ng-binding" selected="selected">Selecione o Tipo</option>
+      <option label="Fotos">Fotos</option>
+      <option label="Documentos">Documentos</option>
+    </select>
+  </div>
+  <div class="sc-text-thin sc-p-md sc-p-b-xxxl sc-p-t-xs sc-text-lg align-center sc-text-blue ng-binding">
+    Nenhum anexo disponível!
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="sc-fieldset">
+  <div class="sc-fieldset-head">
+    <div class="sc-text-blue sc-text-bold">
+      Perfil Para Pagamento
+    </div>
+  </div>
+  <div class="flex-row sc-bg-gray-lighter">
+    <div class="fcol-md-23em sc-p-h-md">
+      <label>
+        <div class="sc-label">Operação:</div>
+        <div class="sc-input-group">
+          <select class="sc-input-default sc-input-block" ng-model="formFact.params.operacao">
+            <option value="" class="ng-binding" selected="selected">Selecione</option>
+            <option label="Pix">Pix</option>
+            <option label="Boleto - Título">Boleto - Título</option>
+            <option label="Boleto - Convênio">Boleto - Convênio</option>
+            <option label="Cheque">Cheque</option>
+            <option label="Depósito">Depósito</option>
+            <option label="Saque">Saque</option>
+            <option label="Cartão Crédito">Cartão Crédito</option>
+            <option label="Cartão Débito">Cartão Débito</option>
+            <option label="Débito Automático">Débito Automático</option>
+            <option label="Tarifa">Tarifa</option>
+            <option label="Dinheiro">Dinheiro</option>
+            <option label="Rendimento">Rendimento</option>
+            <option label="Aplicação">Aplicação</option>
+            <option label="Pagamento Eletrônico">Pagamento Eletrônico</option>
+            <option label="Resgate">Resgate</option>
+            <option label="Transferência - TED">Transferência - TED</option>
+            <option label="Transferência - DOC">Transferência - DOC</option>
+            <option label="Transferência - MESMO BANCO">Transferência - MESMO BANCO</option>
+          </select>
+        </div>
+      </label>
+    </div>
+    <div class="fcol-md-20 sc-p-h-md">
+      <label>
+        <div class="sc-label">Plano de Contas:</div>
+        <div class="sc-input-group">
+          <input type="text" class="sc-input-default" ng-model="formFact.params.planodecontas" style="min-width: 15em">
+          <div class="sc-btn sc-btn-blue col-lg-pull-1"><i class="sc-icon sc-icon-seta-5-baixo sc-m-t-lg"></i></div>
+        </div>
+      </label>
+    </div>
+    <div class="fcol-md-20 sc-p-h-md">
+      <label>
+        <div class="sc-label">Fundo:</div>
+        <div class="sc-input-group">
+          <input type="text" class="sc-input-default" ng-model="formFact.params.fundo" style="min-width: 20em">
+          <div class="sc-btn sc-btn-blue">
+            <i class="sc-icon sc-icon-seta-5-baixo sc-m-t-lg"></i>
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>
+</div>

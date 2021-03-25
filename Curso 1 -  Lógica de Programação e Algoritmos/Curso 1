@@ -1,0 +1,219 @@
+asdsad
+CURSO 1 - Lógica de Programação e Algoritmos
+
+[Aula 1]
+
+Lógica:
+
+Definição 1:
+  Maneira rigorosa de raciocinar
+
+Definição 2:
+  O encadeamento coerente de alguma coisa que obedece a certas convenções e regras
+
+Definição 3:
+  Organização e planejamento das instruções, em um algoritmo, a fim de viabilizar a implantação de um programa
+
+[Aula 2]
+
+Paradigmas de Programação:
+
+1 - Programação Imperativa ou Procedural:
+  Os programas imperativos são sequências de comandos para o computador executar
+
+2 - Programação Funcional:
+  Trata a computação como uma avaliação de funções matemáticas. Evita estado ou dados mutáveis
+
+3 - Programação Lógica:
+  Baseado na utilização de sentenças lógicas, utiliza a lógica simbólica como linguagem para programação
+
+4 - Programação Orientada a Objetos:
+  Programação fundamentada na composição e interação entre unidades de Software chamadas de objetos.
+  Estes se relacionam e trocam mensagens entre si. Classes + Método + Atributo
+
+[Aula 3]
+
+PROGRAMAR:
+  Encadear uma série de INSTRUÇÕES para que se possa chegar a solução de um problema
+
+INSTRUÇÕES:
+  Ordens dadas ao computador para que ele execute algo
+  UMA instrução isolada não permite que o computador realize um processo COMPLETO
+
+Exemplo de um conjunto de instruções:
+  Comando para imprimir um arquivo:
+  1 - Abra o arquivo "aaa.txt"
+  2 - Verifique se a impressora está ligada e desocupada
+  3 - Envie o arquivo "aaa.txt" para a impressora imprimir
+  4 - Feche o arquivo "aaa.txt" e avise que a impressão foi finalizada
+
+[Aula 4]
+
+PROGRAMA:
+  Conjunto de ALGORITMOS organizados de uma forma LÓGICA, em uma LINGUAGEM específica para que o computador possa interpretar
+
+ALGORITMO:
+  É uma sentença de instruções para atingir um determinado objetivo
+
+[Aula 5]
+
+PSEUDOCÓDIGO:
+  Formalização do algoritmo em uma linguagem
+
+DICAS:
+  1 - Seja objetivo
+  2 - Se faça entender
+  3 - Frases curtas
+  4 - Um só verbo
+  5 - Evitar duplo sentido
+
+[Aula 6]
+
+VARIÁVEIS:
+  "Caixas" que armazenam dados
+  Armazenam:
+    Dados numéricos
+    Sequencia de caracteres
+
+  Toda variável precisa de um nome
+    nome = IDENTIFICADOR
+
+
+[Aula 9]
+
+IDENTIFICADORES:
+  1 - Inteiro
+    Específico para armazenamento de números
+    Pode ser utilizada para cálculos
+    Tipo de variável que armazena SOMENTE números INTEIROS
+    Podem ser positivos ou negativos
+    (1, -10, 1000)
+
+  2 - Real
+    Específica para armazenamento de números
+    Pode ser utilizada para cálculos
+    Tipo de variável que armazena números RACIONAIS e IRRACIONAIS
+    Podem ser positivos ou negativos
+    (1,4; 2,5555; 3,5)
+
+  3 - Caractere
+    Pode ser utilizada para o armazenamento de todos os tipos de dados, caracteres ou números
+    Não pode ser utilizado para cálculos
+    (Rua Parana, numero 444)
+
+  4 - Lógico
+    Específica para o armazenamento de dois valores VERDADEIRO ou FALSO
+    Utilizada para representar variáveis que apresentam respostas
+    Não pode ser utilizada para cálculas
+    (abrir = true, ativo = false)
+
+Exemplo de Variáveis com seu tipo declarado:
+  Variavel: TIPO DECLARADO
+
+  idade: inteiro,
+  nome: caractere,
+  salario: real,
+
+  resultado: lógico
+
+  [Aula 10]
+
+  ATRIBUIÇÃO:
+    É o dado atribuído a uma variável
+
+  Representação de ATRIBUIÇÃO:
+    Na maioria das linguagens, a atribuição é representada pelo sinal de igual =
+    VARIÁVEL = ATRIBUIÇÃO
+
+[Aula 11]
+
+CONCATENAR:
+  Unir dados de forma lógica
+
+[Aula 22]
+
+Blocos Lógicos:
+  Trechos de algoritmos, onde temos uma palavra que indica o início e outra que indica o fim
+
+Condicional Simples:
+  Define o caminho a ser seguido
+  Testa operadores lógicos
+  Executa a instrução conforme o resultado condicional
+
+  SINTAXE:
+    Se (condição) então
+      //instruções
+    fimSe
+
+[Aula 23]
+
+Condicional Composta:
+  Na condicional composta, utilizamos dois conjuntos de intruções, uma caso a condição seja verdadeira e outra caso seja falsa
+
+  SINTAXE:
+    Se (condição) então
+      //instruções
+    SeNão
+      //instruções
+    fimSe
+
+[Aula 24]
+
+Condicional Encadeada:
+  Sequência encadeada de testes lógicos, executados conforme o resultado de cada condição
+  Normalmente utilizada quando necessário verificar duas ou mais condições sucessivas
+
+  SINTAXE:
+    Se (condição) então
+      //instruções
+    SeNão
+      //instruções
+      Se (condição) então
+        //instruções
+      SeNão
+        //instruções
+      fimSe
+
+[Aula 25]
+
+Condicional Encadeada Heterogênea:
+  Quando não for possível identificar um padrão lógico nas condicionais, chamamos de condicionais encadeadas heterogêneas
+  Algoritmo não segue um padrão de organização
+
+[Aula 26]
+
+Condicional Encadeada Homogênea:
+  As condicionais homogêneas seguem um padrão lógico, diferente das heterogêneas
+
+[Aula 27]
+
+Estruturas de repetição:
+  1 - Repetir um trecho de um programa ou código
+  2 - Ajudar no controle e na repetição de uma tarefa
+  3 - Sempre que necessário, repetir instruções x vezes ou até que seja informado "finalizar a execução"
+
+[Aula 30]
+
+Estrutura de Dados:
+  Forma de estruturar ou organizar dados na memoria RAM do computador, com objetivo de utilizar estes dados de forma mais eficiente
+  Os algoritmos manipulam dados e quando estes dados estão organizados eles caracterizam uma forma ou seja, uma estrutura de dados
+  A organização e os métodos para manipular estas estruturas são o que otimizam e diminuem o espaço utilizado na memoria RAM,
+  além de tornar o código mais simples
+  A organização dos dados é chamada de estruturas compostas de dados
+  Heterogêneas(registros) Homogêneas(arrays, vetores, matrizes)
+
+  Heterogêneas:
+    Conjunto de dados formados por tipos de dados distintos, em uma mesma estrutura.
+    Exemplo: inteiro, real, literal e caracteres
+
+  Homogêneas:
+    Grupos de dados, do mesmo tipo, armazenados em uma única variável, na memória do computador
+
+Arrays:
+  São estruturas de dados homogêneas, ou seja armazenam apenas dados do mesmo tipo
+  São lineares e estaticas isto é possuem um número fixo de elementos de um determinado tipo de dado
+  Estes dados são acessados individualmente por meio de um índice, onde geralmente a posição inicial é zero
+
+Tipos de Array:
+  Vetor: uma array unidimensional (linhas)
+  Matriz: uma array multidimensional (linhas e colunas)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8">
@@ -140,4 +141,102 @@
       </ul>
     </div>
   </body>
+=======
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Cadastro de Pagadores</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./css/prototype.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  <link rel="stylesheet" type="text/css" href="./css/uikit.css" />
+  <link rel="stylesheet" type="text/css" href="./css/uikit-sample.css" />
+  <link rel="stylesheet" type="text/css" href="./icons/sc-icons.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+
+</head>
+<body ng-app="cadastroPagadores" ng-controller="Pagadores::IndexCtrl as pagadoresCtrl" ng-init="pagadoresCtrl.init()" style="overflow: auto;">
+  <div class="sc-bg-blue sc-box-shadow-z1">
+    <span>
+      <img src="assets/img/seu_condominio.svg" style="max-width: 9em">
+    </span>
+  </div>
+  <!-- Top Bar Content -->
+  <section id="top-bar" style="">
+    <div id="top-bar-content">
+      <div ng-include="'templates/top-bar-content.html'"></div>
+    </div>
+  </section>
+  <!-- Top Messages -->
+  <div class="sc-top-messages ng-animation-slider" ng-class="scTopMessages.theme"
+    ng-click="scTopMessages.close()" ng-if="scTopMessages.toggler.opened" style="display: block;">
+    <div class="sc-text-white align-center sc-text-shadow-dark flex align-items-center">
+      <div class="sc-top-messages-msgs sc-cursor-default">
+        <p ng-repeat="msg in scTopMessages.messages track by $index" ng-bind="scTopMessages.messages"></p>
+      </div>
+      <div class="sc-top-messages-close-button">
+        <i class="sc-icon-fechar-1 sc-cursor-pointer"></i>
+      </div>
+    </div>
+  </div>
+  <!-- Formulário -->
+  <section id="pagadores">
+    <ul class="sc-accordion">
+      <li id="form" ng-if="pagadoresCtrl.formFact.opened && pagadoresCtrl.new_record" ng-init="formFact = pagadoresCtrl.formFact">
+        <div ng-include="'templates/form.html'"></div>
+      </li>
+      <li
+        class="sc-bg-gray-lighter"
+        ng-repeat="pessoa in pagadoresCtrl.pagadores | filter:buscar"
+        ng-controller="Pagadores::ItemCtrl as pagadorCtrl"
+        ng-init="pagadorCtrl.init(pessoa)"
+        ng-class="{'sc-acc-blue': pessoa.acc.opened}">
+        <div
+          class="flex-row sc-accordion-head sc-acc-hover-blue sc-text-bold sc-text-blue"
+          ng-click="pagadorCtrl.accToggle(pessoa)">
+          <div class="sc-accordion-col-3 fcol-xs-3em align-center sc-divider">
+            <i class="sc-icon sc-text-blue sc-icon-homem-1" ng-class="{'sc-text-white': pessoa.acc.opened}" style="font-size: 1.4em"></i>
+          </div>
+          <div class="sc-p-v-sm fcol-xs-50">
+            {{pessoa.nome}}
+            <span class="sc-ellipsis-inline sc-text-white sc-p-v-xs sc-p-h-md sc-text-sm sc-border-radius sc-m-l-md sc-bg-blue">Pagador</span>
+          </div>
+          <div class="fcol-xs-auto"></div>
+          <div class="fcol-xs-3em">
+            <span class="sc-dropdown pull-right" sc-dropdown-menu="" sc-stop-click="">
+              <i class="sc-icon-reticiencias-v sc-badge sc-badge-hover-gray" ng-class="{'sc-badge-hover-white': pessoa.acc.opened}" ng-click="menu.toggle()" style=""></i>
+              <ul class="sc-dropdown-menu ng-animation-slider" ng-show="menu.isOn">
+                <li>
+                  <a ng-click="pagadorCtrl.formularioCtrl.abrir(pessoa, pagadorCtrl.formFact)" sc-dropdown-close-menu="">
+                    <i class="sc-icon-lapis"></i> Editar
+                  </a>
+                </li>
+                <li>
+                  <a ng-click="pagadoresCtrl.handleCtrl.excluir(pessoa)" sc-dropdown-close-menu="">
+                    <i class="sc-icon-lixeira-1"></i> Excluir
+                  </a>
+                </li>
+              </ul>
+            </span>
+          </div>
+        </div>
+        <div ng-if="pessoa.acc.opened" class="sc-accordion-body ng-animation-slider" ng-init="formFact = pagadorCtrl.formFact">
+          <!-- show -->
+          <div ng-if="!formFact.opened" ng-include="'templates/show.html'"></div>
+          <!-- formulario de edição -->
+          <div ng-if="formFact.opened" ng-include="'templates/form.html'"></div>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <script type="text/javascript" src="./js/prototype.js"></script>
+  <script type="text/javascript" src="./js/modernizr.js"></script>
+  <script type="text/javascript" src="./js/indexCtrl.js"></script>
+  <script type="text/javascript" src="./js/indexFactory.js"></script>
+  <script type="text/javascript" src="./js/formFactory.js"></script>
+  <script type="text/javascript" src="./js/formCtrl.js"></script>
+  <script type="text/javascript" src="./js/showCtrl.js"></script>
+</body>
+>>>>>>> a42c95579fe17e52fd1c3fb4612b4c13a2cc43f9
 </html>

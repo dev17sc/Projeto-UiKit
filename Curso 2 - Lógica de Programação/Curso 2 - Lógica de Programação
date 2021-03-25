@@ -1,0 +1,15 @@
+Curso 2 - Lógica de Programação
+
+[Aula 1]
+
+Conceito geral de Variáveis:
+  As variáveis são espaços que definimos na memória para armazenar dados e alimentar o processador.
+
+Tipos de Dados:
+  Inteiro: Define variáveis numéricas do tipo inteiro, ou seja, sem casas decimais.
+
+  Real: Define variáveis numéricas do tipo real, ou seja, com casas decimais
+
+  Caractere: Define variáveis do tipo string, ou seja, cadeia de caracteres
+
+  Lógico: Define variáveis do tipo booleano, ou seja, com valor Verdadeiro ou Falso

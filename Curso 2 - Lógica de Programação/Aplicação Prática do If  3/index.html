@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>TECTREINAMENTOS INFORMÁTICA</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+  </head>
+  <body class="landing">
+
+    <!-- Scripts -->
+    <script type="text/javascript">
+
+      // Curso 2 - Aplicação Prática do If 3
+
+      var nota1 = window.prompt('Digite a primeira nota:')
+      var nota2 = window.prompt('Digite a segunda nota:')
+      var nota3 = window.prompt('Digite a terceira nota:')
+      var nota4 = window.prompt('Digite a quarta nota:')
+
+      var media = (parseFloat(nota1) + parseFloat(nota2) + parseFloat(nota3) + parseFloat(nota4))/4
+      console.log('A média no período é: '+ media)
+
+      var frequencia = window.prompt('Insira a frequencia do aluno:')
+
+      //Se a media for maior ou igual a 7 E a frequencia for maior ou igual a 70 o aluno é aprovado
+      if (media >= 7 && frequencia >=70) {
+        console.log('APROVADO')
+      } else {
+        console.log('REPROVADO')
+      }
+
+    </script>
+
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="assets/js/main.js"></script>
+
+  </body>
+</html>

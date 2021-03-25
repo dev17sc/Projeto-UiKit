@@ -2,31 +2,52 @@
   <div class="sc-fieldset-head">
     <div class="sc-text-blue sc-text-bold">
       Contas Bancárias
+<<<<<<< HEAD
       <button class="sc-btn sc-btn-green"  style="font-size: 0.9em" ng-click="contBanCtrl.add()">
+=======
+      <button class="sc-btn sc-btn-thin sc-btn-green"  style="font-size: 0.8em" type="button" ng-click="formCtrl.contBanCtrl.add()">
+>>>>>>> a42c95579fe17e52fd1c3fb4612b4c13a2cc43f9
         <i class="sc-icon sc-icon-mais-1"></i>
         <span class="sc-btn-text">Adicionar</span>
       </button>
     </div>
   </div>
+<<<<<<< HEAD
   <div class="sc-text-blue sc-text-lg align-center" ng-hide="formCtrl.params.contBan">Nenhuma conta cadastrada ao pagador!</div>
   <div style="overflow: auto;">
     <form>
       <div class="col-xs-12" ng-repeat="contaBancaria in formCtrl.params.contBan">
+=======
+  <div class="sc-text-blue sc-text-lg align-center" ng-hide="formFact.params.contBan">Nenhuma conta cadastrada ao pagador!</div>
+  <div style="overflow: auto;">
+    <form>
+      <div class="col-xs-12" ng-repeat="contaBancaria in formFact.params.contBan">
+>>>>>>> a42c95579fe17e52fd1c3fb4612b4c13a2cc43f9
         <div class="flex-row sc-bg-gray-lighter">
           <div class="fcol-md-20">
            <label>
              <div class="sc-label">Banco:</div>
              <div class="sc-input-group">
+<<<<<<< HEAD
                <input type="text" class="sc-input-default" ng-model="contaBancaria.banco" style="min-width: 15em">
+=======
+               <input type="text" class="sc-input-default" ng-model="formFact.params.contaBancaria.banco" style="min-width: 15em">
+>>>>>>> a42c95579fe17e52fd1c3fb4612b4c13a2cc43f9
                <div class="sc-btn sc-btn-blue col-lg-pull-1"><i class="sc-icon sc-icon-lupa-2 sc-m-t-lg"></i></div>
              </div>
            </label>
           </div>
           <div class="fcol-md-18em sc-p-h-md sc-m-r-xxxl">
             <label>
+<<<<<<< HEAD
               <div class="sc-label">Tipo da Conta</div>
               <div class="sc-input-group">
                 <select class="sc-input-default sc-input-block" ng-model="contaBancaria.operacao">
+=======
+              <div class="sc-label">Tipo da Conta:</div>
+              <div class="sc-input-group">
+                <select class="sc-input-default sc-input-block" ng-model="formFact.params.contaBancaria.operacao">
+>>>>>>> a42c95579fe17e52fd1c3fb4612b4c13a2cc43f9
                   <option value="" class="ng-binding" selected="selected">Selecione</option>
                   <option label="Conta Corrente">Conta Corrente</option>
                   <option label="Poupança">Poupança</option>
@@ -48,42 +69,72 @@
           </div>
           <div class="fcol-md-15em">
             <label>
+<<<<<<< HEAD
               <div class="sc-label">Agência</div>
               <input class="sc-input-default" ng-model="contaBancaria.agencia" style="max-width: 9em;">
               <b class="sc-text-gray sc-m-h-xs">-</b>
               <input class="sc-input-default" ng-model="contaBancaria.agencia_dv" placeholder="DV" style="max-width: 3em;" type="text">
+=======
+              <div class="sc-label">Agência:</div>
+              <input class="sc-input-default" ng-model="formFact.params.contaBancaria.agencia" style="max-width: 9em;">
+              <b class="sc-text-gray sc-m-h-xs">-</b>
+              <input class="sc-input-default" ng-model="formFact.params.contaBancaria.agencia_dv" placeholder="DV" style="max-width: 3em;" type="text">
+>>>>>>> a42c95579fe17e52fd1c3fb4612b4c13a2cc43f9
             </label>
           </div>
           <div class="fcol-md-15em">
             <label>
+<<<<<<< HEAD
               <div class="sc-label">Número da Conta</div>
               <input class="sc-input-default" ng-model="contaBancaria.numero_conta" style="max-width: 9em;">
               <b class="sc-text-gray sc-m-h-xs">-</b>
               <input class="sc-input-default" ng-model="contaBancaria.numero_conta_dv" placeholder="DV" style="max-width: 3em;" type="text">
+=======
+              <div class="sc-label">Número da Conta:</div>
+              <input class="sc-input-default" ng-model="formFact.params.contaBancaria.numero_conta" style="max-width: 9em;">
+              <b class="sc-text-gray sc-m-h-xs">-</b>
+              <input class="sc-input-default" ng-model="formFact.params.contaBancaria.numero_conta_dv" placeholder="DV" style="max-width: 3em;" type="text">
+>>>>>>> a42c95579fe17e52fd1c3fb4612b4c13a2cc43f9
             </label>
           </div>
           <div class="fcol-md-15em sc-m-t-xxl-md">
             <label>
               <div class="sc-label"></div>
+<<<<<<< HEAD
               <input class="sc-input-default" ng-model="contaBancaria.conta.nome" style="max-width: 15em;">
+=======
+              <input class="sc-input-default" ng-model="formFact.params.contaBancaria.conta.nome" style="max-width: 15em;">
+>>>>>>> a42c95579fe17e52fd1c3fb4612b4c13a2cc43f9
               </label>
           </div>
         </div>
         <div class="flex-row sc-bg-gray-lighter">
           <div class="fcol-md-16em">
             <label>
+<<<<<<< HEAD
               <div class="sc-label">CPF/CNPJ</div>
               <div class="sc-input-group">
                 <input class="sc-input-default" ng-model="contaBancaria.documento" sc-mask="cpf" type="text" style="">
                 <button class="sc-btn sc-btn-blue" type="button">PF</button>
                 <button class="sc-btn" type="button">PJ</button>
+=======
+              <div class="sc-label">CPF/CNPJ:</div>
+              <div class="sc-input-group">
+                <input class="sc-input-default" ng-model="formFact.params.contaBancaria.documento" type="text" style="">
+                <button ng-click="scActivePF = !scActivePF" ng-class="{'sc-active':scActivePF}" class="sc-btn sc-active-blue">PF</button>
+                <button ng-click="scActivePJ = !scActivePJ" ng-class="{'sc-active':scActivePJ}" class="sc-btn sc-active-blue">PJ</button>
+>>>>>>> a42c95579fe17e52fd1c3fb4612b4c13a2cc43f9
               </div>
             </label>
           </div>
           <div class="sc-m-t-xxxl sc-m-l-xxxl">
             <button class="sc-btn sc-btn-blue" type="button">Principal</button>
           </div>
+<<<<<<< HEAD
           <i class="sc-icon sc-icon-lixeira-1 sc-badge-hover-red sc-m-l-lg sc-m-t-xxxl" ng-click="contBanCtrl.rmv(contaBancaria)"></i>
+=======
+          <i class="sc-icon sc-icon-lixeira-1 sc-badge-hover-red sc-m-l-lg sc-m-t-xxxl" ng-click="formCtrl.contBanCtrl.rmv(contaBancaria)"></i>
+>>>>>>> a42c95579fe17e52fd1c3fb4612b4c13a2cc43f9
         </div>
       </div>
     </form>

@@ -1,0 +1,142 @@
+<form ng-submit="passagemServicosCtrl.salvar(passagem, params)">
+  <!-- Accordion Nova Passagem -->
+  <ul class="sc-accordion">
+    <li ng-if="!passagem.editing" class="sc-acc-blue">
+      <div class="sc-accordion-head" ng-click="passagemServicosCtrl.formulario.fechar()">
+        <div class="sc-accordion-elastic-col">
+          <div class="flex-row">
+            <span class="sc-text-white sc-text-bold">
+              <i class="sc-icon sc-icon-mais-1 sc-m-r-md"></i>
+              Nova Passagem
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <!-- Observação -->
+    <div class="sc-fieldset sc-bg-yellow-lighter sc-m-h-lg">
+      <div class="sc-text-red sc-text-bold sc-p-b-xs">
+        <i class="sc-icon sc-icon-exclamacao-3"></i>
+        Importante!
+      </div>
+      <div class="sc-text-blue sc-text-bold sc-p-t-xs">
+        A passagem será realizada automaticamente caso sejam preenchidos
+        os dados de quem está ENTRANDO (preencher só quem sai habilita
+        a edição do registro até que a passsagem seja realizada).
+      </div>
+
+      <!-- Inputs de passagem -->
+      <div class="sc-bg-gray-lighter">
+        <div class="flex-row sc-m-b-lg">
+          <div class="fcol-xs-22em sc-m-r-xxxl">
+            <div class="sc-text-blue sc-text-bold">
+              Quem sai:
+            </div>
+            <div class="sc-input-group">
+              <input ng-model="passagem.params.pessoaSaiu" type="text" class="sc-input-group sc-input-default" ng-class="{'error': passagem.pessoaSaiuErro}">
+              <button type="button" class="sc-btn sc-btn-blue">
+                <i class="sc-icon sc-icon-lupa-2"></i>
+              </button>
+            </div>
+          </div>
+          <div class="fcol-xs-23em sc-m-r-xxxl">
+            <div class="sc-text-blue sc-text-bold">
+              Senha:
+            </div>
+            <div class="sc-input-group">
+              <input type="password" class="sc-input-default" ng-model="passagem.params.senhaQuemSai" ng-class="{'error': passagem.senhaErro}">
+            </div>
+          </div>
+          <div class="fcol-xs-22em sc-m-r-xxxl">
+            <div class="sc-text-blue sc-text-bold">
+              Quem entra:
+            </div>
+            <div class="sc-input-group">
+              <input ng-model="passagem.params.pessoaEntrou" type="text" class="sc-input-group sc-input-default" ng-class="{'error': passagem.pessoaEntrouErro}">
+              <button type="button" class="sc-btn sc-btn-blue">
+                <i class="sc-icon sc-icon-lupa-2"></i>
+              </button>
+            </div>
+          </div>
+          <div class="fcol-xs-21em">
+            <div class="sc-text-blue sc-text-bold">
+              Senha:
+            </div>
+            <div class="sc-input-group">
+              <input ng-model="passagem.params.senhaQuemEntra" ng-class="{'error': passagem.senhaErro}" type="password" class="sc-input-default">
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirmação da passagem -->
+        <div class="flex-row sc-m-b-lg">
+          <div class="sc-m-r-sm">
+            Eu,
+          </div>
+          <div class="sc-text-blue sc-text-bold">
+            {{passagem.pessoaSaiu}}
+          </div>
+          <div class="">
+            , passo o posto de serviço para o(a),
+          </div>
+          <div class="sc-text-blue sc-text-bold sc-m-l-sm">
+            {{passagem.pessoaEntrou}}
+          </div>
+          <div class="sc-m-l-sm">
+            ,conforme as informações abaixo:
+          </div>
+        </div>
+
+        <!-- Perfil de Passagem -->
+        <div class="flex-row">
+          <div class="fcol-xs-30em">
+            <div class="sc-text-blue sc-text-bold">
+              Perfil de passagem:
+            </div>
+            <div class="sc-input-group">
+              <select ng-model="indexCtrl.params.perfilPassagem" class="sc-input-default">
+                <option label="Selecione um perfil" class-selected="selected"></option>
+                <option label="Padrão"></option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include Objetos -->
+    <div id="objetos" >
+      <div ng-include="'templates/objetos.html'"></div>
+    </div>
+
+    <!-- Campo para observações -->
+    <div class="sc-fieldset sc-m-h-lg sc-bg-white">
+      <div class="sc-text-blue sc-text-bold">
+        Observações:
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <!-- Include Anexos -->
+    <div id="anexos">
+      <div ng-if="passagem.editing" ng-include="'templates/anexos.html'"></div>
+    </div>
+
+      <!-- Botão Salvar e Cancelar -->
+    <div class="flex-row">
+      <div class="fcol-xs-100">
+        <div class="pull-right sc-m-r-lg sc-m-b-lg">
+          <button type="submit" class="sc-btn sc-btn-blue sc-m-r-md">
+            Salvar
+          </button>
+          <button ng-click="passagemServicosCtrl.formulario.fechar(passagem)" type="button" class="sc-btn sc-btn-red">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </ul>
+</form>
