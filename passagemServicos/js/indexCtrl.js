@@ -64,7 +64,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         vmIndex.list.unshift(passagem.params)
         vmIndex.newRecord = false
         passagem.params.criacao = new Date()
-        vmIndex.categorias.unshift(passagem)
+        passagem.params.objetos.unshift(passagem.params)
       } else {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
         vmIndex.editando = vmIndex.list.map(function(it) {
@@ -85,7 +85,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     //Adicionar e Remover Objeto
     vmIndex.objetoCtrl = {
       add: function(passagem) {
-        obj = { itens: []}
+        obj = { item: []}
         passagem.params.objetos ||= []
         passagem.params.objetos.push(obj)
       },
@@ -113,6 +113,14 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       }
     }
 
+    vmIndex.itens = [
+      {
+        id:1,
+        descricao: 'Chave da Guarita',
+        quantidade: 1,
+      }
+    ]
+
     // Adicionar e Remover Categoria
     categoria = {}
     vmIndex.categoriaCtrl = {
@@ -124,13 +132,24 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         vmIndex.novaCategoria = false
       },
       add: function(passagem, categoria, novaCategoria) {
-        vmIndex.passagem.categoria.id = vmIndex.categorias.length + 1
-        vmIndex.categorias.unshift(categoria)
-        vmIndex.novaCategoria = false
+        if (!vmIndex.categorias.id) {
+          vmIndex.passagem.categoria.id = vmIndex.categorias.length + 1
+          vmIndex.categorias.unshift(categoria)
+          vmIndex.novaCategoria = false
+        } else {
+          vmIndex.editCategoria = vmIndex.categorias.map(function(it) {
+            return it.id
+          }).indexOf(vmIndex.categorias.id)
+          vmIndex.categorias[vmIndex.editCategoria] = categoria.nome
+        }
       },
       rmv: function(categoria) {
         vmIndex.categorias.remove(categoria)
       },
+      edit: function(categoria, novaCategoria) {
+        vmIndex.categorias = angular.copy(categoria)
+        vmIndex.novaCategoria = true
+      }
     }
 
     // Lista de Categorias
@@ -139,10 +158,6 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         id: 1,
         nome: 'CHAVE',
       },
-      {
-        id: 2,
-        nome: 'EQUIPAMENTO',
-      }
     ]
 
     // Lista de Passagens

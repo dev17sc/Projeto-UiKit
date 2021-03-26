@@ -51,11 +51,11 @@
                       <i class="sc-text-green sc-icon sc-icon-mais-1"></i>
                       Nova Categoria
                     </span>
-                    <span ng-if="passagem.params.categoria">
+                    <span ng-if="categoria" ng-click="passagemServicosCtrl.categoriaCtrl.edit(categoria)">
                       <i class="sc-text-yellow sc-icon sc-icon-lapis"></i>
                       Editar
                     </span>
-                    <span ng-click="passagemServicosCtrl.categorias.splice($index, 1)" ng-if="passagem.params.categoria">
+                    <span ng-click="passagemServicosCtrl.categorias.splice($index, 1)" ng-if="categoria">
                       <i class="sc-text-red sc-icon sc-icon-lixeira-1"></i>
                       Excluir
                     </span>
@@ -100,7 +100,7 @@
               </div>
               <div class="sc-input-group">
                 <input multi-check ng-model="item.checked" ng-checked="item.checked" type="checkbox" class="sc-m-t-lg sc-m-r-lg sc-checkbox">
-                <input ng-model="objeto.item.descricao" class="sc-input-default" placeholder="Descreva o item aqui">
+                <input ng-model="item.descricao" class="sc-input-default" placeholder="Descreva o item aqui">
               </div>
             </div>
             <div class="">
@@ -108,7 +108,7 @@
                 Qtd
               </div>
               <div class="sc-input-group">
-                <input type="number" ng-model="objeto.item.quantidade" min="1" max="999" class="sc-input-default align-xs-right">
+                <input type="number" ng-model="item.quantidade" min="1" max="999" class="sc-input-default align-xs-right">
               </div>
             </div>
             <div class="fcol-xs-auto"></div>
