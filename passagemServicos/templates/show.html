@@ -61,9 +61,9 @@
       de acordo com as informações abaixo:
     </div>
     <div ng-repeat="objeto in passagem.params.objetos">
-      <div ng-repeat="categoria in passagemServicosCtrl.categorias">
+      <div>
         <div class="sc-text-bold sc-text-blue" style="font-size: larger; padding: 0.2em">
-          {{categoria.nome || passagem.categoria.nome}}
+          {{objeto.categoria.id.nome}}
         </div>
         <div class="sc-fieldset sc-bg-gray-lighter" style="padding: 0">
           <div class="sc-fieldset-head" style="background-color: #f1f1f1">
@@ -76,7 +76,7 @@
               </div>
             </div>
           </div>
-          <div ng-repeat="item in passagemServicosCtrl.itens">
+          <div ng-repeat="item in objeto.itens">
             <div class="sc-bg-gray-lighter">
               <i class="sc-m-r-lg sc-icon sc-icon-menos-1 sc-text-gray"></i>
                 {{item.descricao}}

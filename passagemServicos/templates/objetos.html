@@ -18,7 +18,7 @@
       <button
         ng-click="objeto.itens.splice($index); passagem.params.objetos.splice($index)"
         type="button"
-        ng-if="passagem.params.objetos"
+        ng-if="passagem.params.objetos.length >= 1"
         class="sc-btn sc-btn-red sc-btn-thin sc-m-l-lg"
         style="font-size: smaller;"
       >
@@ -37,9 +37,8 @@
               Categoria:
             </div>
             <div ng-if="!passagemServicosCtrl.novaCategoria"class="sc-input-group">
-              <select ng-model="categoria.nome" class="sc-input-default">
+              <select ng-model="objeto.categoria.id" ng-options="categoria.nome for categoria in passagemServicosCtrl.categorias" class="sc-input-default">
                 <option label="Selecione" class-selected="selected"></option>
-                <option ng-repeat="categoria in passagemServicosCtrl.categorias track by $index" value="{{categoria.id}}">{{categoria.nome || passagem.categoria.nome}}</option>
               </select>
               <span sc-dropdown-menu>
                 <button ng-click="menu.toggle()" type="button" class="sc-btn">
@@ -51,11 +50,11 @@
                       <i class="sc-text-green sc-icon sc-icon-mais-1"></i>
                       Nova Categoria
                     </span>
-                    <span ng-if="categoria" ng-click="passagemServicosCtrl.categoriaCtrl.edit(categoria)">
+                    <span ng-if="objeto.categoria.id" ng-click="passagemServicosCtrl.categoriaCtrl.edit(categoria)">
                       <i class="sc-text-yellow sc-icon sc-icon-lapis"></i>
                       Editar
                     </span>
-                    <span ng-click="passagemServicosCtrl.categorias.splice($index, 1)" ng-if="categoria">
+                    <span ng-if="objeto.categoria.id" ng-click="passagemServicosCtrl.categorias.splice($index, 1)">
                       <i class="sc-text-red sc-icon sc-icon-lixeira-1"></i>
                       Excluir
                     </span>

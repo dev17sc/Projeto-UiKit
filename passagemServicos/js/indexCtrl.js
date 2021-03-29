@@ -29,7 +29,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       abrir: function(passagem, params) {
         if (!passagem) {
           vmIndex.newRecord = true
-          vmIndex.passagem = { params: {}, objetos:[{itens: [{}]}], categorias: [{}]}
+          vmIndex.passagem = { params: {}}
         } else {
           vmIndex.params = angular.copy(passagem)
           passagem.params = angular.copy(passagem)
@@ -49,6 +49,8 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
 
     //Submit do Formulário
     vmIndex.salvar = function(passagem, params) {
+      console.log(passagem)
+      console.log(params)
       if(!passagem || !passagem.params.pessoaSaiu) {
         scTopMessages.openDanger("Quem sai não pode ser vazio",{timeOut: 3000})
         passagem.pessoaSaiuErro = true
@@ -64,7 +66,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         vmIndex.list.unshift(passagem.params)
         vmIndex.newRecord = false
         passagem.params.criacao = new Date()
-        passagem.params.objetos.unshift(passagem.params)
+        angular.extend(objetos, params)
       } else {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
         vmIndex.editando = vmIndex.list.map(function(it) {
@@ -89,13 +91,6 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         passagem.params.objetos ||= []
         passagem.params.objetos.push(obj)
       },
-      rmv: function(objeto, passagem) {
-        passagem = {}
-        passagem.params = {}
-        passagem.params.objetos ||= []
-        passagem.params.objetos.remove(objeto)
-        console.log('excluindo')
-      }
     }
 
     // Adicionar e Remover Item
@@ -105,25 +100,12 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         objeto.itens ||= []
         objeto.itens.push(item)
       },
-      rmv: function(item, objeto) {
-        objeto = {}
-        objeto.itens ||= []
-        objeto.itens.remove(item)
-        console.log('excluindo')
-      }
     }
 
-    vmIndex.itens = [
-      {
-        id:1,
-        descricao: 'Chave da Guarita',
-        quantidade: 1,
-      }
-    ]
-
     // Adicionar e Remover Categoria
-    categoria = {}
     vmIndex.categoriaCtrl = {
+      categoria: {},
+      passagem: {},
       show: function(novaCategoria) {
         vmIndex.novaCategoria = true
         vmIndex.passagem.categoria = {}
@@ -133,8 +115,8 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       },
       add: function(passagem, categoria, novaCategoria) {
         if (!vmIndex.categorias.id) {
-          vmIndex.passagem.categoria.id = vmIndex.categorias.length + 1
-          vmIndex.categorias.unshift(categoria)
+          categoria.categoria.id = vmIndex.categorias.length + 1
+          vmIndex.categorias.unshift(categoria.categoria)
           vmIndex.novaCategoria = false
         } else {
           vmIndex.editCategoria = vmIndex.categorias.map(function(it) {
@@ -143,11 +125,8 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
           vmIndex.categorias[vmIndex.editCategoria] = categoria.nome
         }
       },
-      rmv: function(categoria) {
-        vmIndex.categorias.remove(categoria)
-      },
       edit: function(categoria, novaCategoria) {
-        vmIndex.categorias = angular.copy(categoria)
+        passagem.params = angular.copy(categoria)
         vmIndex.novaCategoria = true
       }
     }
@@ -157,6 +136,10 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       {
         id: 1,
         nome: 'CHAVE',
+      },
+      {
+        id: 2,
+        nome: 'EQUIPAMENTO',
       },
     ]
 
@@ -169,7 +152,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: 'Antônio',
         senhaQuemEntra: '',
         criacao: new Date(),
-        objetos: [{itens: [{}]}],
+        objetos: [],
       },
       {
         id: 2,
@@ -178,7 +161,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         pessoaEntrou: '',
         senhaQuemEntra: '',
         criacao: new Date(),
-        objetos: [{itens: []}],
+        objetos: [],
       },
     ]
 
