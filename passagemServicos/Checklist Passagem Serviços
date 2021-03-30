@@ -2,10 +2,12 @@ Checklist Passagem Serviços
   Prototipar:
 
     - editar
+      - editar categoria
 
-    - criar
+    - show
+      - show objetos e itens
 
-    CONCLUÍDO - show
+    CONCLUÍDO - criar
 
     CONCLUÍDO - listagem
 

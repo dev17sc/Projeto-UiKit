@@ -117,7 +117,7 @@
       </div>
     </div>
   </div>
-  <div ng-if="!passagem.params.objetos" class="sc-text-blue sc-m-t-sm align-center">
+  <div ng-if="passagem.params.objetos.length <= 0 || !passagem.params.objetos" class="sc-text-blue sc-m-t-sm align-center">
     <i class="sc-icon sc-icon-exclamacao-2"></i>
     Nenhum objeto cadastrado
   </div>

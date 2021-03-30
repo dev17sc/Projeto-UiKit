@@ -29,18 +29,21 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       abrir: function(passagem, params) {
         if (!passagem) {
           vmIndex.newRecord = true
-          vmIndex.passagem = { params: {}}
+          vmIndex.passagem = {params: {}}
         } else {
-          vmIndex.params = angular.copy(passagem)
           passagem.params = angular.copy(passagem)
           passagem.accOpened = true
           passagem.editing = true
+          console.log(passagem)
+          console.log(params)
         }
       },
-      fechar: function(passagem, params) {
-        vmIndex.params = {}
+      fechar: function(passagem) {
         if (passagem) {
           passagem.editing = false
+          vmIndex.newRecord = false
+        console.log(passagem)
+        console.log(params)
         } else {
           vmIndex.newRecord = false
         }
@@ -49,8 +52,6 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
 
     //Submit do Formulário
     vmIndex.salvar = function(passagem, params) {
-      console.log(passagem)
-      console.log(params)
       if(!passagem || !passagem.params.pessoaSaiu) {
         scTopMessages.openDanger("Quem sai não pode ser vazio",{timeOut: 3000})
         passagem.pessoaSaiuErro = true
@@ -66,7 +67,10 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         vmIndex.list.unshift(passagem.params)
         vmIndex.newRecord = false
         passagem.params.criacao = new Date()
-        angular.extend(objetos, params)
+        newParams = angular.copy(vmIndex.passagem.params)
+        angular.extend(passagem.params, newParams)
+        console.log(passagem)
+        console.log(params)
       } else {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
         vmIndex.editando = vmIndex.list.map(function(it) {
@@ -125,8 +129,8 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
           vmIndex.categorias[vmIndex.editCategoria] = categoria.nome
         }
       },
-      edit: function(categoria, novaCategoria) {
-        passagem.params = angular.copy(categoria)
+      edit: function(categoria, passagem, params) {
+        vmIndex.passagem.params.objetos = angular.copy(categoria.nome)
         vmIndex.novaCategoria = true
       }
     }
