@@ -28,7 +28,7 @@
   </div>
 
   <!-- Selecionar Categoria -->
-  <div ng-repeat="objeto in passagem.params.objetos">
+  <div ng-repeat="objeto in passagem.params.objetos" class="sc-bg-gray-lighter">
     <div class="sc-fieldset sc-m-h-lg sc-bg-white sc-m-b-xs">
       <div class="sc-fieldset-head">
         <div class="flex-row sc-p-l-o sc-p-t-o">
@@ -36,8 +36,12 @@
             <div class="sc-text-blue sc-text-bold sc-m-b-xs">
               Categoria:
             </div>
-            <div ng-if="!passagemServicosCtrl.novaCategoria"class="sc-input-group">
-              <select ng-model="objeto.categoria.id" ng-options="categoria.nome for categoria in passagemServicosCtrl.categorias" class="sc-input-default">
+            <div ng-if="!passagemServicosCtrl.novaCategoria && !passagemServicosCtrl.editandoCategoria"class="sc-input-group">
+              <select
+                ng-model="objeto.categoria.id"
+                ng-options="categoria.nome for categoria in passagemServicosCtrl.categorias"
+                class="sc-input-default"
+              >
                 <option label="Selecione" class-selected="selected"></option>
               </select>
               <span sc-dropdown-menu>
@@ -50,7 +54,7 @@
                       <i class="sc-text-green sc-icon sc-icon-mais-1"></i>
                       Nova Categoria
                     </span>
-                    <span ng-if="objeto.categoria.id" ng-click="passagemServicosCtrl.categoriaCtrl.edit(categoria)">
+                    <span ng-if="objeto.categoria.id" ng-click="passagemServicosCtrl.categoriaCtrl.edit(passagem, categoria)">
                       <i class="sc-text-yellow sc-icon sc-icon-lapis"></i>
                       Editar
                     </span>
@@ -63,7 +67,7 @@
               </span>
             </div>
             <!-- Nova Categoria -->
-            <div ng-if="passagemServicosCtrl.novaCategoria" class="sc-input-group">
+            <div ng-if="passagemServicosCtrl.novaCategoria || passagemServicosCtrl.editandoCategoria" class="sc-input-group">
               <input type="text" class="sc-input-default" ng-model="passagem.categoria.nome">
               <i ng-click="passagemServicosCtrl.categoriaCtrl.hide(novaCategoria)" class="sc-btn sc-btn-red sc-icon sc-icon-fechar-1"></i>
               <i ng-click="passagemServicosCtrl.categoriaCtrl.add(categoria,passagem)" class="sc-btn sc-btn-green sc-icon sc-icon-visto-1"></i>

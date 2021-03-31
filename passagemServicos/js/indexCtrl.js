@@ -23,8 +23,6 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     }
 
     //Abrir e Fechar Formulário
-    passagem = {}
-    vmIndex.newRecord = false
     vmIndex.formulario = {
       abrir: function(passagem, params) {
         if (!passagem) {
@@ -34,16 +32,13 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
           passagem.params = angular.copy(passagem)
           passagem.accOpened = true
           passagem.editing = true
-          console.log(passagem)
-          console.log(params)
         }
       },
       fechar: function(passagem) {
         if (passagem) {
           passagem.editing = false
           vmIndex.newRecord = false
-        console.log(passagem)
-        console.log(params)
+          console.log(passagem)
         } else {
           vmIndex.newRecord = false
         }
@@ -51,7 +46,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     }
 
     //Submit do Formulário
-    vmIndex.salvar = function(passagem, params) {
+    vmIndex.salvar = function(passagem, params, objeto, item) {
       if(!passagem || !passagem.params.pessoaSaiu) {
         scTopMessages.openDanger("Quem sai não pode ser vazio",{timeOut: 3000})
         passagem.pessoaSaiuErro = true
@@ -61,6 +56,28 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       } else if(passagem.params.senhaQuemSai && passagem.params.senhaQuemEntra && !passagem.params.pessoaEntrou) {
          scTopMessages.openDanger("Quem entra não pode ser vazio",{timeOut: 3000})
          passagem.pessoaEntrouErro = true
+      } else if(vmIndex.passagem.params.objetos) {
+        if (!vmIndex.passagem.params.objetos[0].categoria) {
+          scTopMessages.openDanger("Selecione uma categoria para o objeto!", {timeOut: 3000})
+        } else if(!vmIndex.passagem.params.objetos[0].itens[0].descricao) {
+          scTopMessages.openDanger("Item (descrição) não pode ser vazio!", {timeOut: 3000})
+        } else if(!passagem.params.id) {
+          scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
+          passagem.params.id = vmIndex.list.length + 1
+          vmIndex.list.unshift(passagem.params)
+          vmIndex.newRecord = false
+          passagem.params.criacao = new Date()
+          newParams = angular.copy(vmIndex.passagem.params)
+          angular.extend(passagem.params, newParams)
+        } else {
+          scTopMessages.openSuccess("Registro atualizado com sucesso",{timeOut: 2000})
+          vmIndex.editando = vmIndex.list.map(function(it) {
+            return it.id
+          }).indexOf(passagem.params.id)
+          vmIndex.list[vmIndex.editando] = passagem.params
+          passagem.editing = false
+          passagem.params = {}
+        }
       } else if(!passagem.params.id) {
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
         passagem.params.id = vmIndex.list.length + 1
@@ -70,9 +87,8 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         newParams = angular.copy(vmIndex.passagem.params)
         angular.extend(passagem.params, newParams)
         console.log(passagem)
-        console.log(params)
       } else {
-        scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
+        scTopMessages.openSuccess("Registro atualizado com sucesso",{timeOut: 2000})
         vmIndex.editando = vmIndex.list.map(function(it) {
           return it.id
         }).indexOf(passagem.params.id)
@@ -110,28 +126,32 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     vmIndex.categoriaCtrl = {
       categoria: {},
       passagem: {},
-      show: function(novaCategoria) {
+      show: function(novaCategoria, passagem, categoria) {
         vmIndex.novaCategoria = true
         vmIndex.passagem.categoria = {}
       },
       hide: function(passagem, novaCategoria) {
         vmIndex.novaCategoria = false
+        vmIndex.editandoCategoria = false
       },
       add: function(passagem, categoria, novaCategoria) {
-        if (!vmIndex.categorias.id) {
+        if (vmIndex.novaCategoria) {
           categoria.categoria.id = vmIndex.categorias.length + 1
           vmIndex.categorias.unshift(categoria.categoria)
           vmIndex.novaCategoria = false
+          vmIndex.passagem.categoria = {}
+          console.log(vmIndex.categorias)
         } else {
           vmIndex.editCategoria = vmIndex.categorias.map(function(it) {
             return it.id
-          }).indexOf(vmIndex.categorias.id)
+          }).indexOf(vmIndex.passagem.params.objetos[0].categoria.id.id)
           vmIndex.categorias[vmIndex.editCategoria] = categoria.nome
+          vmIndex.novaCategoria = false
         }
       },
       edit: function(categoria, passagem, params) {
-        vmIndex.passagem.params.objetos = angular.copy(categoria.nome)
-        vmIndex.novaCategoria = true
+        vmIndex.editandoCategoria = true
+        passagem.categoria.nome = angular.copy(vmIndex.passagem.params.objetos[0].categoria.id.nome)
       }
     }
 
