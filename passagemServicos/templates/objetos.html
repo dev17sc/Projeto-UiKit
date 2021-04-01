@@ -68,7 +68,7 @@
             </div>
             <!-- Nova Categoria -->
             <div ng-if="passagemServicosCtrl.novaCategoria || passagemServicosCtrl.editandoCategoria" class="sc-input-group">
-              <input type="text" class="sc-input-default" ng-model="passagem.categoria.nome">
+              <input type="text" class="sc-input-default" ng-model="passagemServicosCtrl.passagem.categoria">
               <i ng-click="passagemServicosCtrl.categoriaCtrl.hide(novaCategoria)" class="sc-btn sc-btn-red sc-icon sc-icon-fechar-1"></i>
               <i ng-click="passagemServicosCtrl.categoriaCtrl.add(categoria,passagem)" class="sc-btn sc-btn-green sc-icon sc-icon-visto-1"></i>
             </div>
@@ -121,7 +121,7 @@
       </div>
     </div>
   </div>
-  <div ng-if="passagem.params.objetos.length <= 0 || !passagem.params.objetos" class="sc-text-blue sc-m-t-sm align-center">
+  <div ng-if="!passagem.params.objetos || passagemServicosCtrl.params.objetos.length <= 0" class="sc-text-blue sc-m-t-sm align-center">
     <i class="sc-icon sc-icon-exclamacao-2"></i>
     Nenhum objeto cadastrado
   </div>
