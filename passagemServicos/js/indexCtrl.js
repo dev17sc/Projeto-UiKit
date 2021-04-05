@@ -70,18 +70,19 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
             passagem.params.id = vmIndex.list.length + 1
             passagem.params.criacao = new Date()
             newParams = angular.copy(vmIndex.passagem.params)
+            meuParams = angular.copy(vmIndex.passagem)
             angular.extend(passagem.params, newParams)
-            vmIndex.list.unshift(passagem.params)
+            vmIndex.list.unshift(meuParams)
             scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
             console.log(passagem)
           } else {
-            scTopMessages.openSuccess("Registro atualizado com sucesso",{timeOut: 2000})
+            passagem.params = {}
+            passagem.editing = false
             vmIndex.editando = vmIndex.list.map(function(it) {
               return it.id
             }).indexOf(passagem.params.id)
             vmIndex.list[vmIndex.editando] = passagem.params
-            passagem.editing = false
-            passagem.params = {}
+            scTopMessages.openSuccess("Registro atualizado com sucesso",{timeOut: 2000})
           }
         } else if(!passagem.params.id) {
           vmIndex.newRecord = false
@@ -131,13 +132,8 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     vmIndex.objetoCtrl = {
       add: function(passagem) {
         obj = { item: []}
-        if(vmIndex.newRecord) {
         passagem.params.objetos ||= []
         passagem.params.objetos.push(obj)
-        } else {
-        vmIndex.params.objetos ||= []
-        vmIndex.params.objetos.push(obj)
-        }
       },
     }
 
@@ -156,30 +152,35 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       passagem: {},
       show: function(novaCategoria, passagem, categoria) {
         vmIndex.novaCategoria = true
-        vmIndex.passagem.categoria = {}
+        vmIndex.passagem.params.nome = []
       },
       hide: function(passagem, novaCategoria) {
         vmIndex.novaCategoria = false
         vmIndex.editandoCategoria = false
       },
-      add: function(passagem, categoria, novaCategoria) {
+      save: function(passagem, params, categoria, novaCategoria) {
         if (vmIndex.novaCategoria) {
-          categoria.categoria.id = vmIndex.categorias.length + 1
-          vmIndex.categorias.unshift(categoria.categoria)
+          passagem = []
+          params = []
+          passagem.params = {nome: ''}
+          passagem.params.id = vmIndex.categorias.length + 1
+          vmIndex.categorias.unshift(passagem.params)
           vmIndex.novaCategoria = false
-          vmIndex.passagem.categoria = {}
           console.log(vmIndex.categorias)
         } else {
           vmIndex.editCategoria = vmIndex.categorias.map(function(it) {
             return it.id
           }).indexOf(vmIndex.passagem.params.objetos[0].categoria.id.id)
-          vmIndex.categorias[vmIndex.editCategoria] = categoria.nome
+          vmIndex.categorias[vmIndex.editCategoria] = categoria
           vmIndex.editandoCategoria = false
+          console.log(vmIndex.categorias)
         }
       },
       edit: function(categoria, passagem, params) {
         vmIndex.editandoCategoria = true
+        vmIndex.passagem.params.nome = {}
         vmIndex.passagem.categoria = angular.copy(vmIndex.passagem.params.objetos[0].categoria.id.nome)
+        console.log(vmIndex.passagem.categoria)
       }
     }
 
