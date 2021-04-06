@@ -29,8 +29,9 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
           vmIndex.newRecord = true
           vmIndex.passagem = {params: {}}
         } else {
-          vmIndex.params = angular.copy(passagem)
           passagem.params = angular.copy(passagem)
+          vmIndex.passagem = []
+          vmIndex.passagem.params = angular.copy(passagem)
           passagem.accOpened = true
           passagem.editing = true
         }
@@ -39,86 +40,72 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         if (passagem) {
           passagem.editing = false
           vmIndex.newRecord = false
-          console.log(passagem)
         } else {
           vmIndex.newRecord = false
         }
       },
     }
 
-    //Submit do Formulário
-    vmIndex.salvar = function(passagem, params) {
+    vmIndex.beforeSave = function(passagem) {
+      errors = []
       if(!passagem || !passagem.params.pessoaSaiu) {
-        scTopMessages.openDanger("Quem sai não pode ser vazio",{timeOut: 3000})
-        passagem.pessoaSaiuErro = true
+        msg = "Quem sai não pode ser vazio"
+        errors.push(msg)
+        scTopMessages.openDanger(errors)
       } else if(passagem.params.pessoaEntrou && !passagem.params.senhaQuemEntra) {
-        scTopMessages.openDanger("É necessário preencher a senha de quem sai e quem entra para realizar a passagem de serviço!",{timeOut: 3000})
-        passagem.senhaErro = true
+        msg = "É necessário preencher a senha de quem sai e quem entra para realizar a passagem de serviço!"
+        errors.push(msg)
+        scTopMessages.openDanger(errors)
       } else if(passagem.params.senhaQuemSai && passagem.params.senhaQuemEntra && !passagem.params.pessoaEntrou) {
-         scTopMessages.openDanger("Quem entra não pode ser vazio",{timeOut: 3000})
-         passagem.pessoaEntrouErro = true
+        msg = "Quem entra não pode ser vazio"
+        errors.push(msg)
+        scTopMessages.openDanger(errors)
       } else if(vmIndex.passagem.params.objetos) {
         if (!vmIndex.passagem.params.objetos[0].categoria) {
-          scTopMessages.openDanger("Selecione uma categoria para o objeto!", {timeOut: 3000})
+          msg = "Selecione uma categoria para o objeto!"
+          errors.push(msg)
+          scTopMessages.openDanger(errors)
         } else if(!vmIndex.passagem.params.objetos[0].itens) {
-          scTopMessages.openDanger("É necessário adicionar ao menos 1 item para salvar o objeto!", {timeOut: 3000})
+          msg = "É necessário adicionar ao menos 1 item para salvar o objeto!"
+          errors.push(msg)
+          scTopMessages.openDanger(errors)
         } else if(vmIndex.passagem.params.objetos[0].itens) {
           if (!vmIndex.passagem.params.objetos[0].itens[0].descricao) {
-            scTopMessages.openDanger("Item (descrição) não pode ser vazio!", {timeOut: 3000})
-          } else if(!passagem.params.id) {
-            vmIndex.newRecord = false
-            passagem.params.id = vmIndex.list.length + 1
-            passagem.params.criacao = new Date()
-            newParams = angular.copy(vmIndex.passagem.params)
-            meuParams = angular.copy(vmIndex.passagem)
-            angular.extend(passagem.params, newParams)
-            vmIndex.list.unshift(meuParams)
-            scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
-            console.log(passagem)
-          } else {
-            passagem.params = {}
-            passagem.editing = false
-            vmIndex.editando = vmIndex.list.map(function(it) {
-              return it.id
-            }).indexOf(passagem.params.id)
-            vmIndex.list[vmIndex.editando] = passagem.params
-            scTopMessages.openSuccess("Registro atualizado com sucesso",{timeOut: 2000})
+            msg = "Item (descrição) não pode ser vazio!"
+            errors.push(msg)
+            scTopMessages.openDanger(errors)
           }
-        } else if(!passagem.params.id) {
-          vmIndex.newRecord = false
-          passagem.params.criacao = new Date()
-          passagem.params.id = vmIndex.list.length + 1
-          vmIndex.list.unshift(passagem.params)
-          newParams = angular.copy(vmIndex.passagem.params)
-          angular.extend(passagem.params, newParams)
-          scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
-          console.log(passagem)
-        } else {
-          passagem.editing = false
-          vmIndex.editando = vmIndex.list.map(function(it) {
-            return it.id
-          }).indexOf(passagem.params.id)
-          vmIndex.list[vmIndex.editando] = passagem.params
-          passagem.params = {}
-          scTopMessages.openSuccess("Registro atualizado com sucesso",{timeOut: 2000})
         }
-      } else if(!passagem.params.id) {
-        passagem.params.id = vmIndex.list.length + 1
+      } else {
+        if (errors.empty()) {
+          vmIndex.salvar(passagem)
+        }
+      }
+    }
+
+
+    //Submit do Formulário
+    vmIndex.salvar = function(passagem) {
+      if (!passagem.params.id) {
         vmIndex.newRecord = false
-        passagem.params.criacao = new Date()
-        newParams = angular.copy(vmIndex.passagem.params)
-        angular.extend(passagem.params, newParams)
-        vmIndex.list.unshift(passagem.params)
+        newParams = angular.copy(passagem.params)
+        newParams.id = vmIndex.list.length + 1
+        newParams.criacao = new Date()
+        newParams.objetos = angular.copy(vmIndex.passagem.params.objetos)
+        vmIndex.list.unshift(newParams)
         scTopMessages.openSuccess("Registro salvo com sucesso",{timeOut: 2000})
         console.log(passagem)
+        console.log(vmIndex.list)
       } else {
-        vmIndex.editando = vmIndex.list.map(function(it) {
-          return it.id
-        }).indexOf(passagem.params.id)
+        newParams = angular.copy(passagem.params)
+        passagemEdit = vmIndex.list.find((e) => e.id == passagem.id )
+        angular.extend(passagemEdit, newParams)
         vmIndex.list[vmIndex.editando] = passagem.params
+        scTopMessages.openSuccess("Registro atualizado com sucesso",{timeOut: 2000})
         passagem.editing = false
         passagem.params = {}
-        scTopMessages.openSuccess("Registro atualizado com sucesso",{timeOut: 2000})
+        console.log(passagem)
+        console.log(vmIndex.list)
       }
     }
 
@@ -131,9 +118,14 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
     //Adicionar e Remover Objeto
     vmIndex.objetoCtrl = {
       add: function(passagem) {
-        obj = { item: []}
-        passagem.params.objetos ||= []
-        passagem.params.objetos.push(obj)
+        obj = {}
+        if (!passagem.id) {
+          passagem.params.objetos ||= []
+          passagem.params.objetos.push(obj)
+        } else {
+          passagem.params.objetos ||= []
+          passagem.params.objetos.push(obj)
+        }
       },
     }
 
@@ -170,7 +162,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
         } else {
           vmIndex.editCategoria = vmIndex.categorias.map(function(it) {
             return it.id
-          }).indexOf(vmIndex.passagem.params.objetos[0].categoria.id.id)
+          }).indexOf(vmIndex.passagem.params.objetos[0].categoria.id)
           vmIndex.categorias[vmIndex.editCategoria] = categoria
           vmIndex.editandoCategoria = false
           console.log(vmIndex.categorias)
@@ -179,7 +171,7 @@ passagemServicos.controller("PassagemServicos::IndexCtrl", [
       edit: function(categoria, passagem, params) {
         vmIndex.editandoCategoria = true
         vmIndex.passagem.params.nome = {}
-        vmIndex.passagem.categoria = angular.copy(vmIndex.passagem.params.objetos[0].categoria.id.nome)
+        vmIndex.passagem.categoria = angular.copy(vmIndex.passagem.params.objetos[0].categoria.nome)
         console.log(vmIndex.passagem.categoria)
       }
     }

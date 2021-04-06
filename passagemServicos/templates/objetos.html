@@ -28,7 +28,7 @@
   </div>
 
   <!-- Selecionar Categoria -->
-  <div ng-repeat="objeto in passagem.params.objetos" class="sc-bg-gray-lighter">
+  <div ng-repeat="objeto in passagem.params.objetos track by $index" class="sc-bg-gray-lighter">
     <div class="sc-fieldset sc-m-h-lg sc-bg-white sc-m-b-xs">
       <div class="sc-fieldset-head">
         <div class="flex-row sc-p-l-o sc-p-t-o">
@@ -38,7 +38,7 @@
             </div>
             <div ng-if="!passagemServicosCtrl.novaCategoria && !passagemServicosCtrl.editandoCategoria"class="sc-input-group">
               <select
-                ng-model="objeto.categoria.id"
+                ng-model="objeto.categoria"
                 ng-options="categoria.nome for categoria in passagemServicosCtrl.categorias"
                 class="sc-input-default"
               >
